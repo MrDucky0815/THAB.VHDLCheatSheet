@@ -484,7 +484,12 @@ END ARCHITECTURE architecture_name;
 ```
 
 
-## 11. Datentypen
+## 11. Objektklassen
+
+* `CONSTANT` : fester Wert (in Architecture, Process, Function, Procedure oder Package)
+* `SIGNAL`   : Kommunikation zwischen verschiedenen Teilen der Architecture verwendet (Deklaration in der Architecture)
+* `VARIABLE` : lokales Speichern von Werten (nur im Process)
+* `FILE`/ `Dateien`: lesen / schreiben von Daten
 
 ### 11.1. Kategorien von Datentypen
 
@@ -536,12 +541,23 @@ END UNITS;
 ### 11.2. Arrays
 
 ```vhdl
-TYPE fixed_range IS ARRAY (bereich) OF element_typ;
-TYPE x_by_y IS ARRAY (bereich1, bereich2) OF element_typ;
-TYPE variable IS ARRAY ( positive RANGE <>) OF element_typ;
+-- Array-Typen definieren 
+TYPE fixed_range IS ARRAY (bereich) OF element_typ;            -- feste Größe, z. B. (0 TO 7)
+TYPE x_by_y      IS ARRAY (bereich1, bereich2) OF element_typ; -- mehrdimensional
+TYPE variable    IS ARRAY (positive RANGE <>) OF element_typ;  -- offene Größe (<>), erst bei Deklaration festgelegt
 
-VARIABLE array_name : variable(1 TO 10);
-VARIABLE array_name : variable(10 DOWNTO 1);
+-- Array-Objekte deklarieren 
+VARIABLE array_name : variable(1 TO 10);     -- Index 1..10 (aufsteigend)
+VARIABLE array_name : variable(10 DOWNTO 1); -- Index 10..1 (absteigend)
+
+-- Auf Elemente und Teilbereiche zugreifen 
+signal_name(i)          -- einzelnes Element an Index i
+signal_name(3)          -- Bit/Element an Position 3
+signal_name(7 DOWNTO 4) -- Teilbereich (Slice), hier 4 Bits
+signal_name(0 TO 3)     -- Slice in aufsteigender Richtung
+
+TYPE led_matrix IS ARRAY (0 TO 3, 0 TO 3) OF BIT;   -- definiert einen neuen Typ namens led_matrix
+SIGNAL display : led_matrix;                         -- erzeugt ein konkretes Objekt dieses Typs
 ```
 
 ### 11.3. Records
