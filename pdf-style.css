@@ -1,0 +1,48 @@
+/* Schriftgroesse fuer den PDF-Export (Markdown PDF).
+   Zum Anpassen einfach den px-Wert bei body { font-size } aendern:
+   kleiner = z. B. 11px, groesser = z. B. 13px. */
+
+body {
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+/* Code-Bloecke etwas kleiner als der Fliesstext */
+pre,
+code {
+    font-size: 0.85em;
+}
+
+/* --- Zweispaltiges Layout (zusammen mit Querformat in den Settings) --- */
+body {
+    column-count: 2;       /* auf 1 setzen = wieder einspaltig */
+    column-gap: 0.8cm;
+    column-rule: 0.5px solid #ddd;   /* duenne Trennlinie; entfernen wenn unerwuenscht */
+}
+
+/* Verhindert, dass Code-Bloecke / Tabellen mitten zwischen den Spalten zerrissen werden */
+pre,
+table {
+    break-inside: avoid;
+}
+
+/* Lange Codezeilen in der schmalen Spalte umbrechen statt abschneiden */
+pre code {
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* Ueberschrift soll nicht allein am Spaltenende stehen */
+h1, h2, h3, h4 {
+    break-after: avoid;
+}
+
+/* Hauptueberschrift ueber die ganze Seitenbreite spannen */
+h1 {
+    column-span: all;
+}
+
+/* Tabellen ebenfalls kompakter */
+table {
+    font-size: 0.9em;
+}

@@ -18,6 +18,9 @@
     1. [Bus-Resolution-Funktionen](#51-bus-resolution-funktionen)
 6. [Numerische Werte mit NUMERIC_STD](#6-numerische-werte-mit-numeric_std)
 7. [Attribute](#7-attribute)
+    1. [Signal-Attribute](#71-signal-attribute)
+    2. [Array-Attribute](#72-array-attribute)
+    3. [Typ-Attribute](#73-typ-attribute)
 8. [Bibliotheken und Packages](#8-bibliotheken-und-packages)
     1. [Verwenden von Bibliotheken und Packages](#81-verwenden-von-bibliotheken-und-packages)
     2. [Standardbibliotheken](#82-standardbibliotheken)
@@ -25,10 +28,11 @@
 9. [Funktionen und Prozeduren](#9-funktionen-und-prozeduren)
     1. [Funktionen](#91-funktionen)
     2. [Prozeduren](#92-prozeduren)
+    3. [Übergabemechanismen (By Value / By Reference)](#93-übergabemechanismen-by-value--by-reference)
 10. [Konfiguration](#10-konfiguration)
     1. [Entity-Konfiguration (Typ 1)](#101-entity-konfiguration-typ-1)
     2. [Instanz-Konfiguration (Typ 2)](#102-instanz-konfiguration-typ-2)
-11. [Datentypen](#11-datentypen)
+11. [Datentypen (Objektklassen)](#11-datentypen-objektklassen)
     1. [Kategorien von Datentypen](#111-kategorien-von-datentypen)
     2. [Aufzählungstypen](#111-aufzählungstypen)
     3. [Numerische Typen](#111-numerische-typen)
@@ -239,10 +243,11 @@ Eine `WAIT ON`-Anweisung am Ende eines Process ist äquivalent zu einer Sensitiv
 
 * `NEXT`-Anweisung:
     ```vhdl
-    FOR i IN bereich LOOP
-        NEXT WHEN bedingung;
-        -- VHDL-Code hier
-    END LOOP;
+        -- ohne Label (so wie in deinem Cheat Sheet, völlig okay):
+        FOR i IN bereich LOOP
+            NEXT WHEN bedingung;
+        END LOOP;
+        -- bei verschachtelten schleifen siehe eins weiter unten
     ```
 
     * `NEXT` wird verwendet, um den Rest der Schleife zu überspringen und mit der nächsten Iteration fortzufahren.
@@ -335,7 +340,11 @@ Zum Konvertieren von und nach `STD_LOGIC_VECTOR` werden folgende Funktionen verw
 
 ## 7. Attribute
 
-Attribute werden verwendet, um Informationen über Signale, Typen oder Werte zu erhalten.
+Attribute liefern Informationen über Signale, Arrays, Typen oder Werte. Welche Objekte zulässig sind, hängt von der Kategorie ab.
+
+### 7.1. Signal-Attribute
+
+**Nur für Signale** – sie beziehen sich auf die Simulations-Historie (Events/Transactions). Auf Variablen oder Konstanten angewendet gibt es einen Compile-Fehler.
 
 * `signal'EVENT` – liefert TRUE, wenn sich das Signal im aktuellen Simulationszyklus geändert hat.
 * `signal'ACTIVE` – liefert TRUE, wenn das Signal aktuell getrieben wird.
@@ -347,13 +356,60 @@ Attribute werden verwendet, um Informationen über Signale, Typen oder Werte zu 
 * `signal'LAST_ACTIVE` – liefert die Zeit seit der letzten Transaction des Signals.
 * `signal'LAST_VALUE` – liefert den Wert des Signals vor dem letzten Event.
 
-* `signal'LENGTH` – liefert die Länge des Signals.
-* `signal'RANGE` – liefert den Bereich des Signals. (z. B. `0 TO 7`) (für Schleifen verwendet)
-* `signal'REVERSE_RANGE` – liefert den umgekehrten Bereich des Signals. (z. B. `7 DOWNTO 0`) (für Schleifen verwendet)
-
 `RISING_EDGE(signal)` und `FALLING_EDGE(signal)` sind vom Package `IEEE.STD_LOGIC_1164` vordefinierte Attribute.
 Sie liefern TRUE, wenn das Signal im aktuellen Simulationszyklus eine steigende bzw. fallende Flanke hat.
 
+```VHDL
+-- D-FlipFlop-Beispiel (LIBRARY ieee; USE ieee.std_logic_1164.ALL; nicht vergessen!)
+PROCESS(reset, clk) IS
+BEGIN
+    IF reset = '0' THEN
+        q <= '0';
+    ELSIF clk = '1' AND clk'EVENT THEN   -- steigende Taktflanke
+        q <= d;
+    END IF;
+END PROCESS;
+```
+
+### 7.2. Array-Attribute
+
+Gelten für **alles, was ein (begrenztes) Array ist** – also auch für Variablen, Konstanten und Array-Typen, nicht nur für Signale. (`array` steht für ein beliebiges Array-Objekt oder einen Array-Typ.)
+
+* `array'LENGTH` – liefert die Anzahl der Elemente.
+* `array'RANGE` – liefert den Indexbereich. (z. B. `0 TO 7`) (für Schleifen verwendet)
+* `array'REVERSE_RANGE` – liefert den umgekehrten Indexbereich. (z. B. `7 DOWNTO 0`) (für Schleifen verwendet)
+* `array'LEFT` / `array'RIGHT` – linke / rechte Indexgrenze.
+* `array'HIGH` / `array'LOW` – höchster / niedrigster Index.
+* `array'ASCENDING` – TRUE, wenn der Indexbereich aufsteigend ist (`TO`).
+
+Typische Array-Typen sind **Vektoren** wie `STD_LOGIC_VECTOR`, `BIT_VECTOR` oder `UNSIGNED`/`SIGNED` – die Attribute funktionieren also direkt darauf (egal ob Signal, Variable oder Konstante):
+
+```vhdl
+SIGNAL data : STD_LOGIC_VECTOR(7 DOWNTO 0);
+-- data'LENGTH        =  8
+-- data'LEFT          =  7          -- erster Index
+-- data'RIGHT         =  0          -- letzter Index
+-- data'HIGH          =  7          -- größter Index
+-- data'LOW           =  0          -- kleinster Index
+-- data'RANGE         =  7 DOWNTO 0
+-- data'REVERSE_RANGE =  0 TO 7
+-- data'ASCENDING     =  FALSE      -- weil DOWNTO (bei TO wäre es TRUE)
+
+-- Damit kann man index-unabhängig über den ganzen Vektor laufen:
+FOR i IN data'RANGE LOOP
+    data(i) <= '0';
+END LOOP;
+```
+
+### 7.3. Typ-Attribute
+
+Anwendbar auf einen **Typ-/Subtyp-Namen**, unabhängig von Signal/Variable/Konstante.
+
+* `type'VAL(n)` – liefert den Wert an Position n (z. B. bei Aufzählungstypen).
+* `type'POS(w)` – liefert die Position des Werts w.
+* `type'SUCC(w)` / `type'PRED(w)` – Nachfolger / Vorgänger von w.
+* `type'IMAGE(w)` – liefert den Wert w als String.
+* `type'VALUE(s)` – wandelt den String s zurück in einen Typwert.
 
 ## 8. Bibliotheken und Packages
 ### 8.1. Verwenden von Bibliotheken und Packages
@@ -426,6 +482,17 @@ BEGIN
 END FUNCTION function_name;
 ```
 
+**Beispiel:** wandelt einen Wert generisch in einen `STD_LOGIC_VECTOR` um. Die Breite wird als `NATURAL` (`width`) übergeben und bestimmt die Größe des Rückgabewerts.
+
+```vhdl
+FUNCTION to_slv (wert : NATURAL; width : NATURAL) RETURN STD_LOGIC_VECTOR IS
+    VARIABLE ergebnis : STD_LOGIC_VECTOR(width-1 DOWNTO 0);
+BEGIN
+    ergebnis := STD_LOGIC_VECTOR(TO_UNSIGNED(wert, width));
+    RETURN ergebnis;   -- z. B. to_slv(5, 8) -> "00000101"
+END FUNCTION to_slv;
+```
+
 ### 9.2. Prozeduren
 
 * Eine Prozedur kann die übergebenen Parameter verändern und gibt keinen Wert zurück.
@@ -440,6 +507,24 @@ argument2 : type := standardwert) IS
 BEGIN
     -- Sequentieller VHDL-Code hier
 END PROCEDURE procedure_name;
+```
+### 9.3. Übergabemechanismen (By Value / By Reference)
+
+Der Mechanismus wird implizit über die Objektklasse und die Richtung des Arguments bestimmt.
+
+```vhdl
+-- 1. By Value (Kopie des Wertes, Standard bei IN und Funktionen)
+-- Parameter können innerhalb der Funktion NIEMALS abgeändert werden!
+FUNCTION add (a : INTEGER; b : INTEGER) RETURN INTEGER;
+
+-- 2. By Value in einer Prozedur (Reines Einlesen von Werten via IN)
+PROCEDURE pruefe_werte (a : IN INTEGER; b : IN INTEGER);
+
+-- 3. By Reference (Direkter Zugriff auf Original-Variable via :=)
+PROCEDURE inkrement (VARIABLE counter : INOUT INTEGER);
+
+-- 4. By Reference (Direkter Zugriff auf Original-Signal via <=)
+PROCEDURE set_pin (SIGNAL hw_pin : OUT STD_LOGIC);
 ```
 
 ## 10. Konfiguration
@@ -484,7 +569,7 @@ END ARCHITECTURE architecture_name;
 ```
 
 
-## 11. Objektklassen
+## 11. Datentypen (Objektklassen)
 
 * `CONSTANT` : fester Wert (in Architecture, Process, Function, Procedure oder Package)
 * `SIGNAL`   : Kommunikation zwischen verschiedenen Teilen der Architecture verwendet (Deklaration in der Architecture)
@@ -504,15 +589,15 @@ END ARCHITECTURE architecture_name;
     * Record-Typen
 * File-Typen
 
-### 11.1. Aufzählungstypen
+### 11.2. Aufzählungstypen
 
 ```vhdl
-TYPE type_name IS (wert1, wert2, ...);
+TYPE type_name IS (wert1, wert2, ...); -- "0", "1" geht aber auch "S1", "S2"
 SUBTYPE subtype_name IS type_name RANGE wert1 TO wert2;
 ```
-### 11.1. Numerische Typen
+### 11.3. Numerische Typen
 
-#### 11.1.1. Integer- und Real-Typen
+#### 11.3.1. Integer- und Real-Typen
 `INTEGER` (Bereich: -2^31 bis 2^31-1)
     
 ```vhdl
@@ -526,7 +611,7 @@ SUBTYPE POSITIVE IS INTEGER RANGE 1 TO INTEGER'HIGH;
 SUBTYPE REAL IS INTEGER RANGE -2**63 TO 2**63-1;
 ```
 
-#### 11.1.2. Physikalische Typen
+#### 11.3.2. Physikalische Typen
 
 ```vhdl
 TYPE time IS RANGE von TO bis
@@ -538,7 +623,7 @@ UNITS
 END UNITS;
 ```
 
-### 11.2. Arrays
+### 11.4. Arrays
 
 ```vhdl
 -- Array-Typen definieren 
@@ -560,7 +645,7 @@ TYPE led_matrix IS ARRAY (0 TO 3, 0 TO 3) OF BIT;   -- definiert einen neuen Typ
 SIGNAL display : led_matrix;                         -- erzeugt ein konkretes Objekt dieses Typs
 ```
 
-### 11.3. Records
+### 11.4. Records
 
 ```vhdl
 TYPE record_name IS RECORD
@@ -702,5 +787,5 @@ x <= logischer_ausdruck AFTER 10 ns;
 -- Variante der inertialen Verzögerung:
 
 x <= REJECT reject_zeit INERTIAL logischer_ausdruck AFTER 10 ns;
--- verzögert das Signal um 10 ns und verwirft Änderungen, die kürzer als reject_zeit sind.
+-- verzögert das Signal um 10 ns und verwirft / ignoriert Änderungen, die kürzer als reject_zeit sind.
 ```
