@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 250" font-family="Segoe UI, Arial, sans-serif">
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#333"/></marker></defs>
+  <style>.bx{font-size:11px;fill:#222;text-anchor:middle;dominant-baseline:middle}.lp{stroke:#333;stroke-width:1.6;fill:none}.ax{stroke:#333;stroke-width:1.6}.dt{font-size:13px;font-weight:bold;fill:#c026d3;text-anchor:middle;dominant-baseline:middle}.tl{font-size:12px;fill:#222;text-anchor:middle}.cap{font-size:12px;fill:#444}</style>
+  <rect x="99.0" y="30" width="132" height="30" rx="2" fill="#fdfdfd" stroke="#333" stroke-width="1.4"/>
+  <text class="bx" x="165" y="45">Berechnungen</text>
+  <rect x="99.0" y="112" width="132" height="30" rx="2" fill="#fdfdfd" stroke="#333" stroke-width="1.4"/>
+  <text class="bx" x="165" y="127">Signalveränderung</text>
+  <path class="lp" d="M231.0,48 C269.0,56 269.0,116 231.0,124" marker-end="url(#ar)"/>
+  <path class="lp" d="M99.0,124 C61.0,116 61.0,56 99.0,48" marker-end="url(#ar)"/>
+  <ellipse cx="165" cy="86" rx="20" ry="14" fill="none" stroke="#c026d3" stroke-width="1.1"/>
+  <text class="dt" x="165" y="87">Δt</text>
+  <line class="ax" x1="165" y1="142" x2="165" y2="201" marker-end="url(#ar)"/>
+  <text class="tl" x="165" y="222">tₙ</text>
+  <rect x="364.0" y="30" width="132" height="30" rx="2" fill="#fdfdfd" stroke="#333" stroke-width="1.4"/>
+  <text class="bx" x="430" y="45">Berechnungen</text>
+  <rect x="364.0" y="112" width="132" height="30" rx="2" fill="#fdfdfd" stroke="#333" stroke-width="1.4"/>
+  <text class="bx" x="430" y="127">Signalveränderung</text>
+  <path class="lp" d="M496.0,48 C534.0,56 534.0,116 496.0,124" marker-end="url(#ar)"/>
+  <path class="lp" d="M364.0,124 C326.0,116 326.0,56 364.0,48" marker-end="url(#ar)"/>
+  <ellipse cx="430" cy="86" rx="20" ry="14" fill="none" stroke="#c026d3" stroke-width="1.1"/>
+  <text class="dt" x="430" y="87">Δt</text>
+  <line class="ax" x1="430" y1="142" x2="430" y2="201" marker-end="url(#ar)"/>
+  <text class="tl" x="430" y="222">tₙ₊₁</text>
+  <line class="ax" x1="20" y1="205" x2="600" y2="205" marker-end="url(#ar)"/>
+  <text class="cap" x="300" y="240" text-anchor="middle">Simulationszeit</text>
+</svg>

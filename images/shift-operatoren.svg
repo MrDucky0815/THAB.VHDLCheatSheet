@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 366" font-family="Segoe UI, Arial, sans-serif" font-size="13">
+  <defs>
+    <marker id="ah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#333"/></marker>
+    <marker id="ag" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1a7f37"/></marker>
+    <marker id="ap" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#7c4dff"/></marker>
+  </defs>
+  <style>
+    .op{font-weight:bold;font-size:15px;fill:#1f3a5f}
+    .ty{font-size:11px;fill:#777}
+    .vec{fill:#eef3f8;stroke:#5b8bbf;stroke-width:1.4}
+    .flow{stroke:#333;stroke-width:1.8}
+    .self{stroke:#1a7f37;stroke-width:1.6;fill:none}
+    .rot{stroke:#7c4dff;stroke-width:1.6;fill:none}
+    .in{fill:#1a7f37;font-weight:bold}
+    .out{fill:#b42318;font-weight:bold}
+    .rl{fill:#7c4dff;font-size:11px}
+    text{dominant-baseline:middle}
+  </style>
+  <text x="245.0" y="36" text-anchor="middle" font-size="10" fill="#999">MSB</text>
+  <text x="445.0" y="36" text-anchor="middle" font-size="10" fill="#999">LSB</text>
+  <g transform="translate(0,50)">
+    <text class="op" x="12" y="7.0" text-anchor="start">SLL</text>
+    <text class="ty" x="12" y="21.0" text-anchor="start">logisch links</text>
+    <rect class="vec" x="232" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="272" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="312" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="352" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="392" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="432" y="0" width="26" height="26" rx="2"/>
+    <line class="flow" x1="272" y1="13.0" x2="258" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="312" y1="13.0" x2="298" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="352" y1="13.0" x2="338" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="392" y1="13.0" x2="378" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="432" y1="13.0" x2="418" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="486" y1="13.0" x2="461" y2="13.0" marker-end="url(#ah)"/>
+    <text class="in" x="490" y="13.0" text-anchor="start">0</text>
+    <line class="flow" x1="229" y1="13.0" x2="204" y2="13.0" marker-end="url(#ah)"/>
+    <text class="out" x="200" y="13.0" text-anchor="end">verloren</text>
+  </g>
+  <g transform="translate(0,96)">
+    <text class="op" x="12" y="7.0" text-anchor="start">SRL</text>
+    <text class="ty" x="12" y="21.0" text-anchor="start">logisch rechts</text>
+    <rect class="vec" x="232" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="272" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="312" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="352" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="392" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="432" y="0" width="26" height="26" rx="2"/>
+    <line class="flow" x1="258" y1="13.0" x2="272" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="298" y1="13.0" x2="312" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="338" y1="13.0" x2="352" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="378" y1="13.0" x2="392" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="418" y1="13.0" x2="432" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="204" y1="13.0" x2="229" y2="13.0" marker-end="url(#ah)"/>
+    <text class="in" x="200" y="13.0" text-anchor="end">0</text>
+    <line class="flow" x1="461" y1="13.0" x2="486" y2="13.0" marker-end="url(#ah)"/>
+    <text class="out" x="490" y="13.0" text-anchor="start">verloren</text>
+  </g>
+  <g transform="translate(0,142)">
+    <text class="op" x="12" y="7.0" text-anchor="start">SLA</text>
+    <text class="ty" x="12" y="21.0" text-anchor="start">arithmetisch links</text>
+    <rect class="vec" x="232" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="272" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="312" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="352" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="392" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="432" y="0" width="26" height="26" rx="2"/>
+    <line class="flow" x1="272" y1="13.0" x2="258" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="312" y1="13.0" x2="298" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="352" y1="13.0" x2="338" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="392" y1="13.0" x2="378" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="432" y1="13.0" x2="418" y2="13.0" marker-end="url(#ah)"/>
+    <path class="self" d="M458,5 C482,-2 482,28 459,20" marker-end="url(#ag)"/>
+    <text class="in" x="488" y="13.0" text-anchor="start">LSB</text>
+    <line class="flow" x1="229" y1="13.0" x2="204" y2="13.0" marker-end="url(#ah)"/>
+    <text class="out" x="200" y="13.0" text-anchor="end">verloren</text>
+  </g>
+  <g transform="translate(0,188)">
+    <text class="op" x="12" y="7.0" text-anchor="start">SRA</text>
+    <text class="ty" x="12" y="21.0" text-anchor="start">arithmetisch rechts</text>
+    <rect class="vec" x="232" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="272" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="312" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="352" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="392" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="432" y="0" width="26" height="26" rx="2"/>
+    <line class="flow" x1="258" y1="13.0" x2="272" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="298" y1="13.0" x2="312" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="338" y1="13.0" x2="352" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="378" y1="13.0" x2="392" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="418" y1="13.0" x2="432" y2="13.0" marker-end="url(#ah)"/>
+    <path class="self" d="M232,5 C208,-2 208,28 231,20" marker-end="url(#ag)"/>
+    <text class="in" x="202" y="13.0" text-anchor="end">MSB</text>
+    <line class="flow" x1="461" y1="13.0" x2="486" y2="13.0" marker-end="url(#ah)"/>
+    <text class="out" x="490" y="13.0" text-anchor="start">verloren</text>
+  </g>
+  <g transform="translate(0,234)">
+    <text class="op" x="12" y="7.0" text-anchor="start">ROL</text>
+    <text class="ty" x="12" y="21.0" text-anchor="start">rotiere links</text>
+    <rect class="vec" x="232" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="272" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="312" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="352" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="392" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="432" y="0" width="26" height="26" rx="2"/>
+    <line class="flow" x1="272" y1="13.0" x2="258" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="312" y1="13.0" x2="298" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="352" y1="13.0" x2="338" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="392" y1="13.0" x2="378" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="432" y1="13.0" x2="418" y2="13.0" marker-end="url(#ah)"/>
+    <path class="rot" d="M234,27 V44 H456 V27" marker-end="url(#ap)"/>
+    <text class="rl" x="345.0" y="56" text-anchor="middle">läuft rundherum – nichts verloren</text>
+  </g>
+  <g transform="translate(0,298)">
+    <text class="op" x="12" y="7.0" text-anchor="start">ROR</text>
+    <text class="ty" x="12" y="21.0" text-anchor="start">rotiere rechts</text>
+    <rect class="vec" x="232" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="272" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="312" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="352" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="392" y="0" width="26" height="26" rx="2"/>
+    <rect class="vec" x="432" y="0" width="26" height="26" rx="2"/>
+    <line class="flow" x1="258" y1="13.0" x2="272" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="298" y1="13.0" x2="312" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="338" y1="13.0" x2="352" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="378" y1="13.0" x2="392" y2="13.0" marker-end="url(#ah)"/>
+    <line class="flow" x1="418" y1="13.0" x2="432" y2="13.0" marker-end="url(#ah)"/>
+    <path class="rot" d="M456,27 V44 H234 V27" marker-end="url(#ap)"/>
+    <text class="rl" x="345.0" y="56" text-anchor="middle">läuft rundherum – nichts verloren</text>
+  </g>
+</svg>

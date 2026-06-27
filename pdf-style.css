@@ -46,3 +46,10 @@ h1 {
 table {
     font-size: 0.9em;
 }
+
+/* Bilder/SVGs auf Spaltenbreite begrenzen und nicht zerreissen */
+img {
+    max-width: 100%;
+    height: auto;
+    break-inside: avoid;
+}

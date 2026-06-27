@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 210" font-family="Segoe UI, Arial, sans-serif">
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#333"/></marker></defs>
+  <style>.bx{font-size:10px;fill:#222;text-anchor:middle;dominant-baseline:middle}.lb{font-size:11px;fill:#222;dominant-baseline:middle}.wire{stroke:#333;stroke-width:1.6}.ti{font-size:13px;font-weight:bold;fill:#1f3a5f}.lg{font-size:11px;dominant-baseline:middle}</style>
+  <text class="ti" x="8" y="16">Mealy</text>
+  <rect x="100" y="54" width="104" height="84" rx="2" fill="#fdfdfd" stroke="#333" stroke-width="1.5"/>
+  <text class="bx" x="152.0" y="88">Komb. Logik</text>
+  <text class="bx" x="152.0" y="108">nächster Zustand</text>
+  <rect x="274" y="54" width="104" height="84" rx="2" fill="#fdfdfd" stroke="#333" stroke-width="1.5"/>
+  <text class="bx" x="326.0" y="88">Zustands-</text>
+  <text class="bx" x="326.0" y="108">register</text>
+  <rect x="448" y="54" width="104" height="84" rx="2" fill="#fdfdfd" stroke="#333" stroke-width="1.5"/>
+  <text class="bx" x="500.0" y="88">Komb. Logik</text>
+  <text class="bx" x="500.0" y="108">Ausgang</text>
+  <line x1="16" y1="78.0" x2="100" y2="78.0" class="wire" marker-end="url(#ar)"/>
+  <text class="lb" x="14" y="65.0" text-anchor="start">Eingang</text>
+  <line x1="204" y1="96.0" x2="274" y2="96.0" class="wire" marker-end="url(#ar)"/>
+  <line x1="378" y1="96.0" x2="448" y2="96.0" class="wire" marker-end="url(#ar)"/>
+  <circle cx="413.0" cy="96.0" r="3" fill="#333"/>
+  <text class="lb" x="413.0" y="84.0" text-anchor="middle">state</text>
+  <line x1="552" y1="96.0" x2="626" y2="96.0" class="wire" marker-end="url(#ar)"/>
+  <text class="lb" x="560" y="84.0" text-anchor="start">Ausgang</text>
+  <path d="M413.0,96.0 V186 H72 V118.0 H100" class="wire" fill="none" marker-end="url(#ar)"/>
+  <circle cx="84" cy="78.0" r="3" fill="#333"/>
+  <path d="M84,78.0 V12 H500.0 V54" class="wire" fill="none" marker-end="url(#ar)"/>
+</svg>

@@ -8,6 +8,9 @@
 *.webp
 *.bmp
 *.svg
+# ... aber die Diagramme fuers Cheat Sheet schon (werden fuers Build gebraucht)
+!images/
+!images/*.svg
 
 # Exporte / Dokumente
 *.pdf

@@ -1,3 +1,26 @@
+# Aufgaben
+
+## Inhaltsverzeichnis
+
+- [Aufgabe 1: Entity eines Adders deklarieren](#aufgabe-1-entity-eines-adders-deklarieren)
+- [Aufgabe 2: Architecture eines Adders deklarieren](#aufgabe-2-architecture-eines-adders-deklarieren)
+- [Aufgabe 3 : erstelle einen or Baustein](#aufgabe-3--erstelle-einen-or-baustein)
+- [Aufgabe 4: erstelle eine Volladdierer](#aufgabe-4-erstelle-eine-volladdierer)
+- [Aufgabe 5: erstelle eine architecture eines adders (sequenziell)](#aufgabe-5-erstelle-eine-architecture-eines-adders-sequenziell)
+- [Aufgabe 6: 4-aus-16-Decoder mit Schleife](#aufgabe-6-4-aus-16-decoder-mit-schleife)
+- [Aufgabe 7: Delay-Modelle](#aufgabe-7-delay-modelle)
+    - [Aufgabe 7.1 Unit-Delay-Modell für eine ARCHITECTURE](#aufgabe-71-unit-delay-modell-für-eine-architecture)
+    - [Aufgabe 7.2 Unit-Delay-Modell für alle ENTITY´s (GENERIC)](#aufgabe-72-unit-delay-modell-für-alle-entitys-generic)
+    - [Aufgabe 7.3 Unit-Delay-Modell für GENERICMAP (GENERIC)](#aufgabe-73-unit-delay-modell-für-genericmap-generic)
+    - [Aufgabe 7.4 Lastabhänige Verzögerung](#aufgabe-74-lastabhänige-verzögerung)
+- [Aufgabe 8: Erselle ein D-FlipFlo](#aufgabe-8-erselle-ein-d-flipflo)
+- [Aufgabe 9: Erstelle einen INT TO STD_LOGIC_VECTOR mit einer Function](#aufgabe-9-erstelle-einen-int-to-std_logic_vector-mit-einer-function)
+- [Aufgabe 10: Prozedur-Aufrufe und Parameter-Assoziation](#aufgabe-10-prozedur-aufrufe-und-parameter-assoziation)
+- [Aufgabe 11: Überladen von Operatoren (Operator Overloading)](#aufgabe-11-überladen-von-operatoren-operator-overloading)
+- [Aufgabe 12: Ripple-Carry-Addierer mit n Addierern](#aufgabe-12-ripple-carry-addierer-mit-n-addierern)
+- [Aufgabe 13: Konvertierung von Porttypen mit CONFIGURATION](#aufgabe-13-konvertierung-von-porttypen-mit-configuration)
+- [Aufgabe 14: Decoder mit Schieberoperation](#aufgabe-14-decoder-mit-schieberoperation)
+
 ## Aufgabe 1: Entity eines Adders deklarieren
 
 ```vhdl
@@ -189,7 +212,7 @@ BEGIN
 END ARCHITECTURE const_delay;
  ```
 
- ### Aufgabe 7.2 Unit-Delay-Modell für alle ENTITY´s (GENERIC)
+### Aufgabe 7.2 Unit-Delay-Modell für alle ENTITY´s (GENERIC)
 
  ```vhdl
 LIBRARY ieee;
@@ -237,7 +260,7 @@ BEGIN
 END ARCHITECTURE struct;
  ```
 
- ### Aufgabe 7.4 Lastabhänige Verzögerung
+### Aufgabe 7.4 Lastabhänige Verzögerung
 
  ```vhdl
 ENTITY and2 IS
@@ -265,7 +288,7 @@ BEGIN
 END ARCHITECTURE load_delay;
  ```
 
- ## Aufgabe 8: Erselle ein D-FlipFlo
+## Aufgabe 8: Erselle ein D-FlipFlo
 
  ```VHDL
 LIBRARY ieee;
@@ -329,7 +352,7 @@ BEGIN
 END ARCHITECTURE delays;
 ```
 
-# Aufgabe 9: Erstelle einen INT TO STD_LOGIC_VECTOR mit einer Function
+## Aufgabe 9: Erstelle einen INT TO STD_LOGIC_VECTOR mit einer Function
 
 ### 9.1. Der Algorithmus (Schritt für Schritt)
 
@@ -426,7 +449,7 @@ BEGIN
 END ARCHITECTURE behavioral;
 ```
 
-# Aufgabe 10: Prozedur-Aufrufe und Parameter-Assoziation
+## Aufgabe 10: Prozedur-Aufrufe und Parameter-Assoziation
 
 Dieses Beispiel zeigt die Definition einer Prozedur innerhalb eines Prozesses sowie die verschiedenen legalen und illegalen Arten, Parameter zu übergeben (Positional, Default und Named Association).
 
@@ -463,7 +486,7 @@ BEGIN
 END PROCESS;
 ```
 
-# Aufgabe 11: Überladen von Operatoren (Operator Overloading)
+## Aufgabe 11: Überladen von Operatoren (Operator Overloading)
 
 Dieses Beispiel zeigt, wie man bestehende VHDL-Standardoperatoren (wie `and` oder `or`) für eigene, benutzerdefinierte Datentypen verfügbar macht und die Logik effizient über eine Nachschlagetabelle (Look-up-Table) löst.
 
@@ -490,3 +513,107 @@ BEGIN
     -- Das Ergebnis wird direkt aus der Tabelle an den Kreuzungspunkten gelesen
     RETURN and_table(left, right);
 END FUNCTION "and";
+```
+
+## Aufgabe 12: Ripple-Carry-Addierer mit n Addierern
+```vhdl
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+
+ENTITY nbitadder IS
+    GENERIC(n : NATURAL := 4);
+    PORT(   a, b : IN  STD_ULOGIC_VECTOR(n-1 DOWNTO 0);
+            cin  : IN  STD_ULOGIC;
+            sum  : OUT STD_ULOGIC_VECTOR(n-1 DOWNTO 0);
+            cout : OUT STD_ULOGIC);
+END ENTITY nbitadder;
+
+ARCHITECTURE struct OF nbitadder IS
+    COMPONENT fadd IS
+        PORT(a, b, cin : IN  STD_ULOGIC;
+             z, co     : OUT STD_ULOGIC);
+    END COMPONENT fadd;
+
+    SIGNAL carry : STD_ULOGIC_VECTOR(0 TO n);
+BEGIN
+    -- FOR ... GENERATE erzeugt n Volladdierer und verkettet den Carry
+    g1: FOR i IN 0 TO n-1 GENERATE
+        fi: fadd PORT MAP(a(i), b(i), carry(i), sum(i), carry(i+1));
+    END GENERATE g1;
+
+    carry(0) <= cin;       -- Carry-in der ersten Stufe
+    cout     <= carry(n);  -- Carry-out der letzten Stufe
+END ARCHITECTURE struct;
+```
+
+## Aufgabe 13: Konvertierung von Porttypen mit CONFIGURATION
+```vhdl
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;          -- to_signed / to_integer / signed
+
+ENTITY top IS
+    PORT(   a, b : IN  INTEGER;
+            x, y : OUT INTEGER);
+END ENTITY top;
+
+ARCHITECTURE structure OF top IS
+    -- Component "blk" ist mit INTEGER deklariert ...
+    COMPONENT blk IS
+        PORT(   i : IN  INTEGER;
+                o : OUT INTEGER);
+    END COMPONENT blk;
+BEGIN
+    B1: blk PORT MAP (a, x);
+    B2: blk PORT MAP (b, y);
+END ARCHITECTURE structure;
+
+-- ... die ECHTE Entity gate_level_blk arbeitet mit STD_LOGIC_VECTOR (Ports ip/op).
+-- Die Configuration bindet blk daran und konvertiert die Porttypen:
+CONFIGURATION cfg_top OF top IS
+    FOR structure
+        -- FOR ALL : <component> USE ENTITY <library>.<entity>(<architecture>)
+        --   blk            = Component-Name (der "Sockel" in der Architecture)
+        --   work           = Library
+        --   gate_level_blk = welche ECHTE Entity benutzt wird
+        --   synth          = welche Architecture dieser Entity
+        FOR ALL : blk USE ENTITY work.gate_level_blk(synth)
+            PORT MAP (ip => std_logic_vector(to_signed(i, 8)),   -- IN:  INTEGER -> SLV
+                      to_integer(signed(op)) => o);              -- OUT: SLV -> INTEGER
+        END FOR;
+    END FOR;
+END CONFIGURATION cfg_top;
+
+
+-- in einer anderen Datei: die echte Entity samt Architecture "synth"
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+
+ENTITY gate_level_blk IS
+    PORT(ip : IN  STD_LOGIC_VECTOR(7 DOWNTO 0);
+         op : OUT STD_LOGIC_VECTOR(7 DOWNTO 0));
+END ENTITY gate_level_blk;
+
+ARCHITECTURE synth OF gate_level_blk IS
+BEGIN
+    op <= ip;   -- Platzhalter-Logik
+END ARCHITECTURE synth;
+```
+## Aufgabe 14: Decoder mit Schieberoperation
+```VHDL
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all; -- numerische Operatoren für Vektoren
+
+ENTITY decoder IS
+    GENERIC(n: POSITIVE);
+    PORT(   a: IN STD_LOGIC_VECTOR(n-1 DOWNTO 0);
+            z: OUT STD_LOGIC_VECTOR((2**n)-1 DOWNTO 0));
+END ENTITY decoder;
+
+ARCHITECTURE shift OF decoder IS 
+    CONSTANT z_out: BIT_VECTOR((2**n)-1 DOWNTO 0):= (0=> '1', OTHERS =>'0');
+BEGIN
+    z <= to_stdlogicvector(z_out sll to_integer(unsigned(a))); -- achtung unsigned keine 2K zahl
+END ARCHITECTURE shift;
+```

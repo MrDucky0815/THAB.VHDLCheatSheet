@@ -1,56 +1,412 @@
 # VHDL Cheat Sheet
 
 ## 0. Inhaltsverzeichnis
-1. [Entity – Schnittstelle](#1-entity--schnittstelle)
-2. [Architecture – Implementierung](#2-architecture--implementierung)
-    1. [Signalzuweisung](#21-signalzuweisung)
-        1. [Bedingt (WHEN ELSE)](#211-bedingt-when-else)
-        2. [Selektiv (WITH SELECT)](#212-selektiv-with-select)
-    2. [Komponenten-Instanziierung](#22-komponenten-instanziierung)
-    3. [Direkte Instanziierung](#23-direkte-instanziierung)
-3. [Process – sequentieller Ablauf](#3-process--sequentieller-ablauf)
-    1. [Wait-Anweisungen](#31-wait-anweisungen)
-    2. [Sequentielle Anweisungen](#32-sequentielle-anweisungen)
-4. [Operatoren](#4-operatoren)
-    1. [Relationale Operatoren](#41-relationale-operatoren)
-    2. [Logische Operatoren](#42-logische-operatoren)
-    3. [Shift-Operatoren](#43-shift-operatoren)
-5. [STD_LOGIC – Logikwerte](#5-std_logic--logikwerte)
-    1. [Bus-Resolution-Funktionen](#51-bus-resolution-funktionen)
-6. [NUMERIC_STD – Arithmetik](#6-numeric_std--arithmetik)
-7. [Attribute](#7-attribute)
-    1. [Signal-Attribute](#71-signal-attribute)
-    2. [Array-Attribute](#72-array-attribute)
-    3. [Typ-Attribute](#73-typ-attribute)
-8. [Libraries & Packages](#8-libraries--packages)
-    1. [Verwenden von Bibliotheken und Packages](#81-verwenden-von-bibliotheken-und-packages)
-    2. [Standardbibliotheken](#82-standardbibliotheken)
-    3. [Definieren von Bibliotheken und Packages](#83-definieren-von-bibliotheken-und-packages)
-9. [Unterprogramme (Funktionen & Prozeduren)](#9-unterprogramme-funktionen--prozeduren)
-    1. [Funktionen](#91-funktionen)
-    2. [Prozeduren](#92-prozeduren)
-    3. [Übergabemechanismen (By Value / By Reference)](#93-übergabemechanismen-by-value--by-reference)
-10. [Konfiguration](#10-konfiguration)
-    1. [Entity-Konfiguration (Typ 1)](#101-entity-konfiguration-typ-1)
-    2. [Instanz-Konfiguration (Typ 2)](#102-instanz-konfiguration-typ-2)
-11. [Datentypen](#11-datentypen)
-    1. [Kategorien von Datentypen](#111-kategorien-von-datentypen)
-    2. [Aufzählungstypen](#112-aufzählungstypen)
-    3. [Numerische Typen](#113-numerische-typen)
-        1. [Integer- und Real-Typen](#1131-integer--und-real-typen)
-        2. [Physikalische Typen](#1132-physikalische-typen)
-    4. [Arrays](#114-arrays)
-    5. [Records](#115-records)
-12. [Testbenches (nur Simulation)](#12-testbenches-nur-simulation)
-    1. [Testbench-Struktur](#121-testbench-struktur)
-    2. [TEXTIO-Package](#122-textio-package)
-13. [Assertions (nur Simulation)](#13-assertions-nur-simulation)
-14. [Verzögerungsmodelle (nur Simulation)](#14-verzögerungsmodelle-nur-simulation)
-    1. [Transport-Verzögerung](#141-transport-verzögerung)
-    2. [Inertiale Verzögerung](#142-inertiale-verzögerung)
+
+1. [Datentypen](#1-datentypen)
+    1. [Kategorien von Datentypen](#11-kategorien-von-datentypen)
+    2. [Aufzählungstypen](#12-aufzählungstypen)
+    3. [Numerische Typen](#13-numerische-typen)
+        1. [Integer- und Real-Typen](#131-integer--und-real-typen)
+        2. [Physikalische Typen](#132-physikalische-typen)
+    4. [Arrays](#14-arrays)
+    5. [Records](#15-records)
+2. [STD_LOGIC – Logikwerte](#2-std_logic--logikwerte)
+    1. [Bus-Resolution-Funktionen](#21-bus-resolution-funktionen)
+3. [NUMERIC_STD – Arithmetik](#3-numeric_std--arithmetik)
+4. [Typkonvertierung](#4-typkonvertierung)
+    1. [Casts](#41-casts)
+    2. [Konvertierungsfunktionen](#42-konvertierungsfunktionen)
+5. [Operatoren](#5-operatoren)
+    1. [Relationale Operatoren](#51-relationale-operatoren)
+    2. [Logische Operatoren](#52-logische-operatoren)
+    3. [Shift-Operatoren](#53-shift-operatoren)
+6. [Attribute](#6-attribute)
+    1. [Signal-Attribute](#61-signal-attribute)
+    2. [Array-Attribute](#62-array-attribute)
+    3. [Typ-Attribute](#63-typ-attribute)
+7. [Entity – Schnittstelle](#7-entity--schnittstelle)
+8. [Architecture – Implementierung](#8-architecture--implementierung)
+    1. [Signalzuweisung](#81-signalzuweisung)
+        1. [Bedingt (WHEN ELSE)](#811-bedingt-when-else)
+        2. [Selektiv (WITH SELECT)](#812-selektiv-with-select)
+    2. [Komponenten-Instanziierung](#82-komponenten-instanziierung)
+    3. [Direkte Instanziierung](#83-direkte-instanziierung)
+    4. [GENERATE (Strukturen replizieren)](#84-generate-strukturen-replizieren)
+9. [Process – sequentieller Ablauf](#9-process--sequentieller-ablauf)
+    1. [Wait-Anweisungen](#91-wait-anweisungen)
+    2. [Sequentielle Anweisungen](#92-sequentielle-anweisungen)
+10. [Unterprogramme (Funktionen & Prozeduren)](#10-unterprogramme-funktionen--prozeduren)
+    1. [Funktionen](#101-funktionen)
+    2. [Prozeduren](#102-prozeduren)
+    3. [Übergabemechanismen (By Value / By Reference)](#103-übergabemechanismen-by-value--by-reference)
+11. [Libraries & Packages](#11-libraries--packages)
+    1. [Verwenden von Bibliotheken und Packages](#111-verwenden-von-bibliotheken-und-packages)
+    2. [Standardbibliotheken](#112-standardbibliotheken)
+    3. [Definieren von Bibliotheken und Packages](#113-definieren-von-bibliotheken-und-packages)
+12. [Konfiguration](#12-konfiguration)
+    1. [Entity-Konfiguration (Typ 1)](#121-entity-konfiguration-typ-1)
+    2. [Instanz-Konfiguration (Typ 2)](#122-instanz-konfiguration-typ-2)
+    3. [Beispiel: Entity-/Architecture-Wahl](#123-beispiel-entity-architecture-wahl)
+    4. [Beispiel: Porttyp-Konvertierung](#124-beispiel-porttyp-konvertierung)
+    5. [Verteilung auf Dateien](#125-verteilung-auf-dateien)
+13. [Sichtbarkeit (Geltungsbereiche)](#13-sichtbarkeit-geltungsbereiche)
+14. [Synthese](#14-synthese)
+    1. [Synthetisierbare Datentypen](#141-synthetisierbare-datentypen)
+    2. [Synthetisierbare Operatoren](#142-synthetisierbare-operatoren)
+    3. [Nicht erlaubte Anweisungen](#143-nicht-erlaubte-anweisungen)
+    4. [Kombinatorische Logik](#144-kombinatorische-logik)
+    5. [Initialisierung und Reset](#145-initialisierung-und-reset)
+15. [Testbenches (nur Simulation)](#15-testbenches-nur-simulation)
+    1. [Testbench-Struktur](#151-testbench-struktur)
+    2. [TEXTIO-Package](#152-textio-package)
+16. [Assertions (nur Simulation)](#16-assertions-nur-simulation)
+17. [Verzögerungsmodelle (nur Simulation)](#17-verzögerungsmodelle-nur-simulation)
+    1. [Transport-Verzögerung](#171-transport-verzögerung)
+    2. [Inertiale Verzögerung](#172-inertiale-verzögerung)
 
 
-## 1. Entity – Schnittstelle
+## 1. Datentypen
+
+* `CONSTANT` : fester Wert (in Architecture, Process, Function, Procedure oder Package)
+* `SIGNAL`   : Kommunikation zwischen verschiedenen Teilen der Architecture verwendet (Deklaration in der Architecture)
+* `VARIABLE` : lokales Speichern von Werten (nur im Process)
+* `FILE`/ `Dateien`: lesen / schreiben von Daten
+
+### 1.1. Kategorien von Datentypen
+
+* Skalare Typen (Scalar Types)
+    * Aufzählungstypen (Enumeration Types)
+    * Numerische Typen
+        * Integer-Typen
+        * Real-Typen
+        * Physikalische Typen
+* Zusammengesetzte Typen (Composite Types)
+    * Array-Typen
+    * Record-Typen
+* File-Typen
+
+### 1.2. Aufzählungstypen
+
+```vhdl
+TYPE type_name IS (wert1, wert2, ...); -- "0", "1" geht aber auch "S1", "S2" oder "rot", "grün"
+SUBTYPE subtype_name IS type_name RANGE wert1 TO wert2;
+```
+### 1.3. Numerische Typen
+
+#### 1.3.1. Integer- und Real-Typen
+`INTEGER` – Ganzzahl (Bereich: -2^31 bis 2^31-1)
+    
+```vhdl
+-- Vordefinierte Subtypen
+SUBTYPE NATURAL  IS INTEGER RANGE 0 TO INTEGER'HIGH;
+SUBTYPE POSITIVE IS INTEGER RANGE 1 TO INTEGER'HIGH;
+
+-- Eigener Subtyp von INTEGER (bleibt kompatibel):
+SUBTYPE byte IS INTEGER RANGE -128 TO 127;    -- oder RANGE 0 TO 255
+
+-- Eigener, NEUER Integer-Typ (eigenständig, nur per Konvertierung mischbar):
+TYPE coord IS RANGE -100 TO 100;
+
+```
+
+`REAL` – Gleitkomma (Bereich: -2^63 bis 2^63-1)
+
+```vhdl
+SUBTYPE REAL IS INTEGER RANGE -2**63 TO 2**63-1;
+```
+
+#### 1.3.2. Physikalische Typen
+
+```vhdl
+-- TIME ist vordefiniert (in STD.STANDARD):
+TYPE time IS RANGE von TO bis
+UNITS
+    fs;              -- Basiseinheit
+    ps = 1000 fs;
+    ns = 1000 ps;
+    ...
+END UNITS;
+
+-- Eigener physikalischer Typ (Kapazität):
+TYPE capacitance IS RANGE 0 TO 1E9
+UNITS
+    fF;              -- Basiseinheit (Femtofarad)
+    pF = 1000 fF;    -- Pikofarad
+    nF = 1000 pF;    -- Nanofarad
+    uF = 1000 nF;    -- Mikrofarad (µF)
+END UNITS capacitance;
+```
+
+### 1.4. Arrays
+
+```vhdl
+-- Array-Typen definieren 
+TYPE fixed_range IS ARRAY (bereich) OF element_typ;            -- BESCHRÄNKT: feste Größe, z. B. (0 TO 7)
+TYPE x_by_y      IS ARRAY (bereich1, bereich2) OF element_typ; -- mehrdimensional
+TYPE variable    IS ARRAY (positive RANGE <>) OF element_typ;  -- UNBESCHRÄNKT: offene Größe (<>)
+
+-- Array-Objekte deklarieren: bei UNBESCHRÄNKTEM Typ wird die Größe HIER festgelegt
+VARIABLE array_name : variable(1 TO 10);     -- Index 1..10 (aufsteigend)
+VARIABLE array_name : variable(10 DOWNTO 1); -- Index 10..1 (absteigend)
+VARIABLE array_name : variable;              -- ❌ Fehler: unbeschränkt braucht einen Bereich!
+
+-- Auf Elemente und Teilbereiche zugreifen 
+signal_name(i)          -- einzelnes Element an Index i
+signal_name(3)          -- Bit/Element an Position 3
+signal_name(7 DOWNTO 4) -- Teilbereich (Slice), hier 4 Bits
+signal_name(0 TO 3)     -- Slice in aufsteigender Richtung
+
+-- Ganzen Vektor setzen (Aggregat) – OTHERS = alle übrigen Indizes
+sig <= (OTHERS => '0');             -- alle Bits 0 (typischer Reset)
+sig <= (OTHERS => '1');             -- alle Bits 1
+sig <= (7 => '1', OTHERS => '0');   -- Bit 7 = '1', Rest = '0'
+sig <= ('1', '0', OTHERS => '0');   -- Position 0 = '1', 1 = '0', Rest = '0'
+
+TYPE led_matrix IS ARRAY (0 TO 3, 0 TO 3) OF BIT;   -- definiert einen neuen Typ namens led_matrix
+SIGNAL display : led_matrix;                         -- erzeugt ein konkretes Objekt dieses Typs
+```
+
+### 1.5. Records
+Vergleichbar mit einem struct in C: nur Datenfelder, keine Methoden/Vererbung
+
+```vhdl
+TYPE record_name IS RECORD
+    feld1 : typ1;
+    feld2 : typ2;
+    ...
+END RECORD;
+
+VARIABLE record_name : record_name;
+
+record_name.feld1 := wert;     -- Feldzugriff per Punkt
+```
+
+
+## 2. STD_LOGIC – Logikwerte
+
+Das Package `IEEE.STD_LOGIC_1164` definiert die Datentypen `STD_ULOGIC` und `STD_ULOGIC_VECTOR`.
+Sie werden verwendet, um digitale Signale mit zusätzlichen Zuständen darzustellen.
+
+* `U` – uninitialisiert (uninitialized)
+* `X` – unbekannt (unknown)
+* `0` – logisch 0
+* `1` – logisch 1
+* `Z` – hochohmig (high impedance)
+* `W` – schwach unbekannt (weak unknown)
+* `L` – schwach logisch 0
+* `H` – schwach logisch 1
+* `-` – don't care
+
+Der Compiler erzeugt Fehler, wenn ein Signal von mehreren Quellen mit widersprüchlichen Werten getrieben wird.
+
+### 2.1. Bus-Resolution-Funktionen
+
+Die Bus-Resolution-Funktionen werden verwendet, um mehrere Quellen aufzulösen, die ein Signal treiben.
+
+Die Verwendung der Datentypen `STD_LOGIC` und `STD_LOGIC_VECTOR` führt die Bus-Resolution-Funktionen ein.
+
+```text
+Das Ergebnis ist der Wert, der im Schema am weitesten oben steht:
+        U
+        │  
+        X
+    ┌───┼───┐
+    0   -   1
+    └───┬───┘
+        W
+    ┌───┴───┐
+    L       H
+    └───┬───┘
+        Z
+```
+
+
+## 3. NUMERIC_STD – Arithmetik
+
+`IEEE.NUMERIC_STD` und `IEEE.NUMERIC_BIT` ermöglichen numerische Operationen auf Vektor-Typen.
+Dafür sind die Datentypen `SIGNED` und `UNSIGNED` definiert.
+`NUMERIC_STD` baut auf `STD_LOGIC_VECTOR` auf, `NUMERIC_BIT` auf `BIT_VECTOR`.
+
+Ein `STD_LOGIC_VECTOR` selbst kann **nicht** rechnen (kein `+`, `-`, …) – er ist nur eine Bitfolge. Für Arithmetik geht man über `UNSIGNED` / `SIGNED`.
+
+**Cast zwischen Vektor-Typen** (gleiche Bitbreite, nur Umdeutung der Bits):
+
+| von → nach | Funktion |
+|---|---|
+| `STD_LOGIC_VECTOR` → `UNSIGNED` | `unsigned(slv)` |
+| `STD_LOGIC_VECTOR` → `SIGNED` | `signed(slv)` |
+| `UNSIGNED` / `SIGNED` → `STD_LOGIC_VECTOR` | `std_logic_vector(x)` |
+
+**Umrechnung von/nach `INTEGER`** (Bitbreite n beim Erzeugen angeben):
+
+| von → nach | Funktion |
+|---|---|
+| `UNSIGNED` / `SIGNED` → `INTEGER` | `to_integer(x)` |
+| `INTEGER` → `UNSIGNED` (n Bit) | `to_unsigned(wert, n)` |
+| `INTEGER` → `SIGNED` (n Bit) | `to_signed(wert, n)` |
+
+`STD_LOGIC_VECTOR` hat **keine** direkte Integer-Umwandlung – immer erst nach `UNSIGNED`/`SIGNED` casten.
+
+**Beispiel:**
+```vhdl
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.numeric_std.ALL;
+-- ... in der Architecture deklariert:
+SIGNAL slv : STD_LOGIC_VECTOR(7 DOWNTO 0);
+SIGNAL u   : UNSIGNED(7 DOWNTO 0);
+SIGNAL s   : SIGNED(7 DOWNTO 0);
+SIGNAL i   : INTEGER;
+
+-- INTEGER -> Vektor (Breite 8 angeben!)
+u   <= to_unsigned(5, 8);                    -- 5 als 8-Bit UNSIGNED
+s   <= to_signed(-3, 8);                     -- -3 als 8-Bit SIGNED (Zweierkomplement)
+slv <= std_logic_vector(to_unsigned(5, 8));  -- dasselbe als STD_LOGIC_VECTOR
+
+-- Vektor -> INTEGER
+i <= to_integer(unsigned(slv));              -- erst casten, dann to_integer
+
+-- Rechnen
+u   <= u + 1;                                -- direkt auf UNSIGNED
+slv <= std_logic_vector(unsigned(slv) + 1);  -- auf STD_LOGIC_VECTOR via Cast
+```
+
+
+## 4. Typkonvertierung
+
+Zwei Mechanismen: **Casts** wandeln zwischen *verwandten* Typen (gleicher Basistyp – nur umgedeutet bzw. gerundet), **Konvertierungsfunktionen** zwischen *verschiedenen Darstellungen*.
+
+**Faustregel:** gleicher Basistyp → Cast `typ(wert)`; andere Darstellung → Funktion `to_xxx(...)`.
+
+### 4.1. Casts
+
+| von → nach | Cast |
+|---|---|
+| `REAL` → `INTEGER` | `INTEGER(r)` – rundet zur nächsten ganzen Zahl |
+| `INTEGER` → `REAL` | `REAL(i)` |
+| `STD_LOGIC_VECTOR` → `UNSIGNED` / `SIGNED` | `unsigned(slv)` / `signed(slv)` |
+| `UNSIGNED` / `SIGNED` → `STD_LOGIC_VECTOR` | `std_logic_vector(x)` |
+
+### 4.2. Konvertierungsfunktionen
+
+Aus `ieee.numeric_std` (Zahlentyp ↔ `INTEGER`):
+
+| von → nach | Funktion |
+|---|---|
+| `UNSIGNED` / `SIGNED` → `INTEGER` | `to_integer(x)` |
+| `INTEGER` → `UNSIGNED` (n Bit) | `to_unsigned(i, n)` |
+| `INTEGER` → `SIGNED` (n Bit) | `to_signed(i, n)` |
+
+Aus `ieee.std_logic_1164` (`BIT` ↔ `STD_LOGIC`):
+
+| von → nach | Funktion |
+|---|---|
+| `BIT` → `STD_LOGIC` | `to_stdulogic(b)` |
+| `STD_LOGIC` → `BIT` | `to_bit(s)` |
+| `BIT_VECTOR` → `STD_LOGIC_VECTOR` | `to_stdlogicvector(bv)` |
+| `STD_LOGIC_VECTOR` → `BIT_VECTOR` | `to_bitvector(slv)` |
+
+**Metawerte bei `to_integer`:** `'0'`/`'L'` → `0`, `'1'`/`'H'` → `1`. Alles andere (`'U'`, `'X'`, `'W'`, `'Z'`, `'-'`) ist keine gültige Zahl → Ergebnis **`0`** + Simulations-**Warnung** (`metavalue detected, returning 0`). Mit `to_01(v, '0')` kann man Metawerte vorab durch einen definierten Wert ersetzen.
+
+
+## 5. Operatoren
+
+### 5.1. Relationale Operatoren
+
+`=`, `/=` (ungleich), `<`, `<=`, `>`, `>=`
+
+### 5.2. Logische Operatoren
+
+`AND`, `OR`, `NAND`, `NOR`, `XOR`, `XNOR`, `NOT` (definiert für die Typen BOOLEAN und BIT)
+
+* `NOT` hat die höchste Priorität; alle anderen Operatoren werden von links nach rechts ausgewertet.
+* daher am besten Klammern verwenden
+
+### 5.3. Shift-Operatoren
+
+Sechs Operatoren der Form `vektor OP anzahl`, z. B. `vektor SRL 2` (um 2 Stellen schieben). Die **Anzahl ist ein `INTEGER`** (darf negativ sein → dreht die Richtung um); kommt sie aus einem Vektor, erst mit `to_integer(...)` wandeln.
+
+![Shift- und Rotate-Operatoren: Pfeil = Schieberichtung, grün = kommt rein, rot = fällt raus](images/shift-operatoren.svg)
+
+`SRA` zieht das Vorzeichenbit nach → entspricht **Division durch 2** im Zweierkomplement.
+
+Gilt für `BIT_VECTOR` (ab VHDL-2008 auch `STD_LOGIC_VECTOR`). In `numeric_std` alternativ `shift_left` / `shift_right` / `rotate_left` / `rotate_right`.
+
+
+## 6. Attribute
+
+Attribute liefern Informationen über Signale, Arrays, Typen oder Werte. Welche Objekte zulässig sind, hängt von der Kategorie ab.
+
+### 6.1. Signal-Attribute
+
+**Nur für Signale** – sie beziehen sich auf die Simulations-Historie (Events/Transactions). Auf Variablen oder Konstanten angewendet gibt es einen Compile-Fehler.
+
+* `signal'EVENT` – liefert TRUE, wenn sich das Signal im aktuellen Simulationszyklus geändert hat.
+* `signal'ACTIVE` – liefert TRUE, wenn das Signal aktuell getrieben wird.
+* `signal'STABLE(t)` – liefert TRUE, wenn für t Zeiteinheiten kein Event aufgetreten ist. (Event = Änderung des Signalwerts)
+* `signal'QUIET(t)` – liefert TRUE, wenn für t Zeiteinheiten keine Transaction aufgetreten ist. (Transaction = Aktualisierung des Signalwerts)
+* `signal'DELAYED(t)` – liefert den Wert des Signals, verzögert um t Zeiteinheiten.
+* `signal'TRANSACTION` – BIT, das bei jeder Transaction des Signals kippt.
+* `signal'LAST_EVENT` – liefert die Zeit seit dem letzten Event des Signals.
+* `signal'LAST_ACTIVE` – liefert die Zeit seit der letzten Transaction des Signals.
+* `signal'LAST_VALUE` – liefert den Wert des Signals vor dem letzten Event.
+
+`RISING_EDGE(signal)` und `FALLING_EDGE(signal)` sind vom Package `IEEE.STD_LOGIC_1164` vordefinierte Attribute.
+Sie liefern TRUE, wenn das Signal im aktuellen Simulationszyklus eine steigende bzw. fallende Flanke hat.
+
+```VHDL
+-- D-FlipFlop-Beispiel (LIBRARY ieee; USE ieee.std_logic_1164.ALL; nicht vergessen!)
+PROCESS(reset, clk) IS
+BEGIN
+    IF reset = '0' THEN
+        q <= '0';
+    ELSIF clk = '1' AND clk'EVENT THEN   -- steigende Taktflanke
+        q <= d;
+    END IF;
+END PROCESS;
+```
+
+### 6.2. Array-Attribute
+
+Gelten für **alles, was ein (begrenztes) Array ist** – also auch für Variablen, Konstanten und Array-Typen, nicht nur für Signale. (`array` steht für ein beliebiges Array-Objekt oder einen Array-Typ.)
+
+* `array'LENGTH` – liefert die Anzahl der Elemente.
+* `array'RANGE` – liefert den Indexbereich. (z. B. `0 TO 7`) (für Schleifen verwendet)
+* `array'REVERSE_RANGE` – liefert den umgekehrten Indexbereich. (z. B. `7 DOWNTO 0`) (für Schleifen verwendet)
+* `array'LEFT` / `array'RIGHT` – linke / rechte Indexgrenze.
+* `array'HIGH` / `array'LOW` – höchster / niedrigster Index.
+* `array'ASCENDING` – TRUE, wenn der Indexbereich aufsteigend ist (`TO`).
+
+Typische Array-Typen sind **Vektoren** wie `STD_LOGIC_VECTOR`, `BIT_VECTOR` oder `UNSIGNED`/`SIGNED` – die Attribute funktionieren also direkt darauf (egal ob Signal, Variable oder Konstante):
+
+```vhdl
+SIGNAL data : STD_LOGIC_VECTOR(7 DOWNTO 0);
+-- data'LENGTH        =  8
+-- data'LEFT          =  7          -- erster Index
+-- data'RIGHT         =  0          -- letzter Index
+-- data'HIGH          =  7          -- größter Index
+-- data'LOW           =  0          -- kleinster Index
+-- data'RANGE         =  7 DOWNTO 0
+-- data'REVERSE_RANGE =  0 TO 7
+-- data'ASCENDING     =  FALSE      -- weil DOWNTO (bei TO wäre es TRUE)
+
+-- Damit kann man index-unabhängig über den ganzen Vektor laufen:
+FOR i IN data'RANGE LOOP
+    data(i) <= '0';
+END LOOP;
+```
+
+### 6.3. Typ-Attribute
+
+Anwendbar auf einen **Typ-/Subtyp-Namen**, unabhängig von Signal/Variable/Konstante.
+
+* `type'VAL(n)` – liefert den Wert an Position n (z. B. bei Aufzählungstypen).
+* `type'POS(w)` – liefert die Position des Werts w.
+* `type'SUCC(w)` / `type'PRED(w)` – Nachfolger / Vorgänger von w.
+* `type'IMAGE(w)` – liefert den Wert w als String.
+* `type'VALUE(s)` – wandelt den String s zurück in einen Typwert.
+
+## 7. Entity – Schnittstelle
 
 Eine Entity ist ein Modul, das die Schnittstelle einer digitalen Schaltung beschreibt.
 
@@ -68,7 +424,7 @@ END ENTITY entity_name;
 * Ports werden zur Kommunikation mit der Außenwelt verwendet.
 
 
-## 2. Architecture – Implementierung
+## 8. Architecture – Implementierung
 
 Eine Architecture ist ein Modul, das das Verhalten einer digitalen Schaltung beschreibt.
 
@@ -81,7 +437,7 @@ END ARCHITECTURE architecture_name;
 ```
 * Interne Signale werden zur Kommunikation zwischen verschiedenen Teilen der Architecture verwendet.
 
-### 2.1. Signalzuweisung
+### 8.1. Signalzuweisung
 
 ```vhdl
 signal_name <= wert;
@@ -90,7 +446,7 @@ signal_name <= wert;
 * Dies ist eine nebenläufige (concurrent) Anweisung und wird ausgeführt, sobald sich eines der Signale auf der rechten Seite ändert.
 * Dies gilt auch für bedingte Signalzuweisungen.
 
-#### 2.1.1. Bedingt (WHEN ELSE)
+#### 8.1.1. Bedingt (WHEN ELSE)
 
 ```vhdl
 signal_name <= wert1 WHEN bedingung ELSE
@@ -101,7 +457,7 @@ signal_name <= wert1 WHEN bedingung ELSE
 * `WHEN` wird verwendet, um einem Signal abhängig von einer Bedingung einen Wert zuzuweisen.
 * `ELSE` ist optional. Ist es nicht vorhanden, behält das Signal seinen vorherigen Wert.
 
-#### 2.1.2. Selektiv (WITH SELECT)
+#### 8.1.2. Selektiv (WITH SELECT)
 
 ```vhdl
 WITH selektor SELECT
@@ -114,7 +470,7 @@ WITH selektor SELECT
 * `SELECT` wird verwendet, um einem Signal abhängig vom Wert eines Selektors einen Wert zuzuweisen.
 * `OTHERS` fängt alle übrigen Fälle ab. Es ist immer erforderlich.
 
-### 2.2. Komponenten-Instanziierung
+### 8.2. Komponenten-Instanziierung
 
 Eine Komponente wird verwendet, um einen „Sockel" zu instanziieren. Ein Sockel ist ein Platzhalter für eine Entity, die in einer Architecture verwendet wird.
 
@@ -132,11 +488,12 @@ END ARCHITECTURE architecture_name;
 
 * `PORT MAP` wird verwendet, um die Ports der Entity mit den Signalen in der Architecture zu verbinden.
 * Die Reihenfolge der Ports in der Entity und in der Architecture muss übereinstimmen.
-* Ports können mit dem Schlüsselwort `open` unverbunden gelassen werden. (Eingangs-Ports benötigen dann einen Standardwert)
+* Nicht benötigte Ports: `open` lässt einen Port unverbunden — **Ausgänge** immer, **Eingänge** nur mit Standardwert in der Entity (`i : IN BIT := '0'`).
+* Konstanten direkt übergeben statt eines Signals: `PORT MAP (x, y, '0', a, open)`.
 
 * `GENERIC MAP` wird verwendet, um Parameter an die Entity zu übergeben. Es ist optional.
 
-### 2.3. Direkte Instanziierung
+### 8.3. Direkte Instanziierung
 
 ```vhdl
 ARCHITECTURE architecture_name OF entity_name IS
@@ -150,7 +507,30 @@ END ARCHITECTURE architecture_name;
 
 * `library_name` ist der Name der Bibliothek, in der die Entity definiert ist. (wird er nicht angegeben, wird die Standardbibliothek „`work`" verwendet)
 
-## 3. Process – sequentieller Ablauf
+### 8.4. GENERATE (Strukturen replizieren)
+
+`FOR … GENERATE` erzeugt mehrere gleichartige **nebenläufige** Anweisungen (meist Instanzen) – z. B. n gleiche Bausteine in einer Kette. Steht im Architecture-Body (nicht im Process) und braucht zwingend ein **Label**.
+
+```vhdl
+G1: FOR i IN 0 TO n-1 GENERATE
+    fi : ENTITY work.fadd
+        PORT MAP (a(i), b(i), carry(i), sum(i), carry(i+1));
+END GENERATE G1;
+```
+
+Bedingt erzeugen mit `IF … GENERATE` (z. B. Sonderfall am Rand):
+
+```vhdl
+G2: IF n > 1 GENERATE
+    -- wird nur erzeugt, wenn die Bedingung wahr ist
+END GENERATE G2;
+```
+
+* `FOR … GENERATE` ist **strukturell/nebenläufig** (Hardware vervielfältigen) – nicht zu verwechseln mit `FOR … LOOP` (sequentiell, im Process).
+* Das Label (`G1:`) ist **Pflicht**.
+
+
+## 9. Process – sequentieller Ablauf
 
 Ein Process wird in einer Architecture verwendet, um das Verhalten einer digitalen Schaltung zu beschreiben.
 Ein Process ist ein sequentieller Codeblock, der ausgeführt wird, sobald sich eines der Signale in der Sensitivitätsliste ändert.
@@ -170,7 +550,7 @@ END ARCHITECTURE architecture_name;
 * Um einer Variablen einen Wert zuzuweisen, wird `:=` statt `<=` verwendet.
 * Signale nehmen ihre neuen Werte erst an, nachdem der Process abgeschlossen ist.
 
-### 3.1. Wait-Anweisungen
+### 9.1. Wait-Anweisungen
 
 Wait-Anweisungen werden verwendet, um die Ausführung eines Process anzuhalten, bis eine bestimmte Bedingung erfüllt ist.
 Sie ersetzen die Sensitivitätsliste in einem Process.
@@ -190,7 +570,7 @@ WAIT ON signal_name  UNTIL bedingung FOR zeit;
 Eine `WAIT ON`-Anweisung am Ende eines Process ist äquivalent zu einer Sensitivitätsliste.
 
 
-### 3.2. Sequentielle Anweisungen
+### 9.2. Sequentielle Anweisungen
 
 * `IF`-Anweisung:
     ```vhdl
@@ -267,219 +647,82 @@ Eine `WAIT ON`-Anweisung am Ende eines Process ist äquivalent zu einer Sensitiv
     * Ein Label kann verwendet werden, um eine Schleife aus einer verschachtelten Schleife heraus zu verlassen.
     * `NEXT`, `EXIT` und `RETURN` können mit einem Label sowie mit einer bedingten Anweisung verwendet werden.
 
-## 4. Operatoren
+## 10. Unterprogramme (Funktionen & Prozeduren)
 
-### 4.1. Relationale Operatoren
+Funktionen und Prozeduren werden verwendet, um wiederverwendbaren Code zu kapseln.
 
-`=`, `/=` (ungleich), `<`, `<=`, `>`, `>=`
+* In ihnen dürfen nur Variablen verwendet werden.
+* Sie können sowohl im Architecture-Body als auch im Process-Body verwendet werden.
+* Funktionen und Prozeduren können im Kopf einer Architecture oder in einem Package definiert werden.
+* Funktionen und Prozeduren können überladen werden.
+* Argumente können per Wert (by value) oder per Referenz (by reference) übergeben werden.
 
-### 4.2. Logische Operatoren
-
-`AND`, `OR`, `NAND`, `NOR`, `XOR`, `XNOR`, `NOT` (definiert für die Typen BOOLEAN und BIT)
-
-* `NOT` hat die höchste Priorität; alle anderen Operatoren werden von links nach rechts ausgewertet.
-* daher am besten Klammern verwenden
-
-### 4.3. Shift-Operatoren
-
-Sechs Operatoren der Form `vektor OP anzahl`, z. B. `vektor SRL 2` (um 2 Stellen schieben).
-
-**Name entschlüsseln:** 2. Buchstabe = Richtung (**L**inks / **R**echts), 3. Buchstabe = Art (**L**ogisch / **A**rithmetisch); `RO…` = **Ro**tieren.
-
-| Operator | Name | Freie Stelle wird gefüllt mit |
-|---|---|---|
-| `SLL` | Shift Left Logical | `0` |
-| `SRL` | Shift Right Logical | `0` |
-| `SLA` | Shift Left Arithmetic | rechtem Randbit (LSB) |
-| `SRA` | Shift Right Arithmetic | linkem Randbit (MSB = Vorzeichen) |
-| `ROL` | Rotate Left | dem links herausfallenden Bit (kommt rechts wieder rein) |
-| `ROR` | Rotate Right | dem rechts herausfallenden Bit (kommt links wieder rein) |
-
-* **Logisch** (`SLL`/`SRL`): freie Stelle mit `0` auffüllen.
-* **Arithmetisch**: `SRA` zieht das **Vorzeichenbit** nach → entspricht **Division durch 2** im Zweierkomplement. (`SLA` füllt rechts mit dem LSB – in der Praxis selten gebraucht.)
-* **Rotieren** (`ROL`/`ROR`): nichts geht verloren, herausfallende Bits kommen auf der anderen Seite wieder rein.
-
-**Beispiel** – Ausgangswert `"1011"`, jeweils um 1 geschoben:
-
-| Ausdruck | Ergebnis | Hinweis |
-|---|---|---|
-| `"1011" SLL 1` | `"0110"` | links, `0` rechts rein |
-| `"1011" SRL 1` | `"0101"` | rechts, `0` links rein |
-| `"1011" SLA 1` | `"0111"` | links, LSB (`1`) rechts rein |
-| `"1011" SRA 1` | `"1101"` | rechts, Vorzeichen (`1`) links rein |
-| `"1011" ROL 1` | `"0111"` | links rotiert (MSB wandert nach rechts) |
-| `"1011" ROR 1` | `"1101"` | rechts rotiert (LSB wandert nach links) |
-
-Vorzeichen-Beispiel: `"1000"` (= −8) `SRA 1` = `"1100"` (= −4) → Division durch 2.
-
-> Diese Operatoren gelten für `BIT_VECTOR` (ab VHDL-2008 auch `STD_LOGIC_VECTOR`). In `numeric_std` gibt es alternativ die Funktionen `shift_left`, `shift_right`, `rotate_left`, `rotate_right`.
-
-
-## 5. STD_LOGIC – Logikwerte
-
-Das Package `IEEE.STD_LOGIC_1164` definiert die Datentypen `STD_ULOGIC` und `STD_ULOGIC_VECTOR`.
-Sie werden verwendet, um digitale Signale mit zusätzlichen Zuständen darzustellen.
-
-* `U` – uninitialisiert (uninitialized)
-* `X` – unbekannt (unknown)
-* `0` – logisch 0
-* `1` – logisch 1
-* `Z` – hochohmig (high impedance)
-* `W` – schwach unbekannt (weak unknown)
-* `L` – schwach logisch 0
-* `H` – schwach logisch 1
-* `-` – don't care
-
-Der Compiler erzeugt Fehler, wenn ein Signal von mehreren Quellen mit widersprüchlichen Werten getrieben wird.
-
-### 5.1. Bus-Resolution-Funktionen
-
-Die Bus-Resolution-Funktionen werden verwendet, um mehrere Quellen aufzulösen, die ein Signal treiben.
-
-Die Verwendung der Datentypen `STD_LOGIC` und `STD_LOGIC_VECTOR` führt die Bus-Resolution-Funktionen ein.
-
-```text
-Das Ergebnis ist der Wert, der im Schema am weitesten oben steht:
-        U
-        │  
-        X
-    ┌───┼───┐
-    0   -   1
-    └───┬───┘
-        W
-    ┌───┴───┐
-    L       H
-    └───┬───┘
-        Z
+```vhdl	
+procedure_name (argument1, argument2, ...);
+procedure_name (argument1 => wert1, argument2 => wert2, ...);
 ```
 
+### 10.1. Funktionen
 
-## 6. NUMERIC_STD – Arithmetik
+* Eine Funktion kann die übergebenen Parameter nicht verändern und gibt nur einen Wert zurück.
+* Variablen werden bei jedem Aufruf der Funktion neu initialisiert.
 
-`IEEE.NUMERIC_STD` und `IEEE.NUMERIC_BIT` ermöglichen numerische Operationen auf Vektor-Typen.
-Dafür sind die Datentypen `SIGNED` und `UNSIGNED` definiert.
-`NUMERIC_STD` baut auf `STD_LOGIC_VECTOR` auf, `NUMERIC_BIT` auf `BIT_VECTOR`.
-
-Ein `STD_LOGIC_VECTOR` selbst kann **nicht** rechnen (kein `+`, `-`, …) – er ist nur eine Bitfolge. Für Arithmetik geht man über `UNSIGNED` / `SIGNED`.
-
-**Cast zwischen Vektor-Typen** (gleiche Bitbreite, nur Umdeutung der Bits):
-
-| von → nach | Funktion |
-|---|---|
-| `STD_LOGIC_VECTOR` → `UNSIGNED` | `unsigned(slv)` |
-| `STD_LOGIC_VECTOR` → `SIGNED` | `signed(slv)` |
-| `UNSIGNED` / `SIGNED` → `STD_LOGIC_VECTOR` | `std_logic_vector(x)` |
-
-**Umrechnung von/nach `INTEGER`** (Bitbreite n beim Erzeugen angeben):
-
-| von → nach | Funktion |
-|---|---|
-| `UNSIGNED` / `SIGNED` → `INTEGER` | `to_integer(x)` |
-| `INTEGER` → `UNSIGNED` (n Bit) | `to_unsigned(wert, n)` |
-| `INTEGER` → `SIGNED` (n Bit) | `to_signed(wert, n)` |
-
-`STD_LOGIC_VECTOR` hat **keine** direkte Integer-Umwandlung – immer erst nach `UNSIGNED`/`SIGNED` casten.
-
-**Beispiel:**
 ```vhdl
-LIBRARY ieee;
-USE ieee.std_logic_1164.ALL;
-USE ieee.numeric_std.ALL;
--- ... in der Architecture deklariert:
-SIGNAL slv : STD_LOGIC_VECTOR(7 DOWNTO 0);
-SIGNAL u   : UNSIGNED(7 DOWNTO 0);
-SIGNAL s   : SIGNED(7 DOWNTO 0);
-SIGNAL i   : INTEGER;
-
--- INTEGER -> Vektor (Breite 8 angeben!)
-u   <= to_unsigned(5, 8);                    -- 5 als 8-Bit UNSIGNED
-s   <= to_signed(-3, 8);                     -- -3 als 8-Bit SIGNED (Zweierkomplement)
-slv <= std_logic_vector(to_unsigned(5, 8));  -- dasselbe als STD_LOGIC_VECTOR
-
--- Vektor -> INTEGER
-i <= to_integer(unsigned(slv));              -- erst casten, dann to_integer
-
--- Rechnen
-u   <= u + 1;                                -- direkt auf UNSIGNED
-slv <= std_logic_vector(unsigned(slv) + 1);  -- auf STD_LOGIC_VECTOR via Cast
-```
-
-
-## 7. Attribute
-
-Attribute liefern Informationen über Signale, Arrays, Typen oder Werte. Welche Objekte zulässig sind, hängt von der Kategorie ab.
-
-### 7.1. Signal-Attribute
-
-**Nur für Signale** – sie beziehen sich auf die Simulations-Historie (Events/Transactions). Auf Variablen oder Konstanten angewendet gibt es einen Compile-Fehler.
-
-* `signal'EVENT` – liefert TRUE, wenn sich das Signal im aktuellen Simulationszyklus geändert hat.
-* `signal'ACTIVE` – liefert TRUE, wenn das Signal aktuell getrieben wird.
-* `signal'STABLE(t)` – liefert TRUE, wenn für t Zeiteinheiten kein Event aufgetreten ist. (Event = Änderung des Signalwerts)
-* `signal'QUIET(t)` – liefert TRUE, wenn für t Zeiteinheiten keine Transaction aufgetreten ist. (Transaction = Aktualisierung des Signalwerts)
-* `signal'DELAYED(t)` – liefert den Wert des Signals, verzögert um t Zeiteinheiten.
-* `signal'TRANSACTION` – BIT, das bei jeder Transaction des Signals kippt.
-* `signal'LAST_EVENT` – liefert die Zeit seit dem letzten Event des Signals.
-* `signal'LAST_ACTIVE` – liefert die Zeit seit der letzten Transaction des Signals.
-* `signal'LAST_VALUE` – liefert den Wert des Signals vor dem letzten Event.
-
-`RISING_EDGE(signal)` und `FALLING_EDGE(signal)` sind vom Package `IEEE.STD_LOGIC_1164` vordefinierte Attribute.
-Sie liefern TRUE, wenn das Signal im aktuellen Simulationszyklus eine steigende bzw. fallende Flanke hat.
-
-```VHDL
--- D-FlipFlop-Beispiel (LIBRARY ieee; USE ieee.std_logic_1164.ALL; nicht vergessen!)
-PROCESS(reset, clk) IS
+FUNCTION function_name (argument1 : type; argument2 : type) RETURN type IS
+    VARIABLE variable_name : type;
 BEGIN
-    IF reset = '0' THEN
-        q <= '0';
-    ELSIF clk = '1' AND clk'EVENT THEN   -- steigende Taktflanke
-        q <= d;
-    END IF;
-END PROCESS;
+    -- Sequentieller VHDL-Code hier
+    RETURN wert;
+END FUNCTION function_name;
 ```
 
-### 7.2. Array-Attribute
-
-Gelten für **alles, was ein (begrenztes) Array ist** – also auch für Variablen, Konstanten und Array-Typen, nicht nur für Signale. (`array` steht für ein beliebiges Array-Objekt oder einen Array-Typ.)
-
-* `array'LENGTH` – liefert die Anzahl der Elemente.
-* `array'RANGE` – liefert den Indexbereich. (z. B. `0 TO 7`) (für Schleifen verwendet)
-* `array'REVERSE_RANGE` – liefert den umgekehrten Indexbereich. (z. B. `7 DOWNTO 0`) (für Schleifen verwendet)
-* `array'LEFT` / `array'RIGHT` – linke / rechte Indexgrenze.
-* `array'HIGH` / `array'LOW` – höchster / niedrigster Index.
-* `array'ASCENDING` – TRUE, wenn der Indexbereich aufsteigend ist (`TO`).
-
-Typische Array-Typen sind **Vektoren** wie `STD_LOGIC_VECTOR`, `BIT_VECTOR` oder `UNSIGNED`/`SIGNED` – die Attribute funktionieren also direkt darauf (egal ob Signal, Variable oder Konstante):
+**Beispiel:** wandelt einen Wert generisch in einen `STD_LOGIC_VECTOR` um. Die Breite wird als `NATURAL` (`width`) übergeben und bestimmt die Größe des Rückgabewerts.
 
 ```vhdl
-SIGNAL data : STD_LOGIC_VECTOR(7 DOWNTO 0);
--- data'LENGTH        =  8
--- data'LEFT          =  7          -- erster Index
--- data'RIGHT         =  0          -- letzter Index
--- data'HIGH          =  7          -- größter Index
--- data'LOW           =  0          -- kleinster Index
--- data'RANGE         =  7 DOWNTO 0
--- data'REVERSE_RANGE =  0 TO 7
--- data'ASCENDING     =  FALSE      -- weil DOWNTO (bei TO wäre es TRUE)
-
--- Damit kann man index-unabhängig über den ganzen Vektor laufen:
-FOR i IN data'RANGE LOOP
-    data(i) <= '0';
-END LOOP;
+FUNCTION to_slv (wert : NATURAL; width : NATURAL) RETURN STD_LOGIC_VECTOR IS
+    VARIABLE ergebnis : STD_LOGIC_VECTOR(width-1 DOWNTO 0);
+BEGIN
+    ergebnis := STD_LOGIC_VECTOR(TO_UNSIGNED(wert, width));
+    RETURN ergebnis;   -- z. B. to_slv(5, 8) -> "00000101"
+END FUNCTION to_slv;
 ```
 
-### 7.3. Typ-Attribute
+### 10.2. Prozeduren
 
-Anwendbar auf einen **Typ-/Subtyp-Namen**, unabhängig von Signal/Variable/Konstante.
+* Eine Prozedur kann die übergebenen Parameter verändern und gibt keinen Wert zurück.
+* Eine Prozedur kann eine `WAIT`-Anweisung enthalten.
+* Eine Prozedur kann ein Signal im Architecture-Body verändern.
+* Variablen werden bei jedem Aufruf der Prozedur neu initialisiert.
 
-* `type'VAL(n)` – liefert den Wert an Position n (z. B. bei Aufzählungstypen).
-* `type'POS(w)` – liefert die Position des Werts w.
-* `type'SUCC(w)` / `type'PRED(w)` – Nachfolger / Vorgänger von w.
-* `type'IMAGE(w)` – liefert den Wert w als String.
-* `type'VALUE(s)` – wandelt den String s zurück in einen Typwert.
+```vhdl
+PROCEDURE procedure_name (SIGNAL argument1 : port_richtung port_typ;
+argument2 : type := standardwert) IS
+    VARIABLE variable_name : type;
+BEGIN
+    -- Sequentieller VHDL-Code hier
+END PROCEDURE procedure_name;
+```
+### 10.3. Übergabemechanismen (By Value / By Reference)
 
-## 8. Libraries & Packages
-### 8.1. Verwenden von Bibliotheken und Packages
+Der Mechanismus wird implizit über die Objektklasse und die Richtung des Arguments bestimmt.
+
+```vhdl
+-- 1. By Value (Kopie des Wertes, Standard bei IN und Funktionen)
+-- Parameter können innerhalb der Funktion NIEMALS abgeändert werden!
+FUNCTION add (a : INTEGER; b : INTEGER) RETURN INTEGER;
+
+-- 2. By Value in einer Prozedur (Reines Einlesen von Werten via IN)
+PROCEDURE pruefe_werte (a : IN INTEGER; b : IN INTEGER);
+
+-- 3. By Reference (Direkter Zugriff auf Original-Variable via :=)
+PROCEDURE inkrement (VARIABLE counter : INOUT INTEGER);
+
+-- 4. By Reference (Direkter Zugriff auf Original-Signal via <=)
+PROCEDURE set_pin (SIGNAL hw_pin : OUT STD_LOGIC);
+```
+
+## 11. Libraries & Packages
+### 11.1. Verwenden von Bibliotheken und Packages
 ```vhdl
 LIBRARY library_name;
 USE library_name.package_name.ALL;
@@ -488,13 +731,13 @@ USE library_name.package_name.ALL;
 Der Bibliotheksname wird zur Build-Zeit oder vom Hersteller festgelegt.
 Der Standard-Bibliotheksname für eigene Packages ist `work`.
 
-### 8.2. Standardbibliotheken
+### 11.2. Standardbibliotheken
 * `IEEE` – Standardbibliothek für VHDL.
     * `IEEE.STD_LOGIC_1164` – Standard-Package für den Datentyp STD_LOGIC.
     * `IEEE.NUMERIC_STD` – Standard-Package für numerische Datentypen.
     * `IEEE.NUMERIC_BIT` – Standard-Package für bitweise Operationen.
 
-### 8.3. Definieren von Bibliotheken und Packages
+### 11.3. Definieren von Bibliotheken und Packages
 ```vhdl
 PACKAGE package_name IS
     CONSTANT constant_name : type := wert;
@@ -520,218 +763,255 @@ END PACKAGE BODY package_name;
 ```
 
 
-## 9. Unterprogramme (Funktionen & Prozeduren)
+## 12. Konfiguration
 
-Funktionen und Prozeduren werden verwendet, um wiederverwendbaren Code zu kapseln.
+Eine Entity kann **mehrere Architectures** haben. Eine *Configuration* legt fest, **welche** davon benutzt wird – und in strukturellen Designs, **welche Entity/Architecture** jede Component-Instanz (jeder „Sockel“) bekommt. Ohne Configuration nimmt der Simulator standardmäßig die **zuletzt analysierte** Architecture.
 
-* In ihnen dürfen nur Variablen verwendet werden.
-* Sie können sowohl im Architecture-Body als auch im Process-Body verwendet werden.
-* Funktionen und Prozeduren können im Kopf einer Architecture oder in einem Package definiert werden.
-* Funktionen und Prozeduren können überladen werden.
-* Argumente können per Wert (by value) oder per Referenz (by reference) übergeben werden.
+### 12.1. Entity-Konfiguration (Typ 1)
 
-```vhdl	
-procedure_name (argument1, argument2, ...);
-procedure_name (argument1 => wert1, argument2 => wert2, ...);
-```
-
-### 9.1. Funktionen
-
-* Eine Funktion kann die übergebenen Parameter nicht verändern und gibt nur einen Wert zurück.
-* Variablen werden bei jedem Aufruf der Funktion neu initialisiert.
+Wählt **eine Architecture für eine Entity** aus.
 
 ```vhdl
-FUNCTION function_name (argument1 : type; argument2 : type) RETURN type IS
-    VARIABLE variable_name : type;
-BEGIN
-    -- Sequentieller VHDL-Code hier
-    RETURN wert;
-END FUNCTION function_name;
-```
-
-**Beispiel:** wandelt einen Wert generisch in einen `STD_LOGIC_VECTOR` um. Die Breite wird als `NATURAL` (`width`) übergeben und bestimmt die Größe des Rückgabewerts.
-
-```vhdl
-FUNCTION to_slv (wert : NATURAL; width : NATURAL) RETURN STD_LOGIC_VECTOR IS
-    VARIABLE ergebnis : STD_LOGIC_VECTOR(width-1 DOWNTO 0);
-BEGIN
-    ergebnis := STD_LOGIC_VECTOR(TO_UNSIGNED(wert, width));
-    RETURN ergebnis;   -- z. B. to_slv(5, 8) -> "00000101"
-END FUNCTION to_slv;
-```
-
-### 9.2. Prozeduren
-
-* Eine Prozedur kann die übergebenen Parameter verändern und gibt keinen Wert zurück.
-* Eine Prozedur kann eine `WAIT`-Anweisung enthalten.
-* Eine Prozedur kann ein Signal im Architecture-Body verändern.
-* Variablen werden bei jedem Aufruf der Prozedur neu initialisiert.
-
-```vhdl
-PROCEDURE procedure_name (SIGNAL argument1 : port_richtung port_typ;
-argument2 : type := standardwert) IS
-    VARIABLE variable_name : type;
-BEGIN
-    -- Sequentieller VHDL-Code hier
-END PROCEDURE procedure_name;
-```
-### 9.3. Übergabemechanismen (By Value / By Reference)
-
-Der Mechanismus wird implizit über die Objektklasse und die Richtung des Arguments bestimmt.
-
-```vhdl
--- 1. By Value (Kopie des Wertes, Standard bei IN und Funktionen)
--- Parameter können innerhalb der Funktion NIEMALS abgeändert werden!
-FUNCTION add (a : INTEGER; b : INTEGER) RETURN INTEGER;
-
--- 2. By Value in einer Prozedur (Reines Einlesen von Werten via IN)
-PROCEDURE pruefe_werte (a : IN INTEGER; b : IN INTEGER);
-
--- 3. By Reference (Direkter Zugriff auf Original-Variable via :=)
-PROCEDURE inkrement (VARIABLE counter : INOUT INTEGER);
-
--- 4. By Reference (Direkter Zugriff auf Original-Signal via <=)
-PROCEDURE set_pin (SIGNAL hw_pin : OUT STD_LOGIC);
-```
-
-## 10. Konfiguration
-
-Eine Konfiguration wird verwendet, um die Architecture einer Entity oder die Architecture einer Instanz festzulegen.
-
-### 10.1. Entity-Konfiguration (Typ 1)
-
-Legt die Architecture einer Entity fest.
-
-```vhdl
-CONFIGURATION configuration_name OF entity_using_config IS
-    FOR architecture_to_use
+CONFIGURATION cfg_name OF entity_name IS
+    FOR architecture_name      -- diese Architecture soll genommen werden
     END FOR;
-END CONFIGURATION configuration_name;
+END CONFIGURATION cfg_name;
 ```
 
-entity_using_config verwendet architecture_to_use.
+Simuliert wird dann über den Configuration-Namen (z. B. `vsim cfg_name`), nicht über die Entity.
 
-### 10.2. Instanz-Konfiguration (Typ 2)
+### 12.2. Instanz-Konfiguration (Typ 2)
 
-Legt für Instanzen innerhalb einer Architecture fest, welche Entity und welche Architecture verwendet werden.
+Bindet **Component-Instanzen** an eine konkrete Entity + Architecture – nützlich, wenn eine Architecture `COMPONENT`s (Platzhalter) instanziiert und du festlegen willst, welcher echte Baustein in welchen Sockel kommt.
 
 ```vhdl
-CONFIGURATION configuration_name OF entity_using_config IS
-    FOR architecture_using_config
-        FOR instance_name : component_name USE ENTITY library_name.entity_name(architecture_name);
+CONFIGURATION cfg_name OF top_entity IS
+    FOR top_architecture                                      -- in dieser Architecture ...
+        FOR inst_label_1 : comp_name_1 USE ENTITY work.entity_name(arch_name_1); 
+        FOR inst_label_2 : comp_name_2 USE ENTITY work.entity_name(arch_name_2); 
+        END FOR;                                              -- ... Instanz inst_label binden
     END FOR;
-END CONFIGURATION configuration_name;
+END CONFIGURATION cfg_name;
 ```
 
-instance_name in architecture_using_config verwendet entity_name mit architecture_name.
-
-Dies kann auch im Kopf der Architecture erfolgen:
+Die innere Bindung kann statt einer einzelnen Instanz auch Gruppen ansprechen — das sind **Alternativen** (je eine pro Bindung), jede mit eigenem `END FOR;`:
 
 ```vhdl
-ARCHITECTURE architecture_name OF entity_name IS
-    FOR instance_name : component_name USE ENTITY library_name.entity_name(architecture_name);
+FOR inst_label : comp_name USE ENTITY work.entity_name(arch_name);   END FOR;  -- eine Instanz
+FOR ALL        : comp_name USE ENTITY work.entity_name(arch_name);   END FOR;  -- alle Instanzen
+FOR OTHERS     : comp_name USE ENTITY work.entity_name(arch_name);   END FOR;  -- alle uebrigen
+FOR ALL        : comp_name USE CONFIGURATION work.sub_cfg;           END FOR;  -- an eine Configuration
+```
+
+**Alternative – Configuration Specification:** Dieselbe Bindung kann auch **direkt im Deklarationsteil der Architecture** stehen (nach der `COMPONENT`-Deklaration, vor `BEGIN`). Dann ist sie fest eingebaut, ohne eigene Configuration-Unit:
+
+```vhdl
+ARCHITECTURE top_architecture OF top_entity IS
+    COMPONENT comp_name PORT ( ... ); END COMPONENT;
+    FOR inst_label : comp_name USE ENTITY work.entity_name(arch_name);   -- Bindung direkt hier
 BEGIN
-    -- VHDL-Code hier
-END ARCHITECTURE architecture_name;
+    inst_label : comp_name PORT MAP ( ... );
+END ARCHITECTURE top_architecture;
 ```
 
+**Faustregel:** separate `CONFIGURATION` = **austauschbar** (mehrere Varianten, Auswahl beim Simulieren); Spec in der Architecture = **fest eingebaut**, dafür kompakt.
 
-## 11. Datentypen
-
-* `CONSTANT` : fester Wert (in Architecture, Process, Function, Procedure oder Package)
-* `SIGNAL`   : Kommunikation zwischen verschiedenen Teilen der Architecture verwendet (Deklaration in der Architecture)
-* `VARIABLE` : lokales Speichern von Werten (nur im Process)
-* `FILE`/ `Dateien`: lesen / schreiben von Daten
-
-### 11.1. Kategorien von Datentypen
-
-* Skalare Typen (Scalar Types)
-    * Aufzählungstypen (Enumeration Types)
-    * Numerische Typen
-        * Integer-Typen
-        * Real-Typen
-        * Physikalische Typen
-* Zusammengesetzte Typen (Composite Types)
-    * Array-Typen
-    * Record-Typen
-* File-Typen
-
-### 11.2. Aufzählungstypen
+### 12.3. Beispiel: Entity-/Architecture-Wahl
 
 ```vhdl
-TYPE type_name IS (wert1, wert2, ...); -- "0", "1" geht aber auch "S1", "S2"
-SUBTYPE subtype_name IS type_name RANGE wert1 TO wert2;
-```
-### 11.3. Numerische Typen
+-- === Schritt 1: eine Entity, zwei Architectures ===
+ENTITY and2 IS
+    PORT (a, b : IN  BIT;
+          y    : OUT BIT);
+END ENTITY and2;
 
-#### 11.3.1. Integer- und Real-Typen
-`INTEGER` (Bereich: -2^31 bis 2^31-1)
-    
+ARCHITECTURE dataflow OF and2 IS        -- ideal, ohne Verzoegerung
+BEGIN
+    y <= a AND b;
+END ARCHITECTURE dataflow;
+
+ARCHITECTURE delayed OF and2 IS         -- mit Gatterlaufzeit
+BEGIN
+    y <= a AND b AFTER 2 ns;
+END ARCHITECTURE delayed;
+
+
+-- === Schritt 2: Typ 1 - Architecture einer Entity festlegen ===
+CONFIGURATION and2_fast OF and2 IS
+    FOR dataflow
+    END FOR;
+END CONFIGURATION and2_fast;
+
+CONFIGURATION and2_real OF and2 IS
+    FOR delayed
+    END FOR;
+END CONFIGURATION and2_real;
+
+
+-- === Schritt 3: Top-Modul nutzt and2 als COMPONENT (Sockel) ===
+ENTITY and3 IS
+    PORT (a, b, c : IN  BIT;
+          y       : OUT BIT);
+END ENTITY and3;
+
+ARCHITECTURE structure OF and3 IS
+    COMPONENT and2
+        PORT (a, b : IN BIT; y : OUT BIT);
+    END COMPONENT;
+    SIGNAL t : BIT;
+BEGIN
+    u1 : and2 PORT MAP (a, b, t);
+    u2 : and2 PORT MAP (t, c, y);
+END ARCHITECTURE structure;
+
+
+-- === Schritt 4: Typ 2 - Instanzen an Entity+Architecture binden ===
+CONFIGURATION and3_cfg OF and3 IS
+    FOR structure
+        FOR u1 : and2 USE ENTITY work.and2(dataflow);
+        END FOR;
+        FOR u2 : and2 USE ENTITY work.and2(delayed);
+        END FOR;
+    END FOR;
+END CONFIGURATION and3_cfg;
+```
+
+### 12.4. Beispiel: Porttyp-Konvertierung
+
+Beim Binden kann die `PORT MAP` der Configuration auch **Typen umwandeln** – z. B. wenn der Component mit `BIT` deklariert ist, die echte Entity aber `STD_ULOGIC` nutzt:
+
 ```vhdl
-SUBTYPE NATURAL IS INTEGER RANGE 0 TO INTEGER'HIGH;
-SUBTYPE POSITIVE IS INTEGER RANGE 1 TO INTEGER'HIGH;
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;          -- liefert to_stdulogic / to_bit
+
+-- Die echte Entity arbeitet mit STD_ULOGIC (Component "and2" aus 12.3 nutzt BIT):
+ENTITY and2_sl IS
+    PORT (p, q : IN  STD_ULOGIC;
+          r    : OUT STD_ULOGIC);
+END ENTITY and2_sl;
+
+ARCHITECTURE rtl OF and2_sl IS
+BEGIN
+    r <= p AND q;
+END ARCHITECTURE rtl;
+
+-- Configuration bindet and2 (BIT) an and2_sl (STD_ULOGIC) und konvertiert die Porttypen:
+CONFIGURATION and3_conv OF and3 IS
+    FOR structure
+        FOR ALL : and2 USE ENTITY work.and2_sl(rtl)
+            PORT MAP (p => to_stdulogic(a),    -- IN:  Component-BIT     -> Entity-STD_ULOGIC
+                      q => to_stdulogic(b),
+                      to_bit(r) => y);         -- OUT: Entity-STD_ULOGIC -> Component-BIT
+        END FOR;
+    END FOR;
+END CONFIGURATION and3_conv;
 ```
 
-`REAL` (Bereich: -2^63 bis 2^63-1)
+* **IN-Port:** Konvertierung steht beim *actual* (Component-Seite): `formal => conv(actual)`.
+* **OUT-Port:** Konvertierung steht beim *formal* (Entity-Seite): `conv(formal) => actual`.
+
+
+### 12.5. Verteilung auf Dateien
+
+Wie man Configurations im Projekt organisiert:
+
+1. **Pro Entity eine Configuration** — eine Änderung muss an vielen Stellen gemacht werden.
+2. **Alle Configurations in einer separaten Datei** — Änderungen bleiben auf diese Datei beschränkt.
+3. **Eine Configuration für die ganze Hierarchie** — nur eine zu pflegen, dafür kann die Syntax unübersichtlich werden.
+
+
+## 13. Sichtbarkeit (Geltungsbereiche)
+
+Hierarchie der Geltungsbereiche (außen → innen):
+`PACKAGE → ENTITY → ARCHITECTURE → PROCESS → FUNCTION/PROCEDURE`
+
+Eine Deklaration ist im **eigenen** Bereich sichtbar **und in allen darin geschachtelten** (tieferen) Bereichen.
+
+Bei **gleichem Namen** in geschachtelten Bereichen:
+
+* Ein Name meint die Deklaration der **gleichen Ebene** (die innerste verdeckt die äußere).
+* **Tiefer** liegende Deklarationen sind außen **nicht** sichtbar.
+* **Höher** liegende gleichnamige Deklarationen erreicht man qualifiziert: `<bereich>.<name>` — `<bereich>` = Package-/Entity-/Architecture-Name bzw. Process-Label.
 
 ```vhdl
-SUBTYPE REAL IS INTEGER RANGE -2**63 TO 2**63-1;
+ARCHITECTURE behavioral OF xxx IS
+    CONSTANT x : INTEGER := 2;          -- x der Architecture
+BEGIN
+    p1 : PROCESS (i1) IS
+        VARIABLE x : INTEGER := 3;      -- x des Process (verdeckt das obere x)
+    BEGIN
+        o1 <= behavioral.x * i1;        -- 2  (Architecture-x ueber den Namen)
+        o2 <= p1.x * i1;                -- 3  (Process-x; "x" allein reicht hier auch)
+    END PROCESS p1;
+END ARCHITECTURE behavioral;
 ```
 
-#### 11.3.2. Physikalische Typen
+So erreicht man auch `entity_name.x` (Entity-Bereich) oder `package_name.x` (Package) fuer hoeher liegende Deklarationen.
+
+
+## 14. Synthese
+
+Die Logiksynthese macht aus der RTL-Beschreibung eine Netzliste (Graphentransformation, Boolesche Optimierung mit Karnaugh oder Quine-McCluskey, Technology-Mapping in eine Bibliothek). Ziel ist synchrone, getaktete Logik aus Registern und kombinatorischen Blöcken. Latches nur bewusst einsetzen.
+
+### 14.1. Synthetisierbare Datentypen
+
+* `BIT`, `BIT_VECTOR`, `STD_[U]LOGIC`, `STD_[U]LOGIC_VECTOR` → direkt umgesetzt
+* `INTEGER` → unsigned bzw. signed (Zweierkomplement), Breite und Vorzeichen über `RANGE`
+* Aufzählungstypen → durchnummeriert
+* physikalische Typen, Dateien, Gleitkomma (`REAL`) → nicht synthetisierbar
+* empfohlen → `STD_[U]LOGIC`, `STD_[U]LOGIC_VECTOR`
+
+### 14.2. Synthetisierbare Operatoren
+
+* logisch → `AND`, `OR`, `NOR`, `XOR`, `XNOR`, `NOT`
+* Vergleich → `=`, `/=`, `<`, `<=`, `>`, `>=`
+* Verkettung → `&`
+* Schieben/Rotieren → `SLL`, `SRL`, `SLA`, `SRA`, `ROL`, `ROR`
+* `ABS`, `+`, `-`, `*`
+* `/`, `REM`, `MOD`, `**` → **nur mit Zweierpotenz (2 hoch n), sonst nicht synthetisierbar**
+
+### 14.3. Nicht erlaubte Anweisungen
+
+* `WAIT FOR ... ns`
+* `... AFTER ... ns`
+* `LOOP` mit variablen Grenzen (feste Grenzen sind ok)
+* `REPORT`, `ASSERT`
+
+### 14.4. Kombinatorische Logik
+
+Nebenläufige Zuweisung (`d <= a OR b OR c;`) oder Prozess mit `IF`, `CASE`, `LOOP` (feste Grenzen). Drei Regeln.
+
+* **Sensitivitätsliste vollständig** (jedes gelesene Signal)
+* **jede Zuweisung vollständig** (in `IF`/`CASE` unter allen Bedingungen), sonst Latch
+* **keine Rückführung** (kein gelesenes Signal später zuweisen)
 
 ```vhdl
-TYPE time IS RANGE von TO bis
-UNITS 
-    fs;
-    ps = 1000 fs;
-    ns = 1000 ps;
-    ...
-END UNITS;
+PROCESS (a, b, c, d) IS                  -- vollständige Sensitivitätsliste
+    VARIABLE v : STD_ULOGIC_VECTOR(3 DOWNTO 0);
+BEGIN
+    v(3) := a; v(2) := b; v(1) := c; v(0) := d;
+    f <= 0;                              -- vollständige Zuweisung (Default)
+    FOR i IN 0 TO 3 LOOP
+        IF v(i) = '1' THEN
+            f <= i;
+            EXIT;
+        END IF;
+    END LOOP;
+END PROCESS;                             -- keine Rückführung
 ```
 
-### 11.4. Arrays
+### 14.5. Initialisierung und Reset
 
-```vhdl
--- Array-Typen definieren 
-TYPE fixed_range IS ARRAY (bereich) OF element_typ;            -- feste Größe, z. B. (0 TO 7)
-TYPE x_by_y      IS ARRAY (bereich1, bereich2) OF element_typ; -- mehrdimensional
-TYPE variable    IS ARRAY (positive RANGE <>) OF element_typ;  -- offene Größe (<>), erst bei Deklaration festgelegt
-
--- Array-Objekte deklarieren 
-VARIABLE array_name : variable(1 TO 10);     -- Index 1..10 (aufsteigend)
-VARIABLE array_name : variable(10 DOWNTO 1); -- Index 10..1 (absteigend)
-
--- Auf Elemente und Teilbereiche zugreifen 
-signal_name(i)          -- einzelnes Element an Index i
-signal_name(3)          -- Bit/Element an Position 3
-signal_name(7 DOWNTO 4) -- Teilbereich (Slice), hier 4 Bits
-signal_name(0 TO 3)     -- Slice in aufsteigender Richtung
-
-TYPE led_matrix IS ARRAY (0 TO 3, 0 TO 3) OF BIT;   -- definiert einen neuen Typ namens led_matrix
-SIGNAL display : led_matrix;                         -- erzeugt ein konkretes Objekt dieses Typs
-```
-
-### 11.5. Records
-
-```vhdl
-TYPE record_name IS RECORD
-    feld1 : typ1;
-    feld2 : typ2;
-    ...
-END RECORD;
-
-VARIABLE record_name : record_name;
-
-record_name.feld1 := wert;
-```
+* ASIC → explizite Init (`:= '0'`) vermeiden, lieber über Reset (sonst kann Simulation vor/nach Synthese abweichen)
+* FPGA (AMD/Xilinx) → explizite Init (`SIGNAL q : STD_ULOGIC := '0';`) möglich
+* Reset spart oft Ressourcen, wenn nötig synchronen Reset verwenden
 
 
-## 12. Testbenches (nur Simulation)
+## 15. Testbenches (nur Simulation)
 
 Eine Testbench wird verwendet, um die Funktionalität einer digitalen Schaltung zu testen.
 
-### 12.1. Testbench-Struktur
+### 15.1. Testbench-Struktur
 
 ```vhdl
 ENTITY testbench_name IS
@@ -765,7 +1045,7 @@ END ARCHITECTURE testbench_name;
 ```
 
 
-### 12.2. TEXTIO-Package
+### 15.2. TEXTIO-Package
 
 Das Package `std.textio` wird verwendet, um Textdateien zu lesen und zu schreiben.
 
@@ -815,7 +1095,7 @@ CLOSE file_name;
 ```
 
 
-## 13. Assertions (nur Simulation)
+## 16. Assertions (nur Simulation)
 
 Werden verwendet, um die Korrektheit des Designs während der Simulation zu prüfen.
 Assertions werden im Architecture-Body platziert.
@@ -833,8 +1113,8 @@ ASSERT bedingung REPORT "Fehlermeldung" SEVERITY schweregrad;
     * `FAILURE` – fatale Fehlermeldung
 
 
-## 14. Verzögerungsmodelle (nur Simulation)
-### 14.1. Transport-Verzögerung
+## 17. Verzögerungsmodelle (nur Simulation)
+### 17.1. Transport-Verzögerung
 
 Die Transport-Verzögerung wird verwendet, um ein Signal um eine bestimmte Zeitspanne zu verzögern.
 
@@ -843,7 +1123,7 @@ x <= TRANSPORT logischer_ausdruck AFTER 10 ns;
 -- verzögert das Signal um 10 ns 
 ```
 
-### 14.2. Inertiale Verzögerung
+### 17.2. Inertiale Verzögerung
 
 Die inertiale Verzögerung wird verwendet, um ein Signal um eine bestimmte Zeitspanne zu verzögern. Zusätzlich muss das Signal für die Dauer der Verzögerung stabil bleiben.
 
@@ -856,3 +1136,103 @@ x <= logischer_ausdruck AFTER 10 ns;
 x <= REJECT reject_zeit INERTIAL logischer_ausdruck AFTER 10 ns;
 -- verzögert das Signal um 10 ns und verwirft / ignoriert Änderungen, die kürzer als reject_zeit sind.
 ```
+
+
+## Zusätzliche Informationen
+
+### Nebenläufige Anweisungen (concurrent statements)
+
+Stehen direkt im Architecture-Body und laufen alle gleichzeitig.
+
+* nebenläufige Signalzuweisung (`<=`)
+* Komponenteninstantiierung (`COMPONENT`)
+* `PROCESS`
+* `ASSERT`
+* Prozeduraufrufe
+* `GENERATE`
+* `BLOCK`
+
+### Sequenzielle Anweisungen (sequential statements)
+
+Stehen nur in einem Prozess oder Unterprogramm und laufen der Reihe nach.
+
+* sequenzielle Signalzuweisung (`<=`)
+* Variablenzuweisung (`:=`)
+* `WAIT` (ersetzt die Sensitivitätsliste)
+* `IF`, `CASE`
+* `FOR LOOP`, `WHILE LOOP`, `LOOP`, `EXIT`, `NEXT`
+* Prozeduraufruf
+* `ASSERT`
+
+### Ereignisgesteuerte Simulation (virtuelle Verzögerung Δt)
+
+* Hardware arbeitet **parallel/nebenläufig**, der Rechner aber **sequentiell/seriell**.
+* Trick → **virtuelle Verzögerungszeit Δt**. Ein Signal nimmt seinen neuen Wert nicht sofort an, sondern erst Δt später. Δt ist unendlich klein und ändert die simulierte Zeit nicht.
+* Pro Simulationszeitpunkt werden so über mehrere **Delta-Zyklen** Ereignisse abgearbeitet. Die simulierte Zeit bleibt tₙ, nur die Rechenschritte steigen.
+
+![Ereignisgesteuerte Simulation, pro Zeitpunkt läuft die Schleife Berechnung und Signalveränderung mehrfach (Δt) bevor die Simulationszeit weitergeht](images/sim-delta.svg)
+
+**Beispiel (Delta-Zyklen)**
+
+```vhdl
+ARCHITECTURE data_flow OF example IS
+    SIGNAL int : BIT;
+BEGIN
+    int  <= a NAND b;
+    out1 <= int XOR b;
+END ARCHITECTURE data_flow;
+```
+
+| Signal | t=0 ns | t=1 ns | t=1 ns + Δt | t=1 ns + 2Δt |
+|---|---|---|---|---|
+| `a` | 1 | 1 | 1 | |
+| `b` | 1 | 0 | 0 | |
+| `int` | 0 | 0 | 1 | |
+| `out1` | 1 | 1 | 0 | 1 |
+
+Die Rechenzeit hängt von der Anzahl der Δt-Schritte ab, die simulierte Zeit bleibt tₙ.
+
+### Regeln für Prozesse
+
+* Ein Prozess ist eine **nebenläufige** Anweisung in der Architecture und enthält selbst **sequenzielle** Anweisungen.
+* Beim Start des Simulators wird jeder Prozess einmal gestartet.
+* Ein Prozess endet nie. Er wird abgearbeitet oder wartet (zeitweilig angehalten).
+* Ein Prozess braucht entweder eine **Sensitivitätsliste** oder eine oder mehrere **`WAIT`**-Anweisungen, nicht beides.
+* Signalzuweisungen im Prozess sind sequenziell und übernehmen den Wert erst nach Δt, also am `END PROCESS` (bei Sensitivitätsliste) oder am `WAIT`.
+* Im Prozess kann kein Signal deklariert werden. Signale aus Entity oder Architecture lassen sich lesen und verändern.
+
+### Regeln für Variablen
+
+* Variablen werden im Deklarationsteil eines Prozesses deklariert und sind nur dort gültig (Ausnahme shared variable in VHDL-93).
+* Zuweisung mit `:=`.
+* Variablen nehmen den neuen Wert **sofort** an (anders als Signale, die erst nach Δt).
+* Initialisierung beim ersten Durchlauf des Prozesses.
+* Wartet ein Prozess, behält er die Variablenwerte.
+
+### Zustandsautomaten (FSM)
+
+Aufbau (Moore und Mealy) → Eingang → Kombinatorik (nächster Zustand) → Zustandsregister → `state` → Kombinatorik (Ausgang) → Ausgang.
+
+* **Moore** → Ausgang hängt nur vom Zustand ab. Der Ausgang ändert sich nur, wenn sich das Zustandsregister ändert.
+* **Mealy** → Ausgang hängt vom Zustand und vom Eingang ab. Der Ausgang ändert sich bei Änderung des Zustandsregisters und des Eingangs.
+
+![Moore-Automat: Eingang in die Kombinatorik, Zustandsregister, Ausgangs-Kombinatorik nur aus dem Zustand](images/moore.svg)
+
+![Mealy-Automat: wie Moore, aber der Eingang geht zusätzlich direkt in die Ausgangs-Kombinatorik](images/mealy.svg)
+
+**Beschreibung in VHDL**
+
+* Ein Prozess
+* **Zwei Prozesse** (1. Zustandsübergang und Zustandsregister, 2. Ausgang) → bevorzugt
+* Drei Prozesse (1. Zustandsübergang, 2. Zustandsregister, 3. Ausgang)
+
+**Encoding**
+
+* Gray (nur 1 Bit Wechsel)
+* Binär (automatisch)
+* One-Hot (`0001`, `0010`, `0100`, `1000`, ...)
+
+**Realisierung**
+
+* LUT (Look-Up-Table)
+* BRAM
