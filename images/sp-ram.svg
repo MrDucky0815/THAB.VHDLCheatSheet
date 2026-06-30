@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" font-family="Segoe UI, Arial, sans-serif">
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#333"/></marker></defs>
+  <style>.box{fill:#eef4fb;stroke:#1f4e79;stroke-width:1.8}.sig{stroke:#333;stroke-width:1.6;fill:none}.lbl{font-size:12px;fill:#222}.tin{font-size:13px;font-weight:bold;fill:#1f4e79;text-anchor:middle}.port{font-size:10px;fill:#7a7a7a;text-anchor:middle}</style>
+  <rect class="box" x="150" y="35" width="110" height="130" rx="4"/>
+  <text class="tin" x="205.0" y="95.0">Single-Port</text>
+  <text class="tin" x="205.0" y="113.0">RAM</text>
+  <line class="sig" x1="70" y1="52" x2="150" y2="52" marker-end="url(#ar)"/>
+  <text class="lbl" x="64" y="56" text-anchor="end">clk</text>
+  <line class="sig" x1="70" y1="84" x2="150" y2="84" marker-end="url(#ar)"/>
+  <text class="lbl" x="64" y="88" text-anchor="end">we</text>
+  <line class="sig" x1="70" y1="116" x2="150" y2="116" marker-end="url(#ar)"/>
+  <text class="lbl" x="64" y="120" text-anchor="end">a(5:0)</text>
+  <line class="sig" x1="70" y1="148" x2="150" y2="148" marker-end="url(#ar)"/>
+  <text class="lbl" x="64" y="152" text-anchor="end">di(15:0)</text>
+  <line class="sig" x1="260" y1="100.0" x2="345" y2="100.0" marker-end="url(#ar)"/>
+  <text class="lbl" x="350" y="104.0">do(15:0)</text>
+</svg>

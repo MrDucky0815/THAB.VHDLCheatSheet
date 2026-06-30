@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 300" font-family="Segoe UI, Arial, sans-serif">
+  <defs><marker id="ax" markerWidth="8" markerHeight="8" refX="6" refY="2.6" orient="auto"><path d="M0,0 L7,2.6 L0,5.2 Z" fill="#333"/></marker></defs>
+  <style>.wire{stroke:#333;stroke-width:1.6;fill:none}.wave{stroke:#111;stroke-width:2.8;fill:none;stroke-linejoin:round}.dash{stroke:#777;stroke-width:1;stroke-dasharray:4 3}.lbl{font-size:13px;fill:#222}.sig{font-size:13px;font-weight:bold;fill:#222}.ax{stroke:#333;stroke-width:1.2}.ff{fill:#eef4fb;stroke:#1f4e79;stroke-width:1.6}</style>
+  <rect class="ff" x="28" y="122" width="72" height="84" rx="3"/>
+  <line class="wire" x1="2" y1="144" x2="28" y2="144" marker-end="url(#ax)"/>
+  <text class="lbl" x="36" y="148">d</text>
+  <line class="wire" x1="2" y1="184" x2="28" y2="184" marker-end="url(#ax)"/>
+  <path class="wire" d="M28,177 L38,184 L28,191"/>
+  <text class="lbl" x="42" y="188">clk</text>
+  <line class="wire" x1="100" y1="164" x2="124" y2="164" marker-end="url(#ax)"/>
+  <text class="lbl" x="86" y="168">q</text>
+  <line class="dash" x1="360" y1="30" x2="360" y2="278"/>
+  <line class="dash" x1="408" y1="30" x2="408" y2="278"/>
+  <text class="sig" x="138" y="46" text-anchor="end">clk</text>
+  <path class="wave" d="M150,64 L360,64 L360,40 L418,40 L418,64 L618,64"/>
+  <line class="ax" x1="150" y1="64" x2="628" y2="64" marker-end="url(#ax)"/>
+  <text class="lbl" x="626" y="80">t</text>
+  <text class="sig" x="138" y="164.0" text-anchor="end">d</text>
+  <path class="wave" d="M150,148 L312,148"/>
+  <rect x="312" y="148" width="96" height="24" fill="#d4231f" stroke="#7c0f0c" stroke-width="1.2"/>
+  <text x="360.0" y="164.0" fill="#fff" font-size="11" font-weight="bold" text-anchor="middle">keine Änderung</text>
+  <path class="wave" d="M408,172 L618,172"/>
+  <line class="ax" x1="150" y1="172" x2="628" y2="172" marker-end="url(#ax)"/>
+  <text class="lbl" x="626" y="188">t</text>
+  <text class="sig" x="138" y="256.0" text-anchor="end">q</text>
+  <path class="wave" d="M150,264 L414,264 L414,240 L618,240"/>
+  <line class="ax" x1="150" y1="264" x2="628" y2="264" marker-end="url(#ax)"/>
+  <text class="lbl" x="626" y="280">t</text>
+  <line x1="312" y1="128" x2="360" y2="128" stroke="#d6189b" stroke-width="1.5"/>
+  <path d="M312,128 L318,124.8 L318,131.2 Z" fill="#d6189b"/>
+  <path d="M360,128 L354,124.8 L354,131.2 Z" fill="#d6189b"/>
+  <text x="336.0" y="123" fill="#d6189b" font-size="12.5" font-weight="bold" text-anchor="middle">tsu</text>
+  <line x1="360" y1="128" x2="408" y2="128" stroke="#e0a000" stroke-width="1.5"/>
+  <path d="M360,128 L366,124.8 L366,131.2 Z" fill="#e0a000"/>
+  <path d="M408,128 L402,124.8 L402,131.2 Z" fill="#e0a000"/>
+  <text x="384.0" y="123" fill="#e0a000" font-size="12.5" font-weight="bold" text-anchor="middle">th</text>
+  <line x1="360" y1="222" x2="414" y2="222" stroke="#0aa0c0" stroke-width="1.5"/>
+  <path d="M360,222 L366,218.8 L366,225.2 Z" fill="#0aa0c0"/>
+  <path d="M414,222 L408,218.8 L408,225.2 Z" fill="#0aa0c0"/>
+  <text x="387.0" y="217" fill="#0aa0c0" font-size="12.5" font-weight="bold" text-anchor="middle">tp</text>
+</svg>

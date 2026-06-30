@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 360" font-family="Segoe UI, Arial, sans-serif">
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#333"/></marker></defs>
+  <style>.wire{stroke:#333;stroke-width:1.8;fill:none}.reg{fill:#fff;stroke:#222;stroke-width:1.7}.alu{fill:#ffe14d;stroke:#9a8410;stroke-width:1.6}.mux{fill:#fff;stroke:#222;stroke-width:1.7}.lbl{font-size:15px;fill:#222}.sym{font-size:22px;font-weight:bold;fill:#222;text-anchor:middle}.sl{font-size:15px;fill:#222}.mkb{font-size:17px;font-weight:bold;fill:#1f3a5f}.mk{font-size:17px;fill:#222}</style>
+  <path class="mux" d="M205,120 L253,148.8 L253,187.2 L205,216 Z"/>
+  <text class="lbl" x="150" y="192" text-anchor="end">0</text>
+  <path class="wire" d="M162,187 L205,187" marker-end="url(#ar)"/>
+  <path class="alu" d="M430,110 L550,143.6 L550,216.4 L430,250 Z"/>
+  <text class="sym" x="478.0" y="188.0" font-size="22">+</text>
+  <path class="wire" d="M253,168.0 L313,168.0 L313,144 L430,144" marker-end="url(#ar)"/>
+  <text class="lbl" x="150" y="225" text-anchor="end">inp</text>
+  <path class="wire" d="M162,220 L430,220" marker-end="url(#ar)"/>
+  <rect class="reg" x="628" y="146.0" width="50" height="68"/>
+  <path class="wire" d="M628,198.0 L639,205.0 L628,212.0"/>
+  <path class="wire" d="M550,180.0 L628,180.0" marker-end="url(#ar)"/>
+  <path class="wire" d="M678,180.0 L832,180.0"/>
+  <circle cx="772" cy="180.0" r="3" fill="#333"/>
+  <path class="wire" d="M772,180.0 L772,66 L179,66"/>
+  <path class="wire" d="M179,66 L179,149 L205,149" marker-end="url(#ar)"/>
+  <path class="alu" d="M832,140.0 L952,159.2 L952,200.8 L832,220.0 Z"/>
+  <text class="sym" x="880.0" y="188.0" font-size="19">/4</text>
+  <path class="wire" d="M952,180.0 L996,180.0" marker-end="url(#ar)"/>
+  <text class="mkb" x="24" y="290">Durchsatz</text>
+  <text class="mk" x="140" y="290">~8 bit / 4 Taktzyklen = 2 bit/Taktzyklus</text>
+  <text class="mkb" x="24" y="315">Latenz</text>
+  <text class="mk" x="140" y="315">~4 Taktzyklen</text>
+  <text class="mkb" x="24" y="340">Frequenz</text>
+  <text class="mk" x="140" y="340">ein Addierer und Multiplizierer im kritischen Pfad</text>
+</svg>

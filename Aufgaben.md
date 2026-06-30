@@ -4,22 +4,44 @@
 
 - [Aufgabe 1: Entity eines Adders deklarieren](#aufgabe-1-entity-eines-adders-deklarieren)
 - [Aufgabe 2: Architecture eines Adders deklarieren](#aufgabe-2-architecture-eines-adders-deklarieren)
-- [Aufgabe 3 : erstelle einen or Baustein](#aufgabe-3--erstelle-einen-or-baustein)
-- [Aufgabe 4: erstelle eine Volladdierer](#aufgabe-4-erstelle-eine-volladdierer)
-- [Aufgabe 5: erstelle eine architecture eines adders (sequenziell)](#aufgabe-5-erstelle-eine-architecture-eines-adders-sequenziell)
+- [Aufgabe 3: Erstelle einen OR-Baustein](#aufgabe-3-erstelle-einen-or-baustein)
+- [Aufgabe 4: Erstelle einen Volladdierer](#aufgabe-4-erstelle-einen-volladdierer)
+- [Aufgabe 5: Erstelle eine Architecture eines Adders (sequenziell)](#aufgabe-5-erstelle-eine-architecture-eines-adders-sequenziell)
 - [Aufgabe 6: 4-aus-16-Decoder mit Schleife](#aufgabe-6-4-aus-16-decoder-mit-schleife)
 - [Aufgabe 7: Delay-Modelle](#aufgabe-7-delay-modelle)
     - [Aufgabe 7.1 Unit-Delay-Modell für eine ARCHITECTURE](#aufgabe-71-unit-delay-modell-für-eine-architecture)
     - [Aufgabe 7.2 Unit-Delay-Modell für alle ENTITY´s (GENERIC)](#aufgabe-72-unit-delay-modell-für-alle-entitys-generic)
     - [Aufgabe 7.3 Unit-Delay-Modell für GENERICMAP (GENERIC)](#aufgabe-73-unit-delay-modell-für-genericmap-generic)
-    - [Aufgabe 7.4 Lastabhänige Verzögerung](#aufgabe-74-lastabhänige-verzögerung)
-- [Aufgabe 8: Erselle ein D-FlipFlo](#aufgabe-8-erselle-ein-d-flipflo)
+    - [Aufgabe 7.4 Flankenabhängige Verzögerung](#aufgabe-74-flankenabhängige-verzögerung)
+    - [Aufgabe 7.5 Lastabhängige Verzögerung](#aufgabe-75-lastabhängige-verzögerung)
+- [Aufgabe 8: Erstelle ein D-FlipFlop](#aufgabe-8-erstelle-ein-d-flipflop)
 - [Aufgabe 9: Erstelle einen INT TO STD_LOGIC_VECTOR mit einer Function](#aufgabe-9-erstelle-einen-int-to-std_logic_vector-mit-einer-function)
 - [Aufgabe 10: Prozedur-Aufrufe und Parameter-Assoziation](#aufgabe-10-prozedur-aufrufe-und-parameter-assoziation)
 - [Aufgabe 11: Überladen von Operatoren (Operator Overloading)](#aufgabe-11-überladen-von-operatoren-operator-overloading)
 - [Aufgabe 12: Ripple-Carry-Addierer mit n Addierern](#aufgabe-12-ripple-carry-addierer-mit-n-addierern)
 - [Aufgabe 13: Konvertierung von Porttypen mit CONFIGURATION](#aufgabe-13-konvertierung-von-porttypen-mit-configuration)
 - [Aufgabe 14: Decoder mit Schieberoperation](#aufgabe-14-decoder-mit-schieberoperation)
+- [Aufgabe 15: Single-Port- und Dual-Port-RAM](#aufgabe-15-single-port--und-dual-port-ram)
+    - [Aufgabe 15.1 Single-Port-RAM (synchroner Block-RAM)](#aufgabe-151-single-port-ram-synchroner-block-ram)
+    - [Aufgabe 15.2 Dual-Port-RAM](#aufgabe-152-dual-port-ram)
+- [Aufgabe 16: Zustandsautomat Modulo-4-Zähler (FSM)](#aufgabe-16-zustandsautomat-modulo-4-zähler-fsm)
+    - [Aufgabe 16.1 Moore-Automat (synchroner Reset)](#aufgabe-161-moore-automat-synchroner-reset)
+    - [Aufgabe 16.2 Mealy-Automat (Ausgang)](#aufgabe-162-mealy-automat-ausgang)
+- [Aufgabe 17: Optimierung (Mittelwert aus 4 Werten)](#aufgabe-17-optimierung-mittelwert-aus-4-werten)
+    - [Aufgabe 17.1 Iterativ (wenig Fläche)](#aufgabe-171-iterativ-wenig-fläche)
+    - [Aufgabe 17.2 Pipeline (hoher Durchsatz)](#aufgabe-172-pipeline-hoher-durchsatz)
+    - [Aufgabe 17.3 Geringe Latenz](#aufgabe-173-geringe-latenz)
+    - [Aufgabe 17.4 FIR-Filter mit langem kritischen Pfad](#aufgabe-174-fir-filter-mit-langem-kritischen-pfad)
+    - [Aufgabe 17.5 FIR-Filter mit eingefügten Registern](#aufgabe-175-fir-filter-mit-eingefügten-registern)
+    - [Aufgabe 17.6 Parallelismus (8×8-Multiplizierer)](#aufgabe-176-parallelismus-88-multiplizierer)
+    - [Aufgabe 17.7 Vereinfachen logischer Strukturen (Prioritätsencoder)](#aufgabe-177-vereinfachen-logischer-strukturen-prioritätsencoder)
+    - [Aufgabe 17.8 Balancierung des kritischen Pfads](#aufgabe-178-balancierung-des-kritischen-pfads)
+    - [Aufgabe 17.9 Unrolling the Pipeline (serieller Multiplizierer)](#aufgabe-179-unrolling-the-pipeline-serieller-multiplizierer)
+    - [Aufgabe 17.10 Resource Sharing](#aufgabe-1710-resource-sharing)
+    - [Aufgabe 17.11 Einfluss von Reset (SRL16)](#aufgabe-1711-einfluss-von-reset-srl16)
+- [Aufgabe 18: PSL-Assertions (PRÜFUNG)](#aufgabe-18-psl-assertions-prüfung)
+    - [Aufgabe 18.1 Zähler mit drei Assertions (PRÜFUNG)](#aufgabe-181-zähler-mit-drei-assertions-prüfung)
+    - [Aufgabe 18.2 I2C-Start und fehlendes Acknowledge (PRÜFUNG)](#aufgabe-182-i2c-start-und-fehlendes-acknowledge-prüfung)
 
 ## Aufgabe 1: Entity eines Adders deklarieren
 
@@ -79,7 +101,7 @@ END ARCHITECTURE data_flow;
 --            sind ebenfalls nebenläufig. Reihenfolge spielt keine Rolle.
 ```
 
-## Aufgabe 3 : erstelle einen or Baustein
+## Aufgabe 3: Erstelle einen OR-Baustein
 
 ```vhdl
 ENTITY or2 IS
@@ -94,7 +116,7 @@ BEGIN
 END ARCHITECTURE data_flow
 ```
 
-## Aufgabe 4: erstelle eine Volladdierer
+## Aufgabe 4: Erstelle einen Volladdierer
 
 ```vhdl
 ENTITY adder3 IS
@@ -104,7 +126,7 @@ END ENTITY adder;
 
 --  mit PORTMAP :
 ARCHITECTURE  structure OF adder3 IS
-	-- COMPONENT am besten aus Entity Kopieren und Entity in COMPONENT unebenen
+	-- COMPONENT am besten aus Entity kopieren und Entity in COMPONENT umbenennen
 	COMPONENT adder IS
     		PORT (  x, y : IN  BIT;
             		z, c : OUT BIT);
@@ -135,7 +157,7 @@ BEGIN
 END  ARCHITECTURE structure;
 ```
 
-## Aufgabe 5: erstelle eine architecture eines adders (sequenziell)
+## Aufgabe 5: Erstelle eine Architecture eines Adders (sequenziell)
 ```vhdl
 ENTITY adder IS
     PORT (  x, y : IN  BIT;
@@ -260,7 +282,33 @@ BEGIN
 END ARCHITECTURE struct;
  ```
 
-### Aufgabe 7.4 Lastabhänige Verzögerung
+### Aufgabe 7.4 Flankenabhängige Verzögerung
+
+```vhdl
+ENTITY and2 IS
+    GENERIC(tlh, thl : TIME := 0 ns);   -- transition delays (low->high, high->low)
+    PORT(x, y : IN  BIT;
+         z    : OUT BIT);
+END ENTITY and2;
+```
+```vhdl
+ARCHITECTURE transition_delay OF and2 IS
+BEGIN
+    PROCESS(x, y) IS
+        VARIABLE and_new, and_old : BIT := '0';
+    BEGIN
+        and_new := x AND y;
+        IF and_new = '1' AND and_old = '0' THEN       -- steigende Flanke
+            z <= and_new AFTER tlh;
+        ELSIF and_new = '0' AND and_old = '1' THEN    -- fallende Flanke
+            z <= and_new AFTER thl;
+        END IF;
+        and_old := and_new;
+    END PROCESS;
+END ARCHITECTURE transition_delay;
+```
+
+### Aufgabe 7.5 Lastabhängige Verzögerung
 
  ```vhdl
 ENTITY and2 IS
@@ -283,16 +331,16 @@ BEGIN
         ELSIF and_new = '0' AND and_old = '1' THEN       -- fallende Flanke (1 -> 0)
             z <= and_new AFTER (base_delay + thl_factor * load_value);
         END IF;
-        and_old := and_new;   -- aktuellen Zustand fuer den naechsten Aufruf merken
+        and_old := and_new;   -- aktuellen Zustand für den nächsten Aufruf merken
     END PROCESS;
 END ARCHITECTURE load_delay;
  ```
 
-## Aufgabe 8: Erselle ein D-FlipFlo
+## Aufgabe 8: Erstelle ein D-FlipFlop
 
  ```VHDL
 LIBRARY ieee;
-USE ieee.std_logic1164.ALL;
+USE ieee.std_logic_1164.ALL;
 
 ENTITY dff IS
     PORT(clk, rest, d: IN  STD_LOGIC;
@@ -326,7 +374,7 @@ BEGIN
         
         -- Wir brauchen zwei Variablen: Eine für den alten Zustand, eine für die Kombination
         VARIABLE state_old : STD_LOGIC := '0'; 
-        VARIABLE change    : STD_LOGIC_VECTOR(1 DOWNTOW 0);
+        VARIABLE change    : STD_LOGIC_VECTOR(1 DOWNTO 0);
     BEGIN
         IF rising_edge(clk) THEN
             -- Wir kombinieren: [Alter Zustand] & [Neuer Wunschzustand d]
@@ -616,4 +664,655 @@ ARCHITECTURE shift OF decoder IS
 BEGIN
     z <= to_stdlogicvector(z_out sll to_integer(unsigned(a))); -- achtung unsigned keine 2K zahl
 END ARCHITECTURE shift;
+```
+
+## Aufgabe 15: Single-Port- und Dual-Port-RAM
+
+### Aufgabe 15.1 Single-Port-RAM (synchroner Block-RAM)
+
+![Blockschaltbild Single-Port-RAM](images/sp-ram.svg)
+
+`read_a` registriert die Adresse bei der Taktflanke. Gelesen wird mit dieser registrierten Adresse, dadurch ist das Lesen **synchron** → der Synthesizer baut einen **Block-RAM (BRAM)** und es entsteht **1 Takt Latenz** (Adresse anlegen, einen Takt später das Datum auf `do`). Direkt mit `a` lesen wäre asynchron und ergäbe LUT-RAM statt BRAM.
+
+```vhdl
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
+
+ENTITY sp_ram IS
+    PORT (clk : IN  STD_LOGIC;
+          we  : IN  STD_LOGIC;
+          a   : IN  STD_LOGIC_VECTOR(5 DOWNTO 0);    -- Adresse (64 Wörter)
+          di  : IN  STD_LOGIC_VECTOR(15 DOWNTO 0);   -- Dateneingang
+          do  : OUT STD_LOGIC_VECTOR(15 DOWNTO 0));  -- Datenausgang
+END sp_ram;
+
+ARCHITECTURE syn OF sp_ram IS
+    TYPE ram_type IS ARRAY (63 DOWNTO 0) OF STD_LOGIC_VECTOR(15 DOWNTO 0);
+    SIGNAL RAM    : ram_type;
+    SIGNAL read_a : STD_LOGIC_VECTOR(5 DOWNTO 0);
+BEGIN
+    PROCESS (clk)
+    BEGIN
+        IF clk'EVENT AND clk = '1' THEN
+            IF we = '1' THEN
+                RAM(to_integer(UNSIGNED(a))) <= di;   -- schreiben
+            END IF;
+            read_a <= a;                              -- Adresse registrieren
+        END IF;
+    END PROCESS;
+
+    do <= RAM(to_integer(UNSIGNED(read_a)));          -- synchrones Lesen (1 Takt Latenz)
+END ARCHITECTURE syn;
+```
+
+### Aufgabe 15.2 Dual-Port-RAM
+
+![Blockschaltbild Dual-Port-RAM](images/dp-ram.svg)
+
+Zwei unabhängige Ports A und B mit eigenem Takt greifen auf denselben Speicher zu, deshalb `shared variable` statt `signal`. Jeder Port schreibt und liest synchron in seinem eigenen Prozess. So entsteht ein True-Dual-Port-BRAM, über den zwei Taktdomänen gleichzeitig auf den Speicher zugreifen können.
+
+```vhdl
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
+
+ENTITY rams_16 IS
+    PORT (clka, clkb   : IN  STD_LOGIC;
+          ena,  enb    : IN  STD_LOGIC;
+          wea,  web    : IN  STD_LOGIC;
+          addra, addrb : IN  STD_LOGIC_VECTOR(5 DOWNTO 0);
+          dia,  dib    : IN  STD_LOGIC_VECTOR(15 DOWNTO 0);
+          doa,  dob    : OUT STD_LOGIC_VECTOR(15 DOWNTO 0));
+END rams_16;
+
+ARCHITECTURE syn OF rams_16 IS
+    TYPE ram_type IS ARRAY (63 DOWNTO 0) OF STD_LOGIC_VECTOR(15 DOWNTO 0);
+    SHARED VARIABLE RAM : ram_type;             -- von beiden Ports nutzbar
+BEGIN
+    PROCESS (clka)                              -- Port A
+    BEGIN
+        IF clka'EVENT AND clka = '1' THEN
+            IF ena = '1' THEN
+                IF wea = '1' THEN
+                    RAM(to_integer(UNSIGNED(addra))) := dia;
+                END IF;
+                doa <= RAM(to_integer(UNSIGNED(addra)));
+            END IF;
+        END IF;
+    END PROCESS;
+
+    PROCESS (clkb)                              -- Port B
+    BEGIN
+        IF clkb'EVENT AND clkb = '1' THEN
+            IF enb = '1' THEN
+                IF web = '1' THEN
+                    RAM(to_integer(UNSIGNED(addrb))) := dib;
+                END IF;
+                dob <= RAM(to_integer(UNSIGNED(addrb)));
+            END IF;
+        END IF;
+    END PROCESS;
+END ARCHITECTURE syn;
+```
+
+## Aufgabe 16: Zustandsautomat Modulo-4-Zähler (FSM)
+
+Modulo-4-Zähler in Zwei-Prozess-Schreibweise. Bei `x = '1'` zählt der Automat einen Zustand weiter (S0 → S1 → S2 → S3 → S0), bei `x = '0'` hält er, `reset = '1'` setzt synchron auf S0.
+
+### Aufgabe 16.1 Moore-Automat (synchroner Reset)
+
+```vhdl
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+ENTITY counter IS
+    PORT(x          : IN  STD_LOGIC;
+         z          : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+         clk, reset : IN  STD_LOGIC);
+END ENTITY counter;
+
+ARCHITECTURE behavioral OF counter IS
+    TYPE stateT IS (S0, S1, S2, S3);   -- automatische Bereichsprüfung
+    SIGNAL state : stateT;
+BEGIN
+    -- 1. Zustandsübergang und Zustandsregister (synchroner Reset)
+    PROCESS (clk) IS
+    BEGIN
+        IF RISING_EDGE(clk) THEN
+            IF reset = '1' THEN
+                state <= S0;
+            ELSE
+                CASE state IS
+                    WHEN S0 => IF x = '1' THEN state <= S1; ELSE state <= S0; END IF;
+                    WHEN S1 => IF x = '1' THEN state <= S2; ELSE state <= S1; END IF;
+                    WHEN S2 => IF x = '1' THEN state <= S3; ELSE state <= S2; END IF;
+                    WHEN S3 => IF x = '1' THEN state <= S0; ELSE state <= S3; END IF;
+                END CASE;
+            END IF;
+        END IF;
+    END PROCESS;
+
+    -- 2. Ausgang, nur vom Zustand abhängig (Moore)
+    PROCESS (state) IS
+    BEGIN
+        CASE state IS
+            WHEN S0 => z <= "00";
+            WHEN S1 => z <= "01";
+            WHEN S2 => z <= "10";
+            WHEN S3 => z <= "11";
+        END CASE;
+    END PROCESS;
+END ARCHITECTURE behavioral;
+```
+
+### Aufgabe 16.2 Mealy-Automat (Ausgang)
+
+Beim Mealy-Automat hängt der Ausgang zusätzlich vom Eingang ab, deshalb steht der Eingang in der Sensitivity-List und `z` wird im selben `CASE` aus Zustand und Eingang gebildet. Der Zustandsübergang bleibt wie in 16.1. Im Skript-Beispiel ist `z` drei Bit breit und der Eingang heißt `input`.
+
+```vhdl
+-- nur der Ausgangsprozess, z hängt von Zustand und Eingang ab
+PROCESS (state, input) IS
+BEGIN
+    CASE state IS
+        WHEN S0 => IF input = '1' THEN z <= "100"; ELSE z <= "000"; END IF;
+        WHEN S1 => IF input = '1' THEN z <= "101"; ELSE z <= "001"; END IF;
+        WHEN S2 => IF input = '1' THEN z <= "110"; ELSE z <= "010"; END IF;
+        WHEN S3 => IF input = '1' THEN z <= "111"; ELSE z <= "011"; END IF;
+    END CASE;
+END PROCESS;
+```
+
+## Aufgabe 17: Optimierung (Mittelwert aus 4 Werten)
+
+Derselbe Mittelwert aus vier Eingangswerten, einmal iterativ (wenig Fläche, ein Addierer, vier Takte) und einmal als Pipeline (hoher Durchsatz, ein Ergebnis pro Takt). Vergleiche dazu die Übersicht in Kapitel 14.7 des Cheat Sheets.
+
+### Aufgabe 17.1 Iterativ (wenig Fläche)
+
+![Blockschaltbild der iterativen Mittelung](images/opt-iterativ.svg)
+
+```vhdl
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
+
+ENTITY iterativeavg IS
+    GENERIC(nbits : NATURAL := 8);
+    PORT ( avg      : OUT STD_ULOGIC_VECTOR(nbits-1 DOWNTO 0);
+           finished : OUT STD_ULOGIC;
+           inp      : IN  STD_ULOGIC_VECTOR(nbits-1 DOWNTO 0);
+           clk      : IN  STD_ULOGIC;
+           start    : IN  STD_ULOGIC);
+END ENTITY iterativeavg;
+
+ARCHITECTURE behavioral OF iterativeavg IS
+    SIGNAL ncount : UNSIGNED(nbits-1 DOWNTO 0);
+    SIGNAL sum    : UNSIGNED(nbits+1 DOWNTO 0);
+    SIGNAL div    : UNSIGNED(nbits+1 DOWNTO 0);
+    SIGNAL t_fin  : STD_ULOGIC;
+BEGIN
+    t_fin <= '1' WHEN ncount = 0 ELSE '0';
+
+    PROCESS (clk) IS
+    BEGIN
+        IF RISING_EDGE(clk) THEN
+            IF start = '1' THEN
+                sum    <= "00" & UNSIGNED(inp);      -- mit erstem Wert starten
+                ncount <= to_unsigned(3, nbits);     -- noch 3 Additionen
+            ELSIF t_fin = '0' THEN
+                ncount <= ncount - 1;
+                sum    <= sum + ("00" & UNSIGNED(inp));
+            END IF;
+        END IF;
+    END PROCESS;
+
+    finished <= t_fin;
+    div <= sum / 4;                                  -- zwei Mal rechts schieben
+    avg <= STD_ULOGIC_VECTOR(div(nbits-1 DOWNTO 0));
+END ARCHITECTURE behavioral;
+```
+
+### Aufgabe 17.2 Pipeline (hoher Durchsatz)
+
+![Blockschaltbild der Pipeline-Mittelung](images/opt-pipeline.svg)
+
+```vhdl
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
+
+ENTITY pipeavg IS
+    GENERIC(nbits : NATURAL := 8);
+    PORT ( avg : OUT STD_ULOGIC_VECTOR(nbits-1 DOWNTO 0);
+           inp : IN  STD_ULOGIC_VECTOR(nbits-1 DOWNTO 0);
+           clk : IN  STD_ULOGIC);
+END ENTITY pipeavg;
+
+ARCHITECTURE behavioral OF pipeavg IS
+    SIGNAL div            : UNSIGNED(nbits+1 DOWNTO 0);
+    SIGNAL s1, s2, s3, s4 : UNSIGNED(nbits+1 DOWNTO 0);
+BEGIN
+    PROCESS (clk) IS
+    BEGIN
+        IF RISING_EDGE(clk) THEN
+            s1 <= ("00" & UNSIGNED(inp));            -- Pipeline-Stufe 1
+            s2 <= s1 + ("00" & UNSIGNED(inp));       -- Pipeline-Stufe 2
+            s3 <= s2 + ("00" & UNSIGNED(inp));       -- Pipeline-Stufe 3
+            s4 <= s3 + ("00" & UNSIGNED(inp));       -- Pipeline-Stufe 4
+        END IF;
+    END PROCESS;
+
+    div <= s4 / 4;
+    avg <= STD_ULOGIC_VECTOR(div(nbits-1 DOWNTO 0));
+END ARCHITECTURE behavioral;
+```
+
+### Aufgabe 17.3 Geringe Latenz
+
+Wie die Pipeline, aber das letzte Register entfällt und das ÷4 liegt mit im Takt des letzten Addierers. Dadurch sinkt die Latenz von vier auf drei Takte, im kritischen Pfad liegen jetzt ein Addierer und der ÷4-Dividierer. Eigener VHDL-Code steht im Skript nicht, es ist die Pipeline aus 17.2 mit einem Register weniger.
+
+![Blockschaltbild der latenzarmen Variante](images/opt-latenz.svg)
+
+### Aufgabe 17.4 FIR-Filter mit langem kritischen Pfad
+
+Gewichteter Durchschnitt aus vier aufeinanderfolgenden Werten, also `inp` und die verzögerten `s1`, `s2`, `s3`, multipliziert mit den Koeffizienten `a`, `b`, `c`, `d`. Im kritischen Pfad liegen ein Multiplizierer und drei Addierer hintereinander, das begrenzt die Frequenz.
+
+![Blockschaltbild FIR-Filter ohne Pipeline-Register](images/fir.svg)
+
+```vhdl
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
+
+ENTITY fir IS
+    GENERIC(nbits : NATURAL := 8);
+    PORT ( wavg            : OUT STD_ULOGIC_VECTOR((2*nbits)-1 DOWNTO 0);
+           inp, a, b, c, d : IN  STD_ULOGIC_VECTOR(nbits-1 DOWNTO 0);
+           clk, valid      : IN  STD_ULOGIC);
+END ENTITY fir;
+
+ARCHITECTURE rtl OF fir IS
+    SIGNAL s1, s2, s3 : STD_ULOGIC_VECTOR(nbits-1 DOWNTO 0);
+BEGIN
+    PROCESS (clk) IS
+    BEGIN
+        IF RISING_EDGE(clk) THEN
+            IF valid = '1' THEN
+                s1 <= inp;                       -- Schieberegister
+                s2 <= s1;
+                s3 <= s2;
+                wavg <= STD_ULOGIC_VECTOR(        -- Multiplizierer und Addierer im selben Takt
+                            UNSIGNED(inp) * UNSIGNED(a) +
+                            UNSIGNED(s1)  * UNSIGNED(b) +
+                            UNSIGNED(s2)  * UNSIGNED(c) +
+                            UNSIGNED(s3)  * UNSIGNED(d));
+            END IF;
+        END IF;
+    END PROCESS;
+END ARCHITECTURE rtl;
+```
+
+### Aufgabe 17.5 FIR-Filter mit eingefügten Registern
+
+Nach jedem Multiplizierer kommt ein Register (`p1` bis `p4`). Multiplikation und Addiererkette liegen jetzt in getrennten Takten, der kritische Pfad wird kürzer und die Betriebsfrequenz steigt, dafür kostet es etwas mehr Fläche und einen Takt mehr Latenz.
+
+![Blockschaltbild FIR-Filter mit Pipeline-Registern](images/fir-reg.svg)
+
+```vhdl
+ARCHITECTURE rtl OF firreg IS
+    SIGNAL s1, s2, s3     : STD_ULOGIC_VECTOR(nbits-1 DOWNTO 0);
+    SIGNAL p1, p2, p3, p4 : UNSIGNED((2*nbits)-1 DOWNTO 0);
+BEGIN
+    PROCESS (clk) IS
+    BEGIN
+        IF RISING_EDGE(clk) THEN
+            IF valid = '1' THEN
+                s1 <= inp;
+                s2 <= s1;
+                s3 <= s2;
+                p1 <= UNSIGNED(inp) * UNSIGNED(a);   -- Produkte registern
+                p2 <= UNSIGNED(s1)  * UNSIGNED(b);
+                p3 <= UNSIGNED(s2)  * UNSIGNED(c);
+                p4 <= UNSIGNED(s3)  * UNSIGNED(d);
+                wavg <= STD_ULOGIC_VECTOR(p1 + p2 + p3 + p4);
+            END IF;
+        END IF;
+    END PROCESS;
+END ARCHITECTURE rtl;
+```
+
+### Aufgabe 17.6 Parallelismus (8×8-Multiplizierer)
+
+Ein 8×8-Bit-Multiplizierer lässt sich durch mehrere kleinere 4×4-Multiplizierer ersetzen, die parallel arbeiten. Man teilt den 8-Bit-Wert in zwei 4-Bit-Hälften, `X = A·2⁴ + B`.
+
+`X·X = (A·2⁴ + B)² = A·A·2⁸ + 2·A·B·2⁴ + B·B = A·A·2⁸ + A·B·2⁵ + B·B`
+
+`A·A`, `A·B` und `B·B` sind je eine einfache 4×4-Multiplikation, die Faktoren `2⁸` und `2⁵` sind reine Schiebeoperationen. So wird aus einem großen Multiplizierer eine Handvoll kleiner, paralleler.
+
+### Aufgabe 17.7 Vereinfachen logischer Strukturen (Prioritätsencoder)
+
+Erste Version als Prioritätsencoder mit `ELSIF`. Durch die `IF/ELSIF`-Kette hat `ctrl(0)` die höchste Priorität, weil es zuerst geprüft wird.
+
+```vhdl
+ENTITY priorityenc IS
+    PORT ( clk, inp : IN  STD_ULOGIC;
+           ctrl     : IN  STD_ULOGIC_VECTOR(3 DOWNTO 0);
+           rout     : OUT STD_ULOGIC_VECTOR(3 DOWNTO 0));
+END priorityenc;
+
+ARCHITECTURE rtl OF priorityenc IS
+BEGIN
+    PROCESS (clk)
+    BEGIN
+        IF RISING_EDGE(clk) THEN
+            IF    ctrl(0) = '1' THEN  rout(0) <= inp;
+            ELSIF ctrl(1) = '1' THEN  rout(1) <= inp;
+            ELSIF ctrl(2) = '1' THEN  rout(2) <= inp;
+            ELSIF ctrl(3) = '1' THEN  rout(3) <= inp;
+            END IF;
+        END IF;
+    END PROCESS;
+END ARCHITECTURE rtl;
+```
+
+In der Synthese entsteht daraus eine Prioritätslogik. Jeder Ausgang braucht ein UND-Gatter, das sein `ctrl`-Bit mit den negierten Bits höherer Priorität verknüpft (`AND2B1`, `AND3B2`, `AND4B3`), und über die Enable-Logik ein Register ansteuert.
+
+![Schaltplan des Prioritätsencoders mit den UND-Gattern und dem FDE-Register](images/vereinfachen-schaltplan.svg)
+
+Wenn sich die Eingangssignale gegenseitig ausschließen, wenn also immer nur ein `ctrl`-Bit `'1'` ist, braucht man keine Priorität. Dann reichen vier getrennte `IF`-Abfragen.
+
+```vhdl
+PROCESS (clk)
+BEGIN
+    IF RISING_EDGE(clk) THEN
+        IF ctrl(0) = '1' THEN rout(0) <= inp; END IF;
+        IF ctrl(1) = '1' THEN rout(1) <= inp; END IF;
+        IF ctrl(2) = '1' THEN rout(2) <= inp; END IF;
+        IF ctrl(3) = '1' THEN rout(3) <= inp; END IF;
+    END IF;
+END PROCESS;
+```
+
+Das Ergebnis ist viel kleiner. Es bleibt nur ein Register, dessen Enable direkt am `ctrl`-Bus hängt, die Prioritäts-UND-Gatter entfallen komplett.
+
+![Ergebnis nach der Vereinfachung, ein FDE-Register mit ctrl(3:0) direkt am Enable](images/vereinfachen-result.svg)
+
+Dein Kommentar dazu
+
+* keine Priorität nötig
+* es kann nur `"0001"` und nicht `"0011"` auftreten
+* die doppelte Abfrage (die negierten Bits) entfällt, die Logik wird kleiner
+
+### Aufgabe 17.8 Balancierung des kritischen Pfads
+
+Vier Werte aufaddieren. Schreibt man `sum <= s1 + s2 + s3 + s4` in einer Zeile, entsteht eine Kette aus drei Addierern hintereinander, der kritische Pfad ist lang. Baut man stattdessen einen Baum (`s1 = inp1 + inp2`, `s2 = inp3 + inp4`, `sum = s1 + s2`), liegt pro Taktstufe nur ein Addierer, der Pfad wird kürzer und die Frequenz steigt, bei gleicher Latenz.
+
+**Unbalanciert, lange Kette (kritischer Pfad = 3 Addierer)**
+
+![Unbalancierter Addierer, drei Addierer in Reihe](images/balance-unbal.svg)
+
+```vhdl
+ENTITY adder IS
+    GENERIC(nbits : NATURAL := 8);
+    PORT ( sum                    : OUT STD_ULOGIC_VECTOR(nbits+1 DOWNTO 0);
+           inp1, inp2, inp3, inp4 : IN  STD_ULOGIC_VECTOR(nbits-1 DOWNTO 0);
+           clk                    : IN  STD_ULOGIC);
+END ENTITY adder;
+
+ARCHITECTURE rtl OF adder IS
+    SIGNAL s1, s2, s3, s4 : UNSIGNED(nbits+1 DOWNTO 0);
+BEGIN
+    PROCESS (clk) IS
+    BEGIN
+        IF RISING_EDGE(clk) THEN
+            s1 <= ("00" & UNSIGNED(inp1));
+            s2 <= ("00" & UNSIGNED(inp2));
+            s3 <= ("00" & UNSIGNED(inp3));
+            s4 <= ("00" & UNSIGNED(inp4));
+            sum <= STD_ULOGIC_VECTOR(s1 + s2 + s3 + s4);   -- drei Addierer in Reihe
+        END IF;
+    END PROCESS;
+END ARCHITECTURE rtl;
+```
+
+**Balanciert, Baum (kritischer Pfad = 1 Addierer pro Stufe)**
+
+![Balancierter Addierer als Baum, ein Addierer pro Stufe](images/balance-bal.svg)
+
+Gleiche Ports wie oben, nur die Architecture ändert sich. Die Summe wird paarweise gebildet, jede Teilsumme bekommt ihr eigenes Register.
+
+```vhdl
+ARCHITECTURE rtl OF adderbalanced IS
+    SIGNAL s1, s2 : UNSIGNED(nbits+1 DOWNTO 0);
+BEGIN
+    PROCESS (clk) IS
+    BEGIN
+        IF RISING_EDGE(clk) THEN
+            s1  <= ("00" & UNSIGNED(inp1)) + ("00" & UNSIGNED(inp2));
+            s2  <= ("00" & UNSIGNED(inp3)) + ("00" & UNSIGNED(inp4));
+            sum <= STD_ULOGIC_VECTOR(s1 + s2);             -- ein Addierer pro Stufe
+        END IF;
+    END PROCESS;
+END ARCHITECTURE rtl;
+```
+
+### Aufgabe 17.9 Unrolling the Pipeline (serieller Multiplizierer)
+
+Das ist das Gegenstück zu Balancierung und Parallelisierung. Statt eines großen Multiplizierers, der in einem Takt fertig ist, baut man einen seriellen Schiebe-Addier-Multiplizierer. Der braucht nur ein Schieberegister pro Operand, einen Addierer und einen Zähler, also viel weniger Fläche, dafür mehrere Takte pro Multiplikation. Der Durchsatz sinkt und eine Steuerlogik kommt dazu.
+
+Der große Multiplizierer in einem Takt sieht so aus.
+
+```vhdl
+ENTITY mult IS
+    GENERIC(nbits : NATURAL := 8);
+    PORT ( prod       : OUT STD_ULOGIC_VECTOR((2*nbits)-1 DOWNTO 0);
+           inp1, inp2 : IN  STD_ULOGIC_VECTOR(nbits-1 DOWNTO 0);
+           clk        : IN  STD_ULOGIC);
+END ENTITY mult;
+
+ARCHITECTURE rtl OF mult IS
+BEGIN
+    PROCESS (clk) IS
+    BEGIN
+        IF RISING_EDGE(clk) THEN
+            prod <= STD_ULOGIC_VECTOR(UNSIGNED(inp1) * UNSIGNED(inp2));
+        END IF;
+    END PROCESS;
+END ARCHITECTURE rtl;
+```
+
+Seriell, mit Schieben und Addieren über mehrere Takte.
+
+```vhdl
+ENTITY multser IS
+    GENERIC(nbits : NATURAL := 8);
+    PORT ( prod       : OUT STD_ULOGIC_VECTOR((2*nbits)-1 DOWNTO 0);
+           done       : OUT STD_ULOGIC;
+           inp1, inp2 : IN  STD_ULOGIC_VECTOR(nbits-1 DOWNTO 0);
+           clk, start : IN  STD_ULOGIC);
+END ENTITY multser;
+
+ARCHITECTURE rtl OF multser IS
+    SIGNAL shift1        : STD_ULOGIC_VECTOR((2*nbits)-1 DOWNTO 0);
+    SIGNAL shift2        : STD_ULOGIC_VECTOR(nbits-1 DOWNTO 0);
+    SIGNAL adden, t_done : STD_ULOGIC;
+    SIGNAL multcounter   : UNSIGNED(4 DOWNTO 0);
+    SIGNAL t_prod        : UNSIGNED((2*nbits)-1 DOWNTO 0);
+BEGIN
+    PROCESS (clk) IS
+    BEGIN
+        IF RISING_EDGE(clk) THEN
+            -- Zähler hochzählen
+            IF start = '1' THEN
+                multcounter <= (OTHERS => '0');
+            ELSIF t_done /= '1' THEN
+                multcounter <= multcounter + 1;
+            END IF;
+            -- Schieberegister 2 (Multiplikator, nach links)
+            IF start = '1' THEN
+                shift2 <= inp2;
+            ELSE
+                shift2 <= STD_ULOGIC_VECTOR(UNSIGNED(shift2) SLL 1);
+            END IF;
+            -- Schieberegister 1 (Multiplikand, nach rechts)
+            IF start = '1' THEN
+                shift1 <= '0' & inp1 & "0000000";
+            ELSE
+                shift1 <= STD_ULOGIC_VECTOR(UNSIGNED(shift1) SRL 1);
+            END IF;
+            -- Teilprodukt aufaddieren
+            IF start = '1' THEN
+                t_prod <= (OTHERS => '0');
+            ELSIF adden = '1' THEN
+                t_prod <= t_prod + UNSIGNED(shift1);
+            END IF;
+        END IF;
+    END PROCESS;
+
+    adden  <= shift2(nbits-1) AND (NOT t_done);
+    t_done <= multcounter(3);
+    done   <= t_done;
+    prod   <= STD_ULOGIC_VECTOR(t_prod);
+END ARCHITECTURE rtl;
+```
+
+![Blockschaltbild des seriellen Multiplizierers, zwei Schieberegister, ein Addierer mit Akkumulator und Steuerblock](images/unroll-serial.svg)
+
+### Aufgabe 17.10 Resource Sharing
+
+Brauchen zwei Teile der Schaltung nie gleichzeitig denselben Baustein, zum Beispiel einen Zähler oder einen Komparator, kann man diesen Baustein gemeinsam nutzen. Aus zwei Zählern wird einer, das spart Fläche. Dafür braucht man eine Steuerlogik, die den gemeinsamen Baustein umschaltet, und der Durchsatz kann sinken.
+
+![Resource Sharing, statt zwei Zählern teilen sich beide Blöcke einen gemeinsamen Zähler](images/resource-sharing.svg)
+
+### Aufgabe 17.11 Einfluss von Reset (SRL16)
+
+Ein Schieberegister einmal mit synchronem Reset und einmal ohne, sonst gleich. Der Reset entscheidet, wie der Synthesizer es umsetzt, und das ist herstellerabhängig.
+
+Mit Reset.
+
+```vhdl
+ENTITY shift_reg IS
+    GENERIC(n : NATURAL := 16);
+    PORT ( clk, cin, rst : IN  STD_ULOGIC;
+           cout          : OUT STD_ULOGIC);
+END shift_reg;
+
+ARCHITECTURE synth OF shift_reg IS
+    SIGNAL tmp : STD_ULOGIC_VECTOR(n-1 DOWNTO 0);
+BEGIN
+    PROCESS (clk)
+    BEGIN
+        IF RISING_EDGE(clk) THEN
+            IF rst = '0' THEN
+                tmp <= (OTHERS => '0');
+            ELSE
+                tmp <= tmp(n-2 DOWNTO 0) & cin;
+            END IF;
+        END IF;
+    END PROCESS;
+    cout <= tmp(n-1);
+END ARCHITECTURE synth;
+```
+
+Ohne Reset, gleiche Entity, nur der Prozess ohne die Reset-Abfrage.
+
+```vhdl
+ARCHITECTURE synth OF shift_reg IS
+    SIGNAL tmp : STD_ULOGIC_VECTOR(n-1 DOWNTO 0);
+BEGIN
+    PROCESS (clk)
+    BEGIN
+        IF RISING_EDGE(clk) THEN
+            tmp <= tmp(n-2 DOWNTO 0) & cin;
+        END IF;
+    END PROCESS;
+    cout <= tmp(n-1);
+END ARCHITECTURE synth;
+```
+
+Der Unterschied liegt daran, ob es für die Schaltung ein fertiges, dediziertes Primitive (ein eigenes Modell) gibt. Ohne Reset existiert eines, der `SRL16`, also ein ganzes Schieberegister in einer einzigen LUT. Das nimmt der Synthesizer und spart viel Fläche. Mit Reset gibt es kein solches Modell, der `SRL16` lässt sich nicht zurücksetzen, deshalb baut der Synthesizer das Register aus n einzelnen Flip-Flops (`FDR`).
+
+![Mit Reset n einzelne Flip-Flops, ohne Reset ein kompakter SRL16](images/reset-srl.svg)
+
+
+## Aufgabe 18: PSL-Assertions (PRÜFUNG)
+
+Die Beispiele zu [Kapitel 16.2 PSL-Assertions](VHDL%20Cheat%20Sheet.md#162-psl-assertions) aus dem Cheat Sheet.
+
+### Aufgabe 18.1 Zähler mit drei Assertions (PRÜFUNG)
+
+Der Zähler zählt je nach `ctrl` hoch, runter, lädt einen Wert oder hält ihn. `max` ist der erlaubte Höchstwert, `ofl` der Überlaufwert (alle Bits `'1'`) und `ufl` der Unterlaufwert (alle Bits `'0'`). Der Reset ist active-low.
+
+```vhdl
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
+
+ENTITY counter IS
+  GENERIC (n : NATURAL := 2);
+  PORT (reset : IN  STD_ULOGIC;
+        clk   : IN  STD_ULOGIC;
+        ctrl  : IN  STD_ULOGIC_VECTOR(1 DOWNTO 0);
+        load  : IN  UNSIGNED(n DOWNTO 0);
+        count : OUT UNSIGNED(n DOWNTO 0));
+END counter;
+
+ARCHITECTURE rtl OF counter IS
+  SIGNAL   tmp : UNSIGNED(n DOWNTO 0) := (others => '0');
+  CONSTANT max : UNSIGNED(n DOWNTO 0) := (n => '1', others => '0');
+  CONSTANT ofl : UNSIGNED(n DOWNTO 0) := (others => '1');
+  CONSTANT ufl : UNSIGNED(n DOWNTO 0) := (others => '0');
+BEGIN
+  PROCESS (clk) BEGIN
+    IF rising_edge(clk) THEN
+      IF reset = '0' THEN
+        tmp <= (others => '0');
+      ELSE
+        CASE ctrl IS
+          WHEN "00"   => tmp <= load;
+          WHEN "01"   => tmp <= tmp + 1;
+          WHEN "10"   => tmp <= tmp - 1;
+          WHEN others => tmp <= tmp;
+        END CASE;
+      END IF;
+    END IF;
+  END PROCESS;
+  count <= tmp;
+
+  -- psl default clock is RISING_EDGE(clk);
+  -- psl exceed_max: assert always (NOT (count > max)) abort NOT(reset);
+  -- psl overflow:   assert always (NOT((count = ofl) AND ctrl = "01")) abort NOT(reset);
+  -- psl underflow:  assert always (NOT((count = ufl) AND ctrl = "10")) abort NOT(reset);
+END rtl;
+```
+
+* `exceed_max` der Zählerstand darf `max` nie überschreiten.
+* `overflow` beim Hochzählen (`ctrl = "01"`) darf der Zähler nicht vom Überlaufwert `ofl` (alle Bits `'1'`) auf `0` überlaufen.
+* `underflow` beim Runterzählen (`ctrl = "10"`) darf der Zähler nicht von `0` (`ufl`) auf den Höchstwert unterlaufen.
+
+Alle drei werden über `abort NOT(reset)` während des Resets nicht geprüft.
+
+### Aufgabe 18.2 I2C-Start und fehlendes Acknowledge (PRÜFUNG)
+
+Beim I2C-Bus beginnt eine Übertragung mit einer Start-Bedingung, danach folgen acht Bit und im neunten Takt das Acknowledge mit `sda = '0'`. Ein Prozess erkennt den Start, eine PSL-Assertion prüft das Acknowledge.
+
+```vhdl
+SIGNAL start : BOOLEAN;
+
+PROCESS (scl, sda) BEGIN
+  IF (sda'event AND sda = '0' AND scl = 'H') THEN
+    start <= true;
+  ELSIF rising_edge(scl) THEN
+    start <= false;
+  END IF;
+END PROCESS;
+
+-- psl property p_ack is always (start -> next[8] (sda = '0')) @rising_edge(scl);
+-- psl missing_ack: assert p_ack;
+```
+
+`next[8]` zielt auf genau acht Takte nach dem Start, dort muss `sda = '0'` sein, sonst fehlt das Acknowledge. Gleichwertig mit einer Sequenz.
+
+```vhdl
+-- psl property p_ack1 is always ({start; [*8]} |-> (sda = '0')) @rising_edge(scl);
 ```

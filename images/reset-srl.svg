@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" font-family="Segoe UI, Arial, sans-serif">
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#333"/></marker></defs>
+  <style>.wire{stroke:#333;stroke-width:1.7;fill:none}.reg{fill:#fff;stroke:#1f3a5f;stroke-width:1.7}.alu{fill:#ffe14d;stroke:#9a8410;stroke-width:1.6}.mux{fill:#fff;stroke:#222;stroke-width:1.6}.ctl{fill:#eef4fb;stroke:#1f3a5f;stroke-width:1.6}.lbl{font-size:15px;fill:#222}.sl{font-size:14px;fill:#1f3a5f}.sym{font-size:22px;font-weight:bold;fill:#222;text-anchor:middle}.cap{font-size:15px;font-weight:bold;fill:#1f3a5f}</style>
+  <text class="cap" x="20" y="46">mit Reset</text>
+  <text class="lbl" x="34" y="109">cin</text>
+  <path class="wire" d="M66,104 L110,104" marker-end="url(#ar)"/>
+  <rect class="reg" x="110" y="78" width="38" height="52"/>
+  <path class="wire" d="M110,116 L120,122 L110,128"/>
+  <text class="sl" x="129" y="70" text-anchor="middle">FDR</text>
+  <path class="wire" d="M148,104 L200,104" marker-end="url(#ar)"/>
+  <rect class="reg" x="200" y="78" width="38" height="52"/>
+  <path class="wire" d="M200,116 L210,122 L200,128"/>
+  <text class="sl" x="219" y="70" text-anchor="middle">FDR</text>
+  <path class="wire" d="M238,104 L290,104" marker-end="url(#ar)"/>
+  <rect class="reg" x="290" y="78" width="38" height="52"/>
+  <path class="wire" d="M290,116 L300,122 L290,128"/>
+  <text class="sl" x="309" y="70" text-anchor="middle">FDR</text>
+  <path class="wire" d="M328,104 L430,104" marker-end="url(#ar)"/>
+  <rect class="reg" x="430" y="78" width="38" height="52"/>
+  <path class="wire" d="M430,116 L440,122 L430,128"/>
+  <text class="sl" x="449" y="70" text-anchor="middle">FDR</text>
+  <text class="lbl" x="378" y="111" text-anchor="middle">. . .</text>
+  <path class="wire" d="M468,104 L520,104" marker-end="url(#ar)"/>
+  <text class="lbl" x="526" y="109">cout</text>
+  <text class="sl" x="110" y="180">n einzelne Flip-Flops (FDR), viel Fläche</text>
+  <text class="cap" x="20" y="256">ohne Reset</text>
+  <text class="lbl" x="34" y="305">cin</text>
+  <path class="wire" d="M66,300 L110,300" marker-end="url(#ar)"/>
+  <rect class="reg" x="110" y="274" width="46" height="52"/>
+  <path class="wire" d="M110,312 L120,318 L110,324"/>
+  <text class="sl" x="133" y="266" text-anchor="middle">FD</text>
+  <path class="wire" d="M156,300 L250,300" marker-end="url(#ar)"/>
+  <rect class="ctl" x="250" y="254" width="98" height="92" rx="3"/>
+  <text class="sl" x="299" y="305" text-anchor="middle">SRL16</text>
+  <path class="wire" d="M348,300 L440,300" marker-end="url(#ar)"/>
+  <rect class="reg" x="440" y="274" width="46" height="52"/>
+  <path class="wire" d="M440,312 L450,318 L440,324"/>
+  <text class="sl" x="463" y="266" text-anchor="middle">FD</text>
+  <path class="wire" d="M486,300 L540,300" marker-end="url(#ar)"/>
+  <text class="lbl" x="546" y="305">cout</text>
+  <text class="sl" x="110" y="372">ein kompakter SRL16 (Shift-Register in einer LUT), wenig Fläche</text>
+</svg>

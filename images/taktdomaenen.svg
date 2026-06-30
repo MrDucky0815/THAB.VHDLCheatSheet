@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 340" font-family="Segoe UI, Arial, sans-serif">
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#333"/></marker><marker id="arm" markerWidth="8" markerHeight="8" refX="6.5" refY="2.6" orient="auto"><path d="M0,0 L7,2.6 L0,5.2 Z" fill="#c026d3"/></marker></defs>
+  <style>.fpga{fill:none;stroke:#1f4e79;stroke-width:1.8}.box{fill:#eef4fb;stroke:#1f4e79;stroke-width:1.6}.dev{fill:#fafafa;stroke:#444;stroke-width:1.4}.ff{fill:#f6c27a;stroke:#9a5a12;stroke-width:1.4}.comb{fill:#fff3b0;stroke:#8a7a12;stroke-width:1.4}.dll{fill:#7fce7f;stroke:#2e7d32;stroke-width:1.4}.sync{fill:#dcdcdc;stroke:#555;stroke-width:1.4}.wire{stroke:#333;stroke-width:1.5;fill:none}.wave{stroke:#1f4e79;stroke-width:2;fill:none}.dash{stroke:#c026d3;stroke-width:1.1;stroke-dasharray:4 3;fill:none}.lbl{font-size:12px;fill:#222}.lblb{font-size:12px;font-weight:bold;fill:#222}.cap{font-size:11px;fill:#555;text-anchor:middle}.cir{fill:#fff;stroke:#c0306a;stroke-width:1.6}.cirT{font-size:11px;font-weight:bold;fill:#c0306a;text-anchor:middle;dominant-baseline:middle}.dt{font-size:12px;font-weight:bold;fill:#c026d3;text-anchor:middle}.dim{stroke:#c026d3;stroke-width:1.2;fill:none}.tt{font-size:12px;font-weight:bold;fill:#1f4e79;text-anchor:middle}</style>
+  <line class="wire" x1="22" y1="70" x2="62" y2="70"/>
+  <rect class="ff" x="62" y="47" width="26" height="46" rx="2"/>
+  <path class="wire" d="M62,79 L71,84 L62,89"/>
+  <text class="lblb" x="75.0" y="108" text-anchor="middle">slow_clk</text>
+  <line class="wire" x1="88" y1="70" x2="150" y2="70"/>
+  <ellipse class="comb" cx="205" cy="70" rx="56" ry="34"/>
+  <text class="lbl" x="205" y="60" text-anchor="middle">Kombi-</text>
+  <text class="lbl" x="205" y="74" text-anchor="middle">natorische</text>
+  <text class="lbl" x="205" y="88" text-anchor="middle">Logik</text>
+  <line class="wire" x1="261" y1="70" x2="312" y2="70"/>
+  <rect class="ff" x="312" y="47" width="26" height="46" rx="2"/>
+  <path class="wire" d="M312,79 L321,84 L312,89"/>
+  <text class="lblb" x="325.0" y="108" text-anchor="middle">fast_clk</text>
+  <line class="wire" x1="338" y1="70" x2="430" y2="70"/>
+  <text class="lblb" x="372" y="62">Di</text>
+  <text class="lblb" x="108" y="184" text-anchor="end">slow_clk</text>
+  <path class="wave" d="M120.0,190.0 L140.0,190.0 L140.0,172.0 L220.0,172.0 L220.0,190.0 L300.0,190.0 L300.0,172.0 L380.0,172.0 L380.0,190.0 L460.0,190.0 L460.0,172.0 L510.0,172.0"/>
+  <text class="lblb" x="108" y="244" text-anchor="end">fast_clk</text>
+  <path class="wave" d="M120.0,250.0 L140.0,250.0 L140.0,232.0 L180.0,232.0 L180.0,250.0 L220.0,250.0 L220.0,232.0 L260.0,232.0 L260.0,250.0 L300.0,250.0 L300.0,232.0 L340.0,232.0 L340.0,250.0 L380.0,250.0 L380.0,232.0 L420.0,232.0 L420.0,250.0 L460.0,250.0 L460.0,232.0 L500.0,232.0 L500.0,250.0 L510.0,250.0"/>
+  <text class="lblb" x="108" y="306" text-anchor="end">Di</text>
+  <path class="wave" d="M120,294 L212,294"/>
+  <path class="wave" d="M120,312 L212,312"/>
+  <path class="wave" d="M212,294 L228,312"/>
+  <path class="wave" d="M212,312 L228,294"/>
+  <path class="wave" d="M228,294 L510,294"/>
+  <path class="wave" d="M228,312 L510,312"/>
+  <line class="dash" x1="220" y1="232" x2="220" y2="322"/>
+  <text class="cap" x="290" y="336">Wechsel auf der Flanke &#8594; metastabil</text>
+</svg>

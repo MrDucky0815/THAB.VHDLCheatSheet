@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 372" font-family="Segoe UI, Arial, sans-serif">
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#333"/></marker><marker id="arm" markerWidth="8" markerHeight="8" refX="6.5" refY="2.6" orient="auto"><path d="M0,0 L7,2.6 L0,5.2 Z" fill="#c026d3"/></marker></defs>
+  <style>.fpga{fill:none;stroke:#1f4e79;stroke-width:1.8}.box{fill:#eef4fb;stroke:#1f4e79;stroke-width:1.6}.dev{fill:#fafafa;stroke:#444;stroke-width:1.4}.ff{fill:#f6c27a;stroke:#9a5a12;stroke-width:1.4}.comb{fill:#fff3b0;stroke:#8a7a12;stroke-width:1.4}.dll{fill:#7fce7f;stroke:#2e7d32;stroke-width:1.4}.sync{fill:#dcdcdc;stroke:#555;stroke-width:1.4}.wire{stroke:#333;stroke-width:1.5;fill:none}.wave{stroke:#1f4e79;stroke-width:2;fill:none}.dash{stroke:#c026d3;stroke-width:1.1;stroke-dasharray:4 3;fill:none}.lbl{font-size:12px;fill:#222}.lblb{font-size:12px;font-weight:bold;fill:#222}.cap{font-size:11px;fill:#555;text-anchor:middle}.cir{fill:#fff;stroke:#c0306a;stroke-width:1.6}.cirT{font-size:11px;font-weight:bold;fill:#c0306a;text-anchor:middle;dominant-baseline:middle}.dt{font-size:12px;font-weight:bold;fill:#c026d3;text-anchor:middle}.dim{stroke:#c026d3;stroke-width:1.2;fill:none}.tt{font-size:12px;font-weight:bold;fill:#1f4e79;text-anchor:middle}</style>
+  <path class="wave" d="M15.0,80.0 L15.0,80.0 L15.0,67.0 L28.0,67.0 L28.0,80.0 L41.0,80.0 L41.0,67.0 L54.0,67.0 L54.0,80.0 L67.0,80.0 L67.0,67.0 L70.0,67.0"/>
+  <line class="wire" x1="70" y1="80" x2="89" y2="80"/>
+  <circle class="cir" cx="99" cy="80" r="11"/>
+  <text class="cirT" x="99" y="80.5">A</text>
+  <rect class="fpga" x="118" y="38" width="252" height="92" rx="3"/>
+  <text class="cap" x="150" y="52">FPGA</text>
+  <line class="wire" x1="110" y1="80" x2="128" y2="80"/>
+  <path class="box" d="M128,69.0 L150,80 L128,91.0 Z"/>
+  <line class="wire" x1="150" y1="80" x2="195" y2="80"/>
+  <circle cx="195" cy="80" r="2.4" fill="#333"/>
+  <line class="wire" x1="195" y1="80" x2="195" y2="60"/>
+  <line class="wire" x1="195" y1="60" x2="226" y2="60"/>
+  <rect class="ff" x="226" y="49" width="22" height="22" rx="2"/>
+  <path class="wire" d="M226,64 L233,67 L226,70"/>
+  <circle class="cir" cx="266" cy="60" r="11"/>
+  <text class="cirT" x="266" y="60.5">B</text>
+  <line class="wire" x1="248" y1="60" x2="255" y2="60"/>
+  <line class="wire" x1="195" y1="80" x2="300" y2="80"/>
+  <path class="box" d="M300,69.0 L322,80 L300,91.0 Z"/>
+  <line class="wire" x1="322" y1="80" x2="370" y2="80"/>
+  <circle class="cir" cx="384" cy="80" r="11"/>
+  <text class="cirT" x="384" y="80.5">C</text>
+  <rect class="dev" x="416" y="52" width="120" height="56" rx="3"/>
+  <text class="cap" x="476" y="76">Other Device</text>
+  <text class="cap" x="476" y="92">on Board</text>
+  <line class="wire" x1="398" y1="80" x2="416" y2="80"/>
+  <text class="lblb" x="58" y="181" text-anchor="end">A</text>
+  <path class="wave" d="M70.0,188.0 L88.0,188.0 L88.0,166.0 L143.0,166.0 L143.0,188.0 L198.0,188.0 L198.0,166.0 L253.0,166.0 L253.0,188.0 L308.0,188.0 L308.0,166.0 L363.0,166.0 L363.0,188.0 L418.0,188.0 L418.0,166.0 L473.0,166.0 L473.0,188.0 L525.0,188.0"/>
+  <text class="lblb" x="58" y="243" text-anchor="end">B</text>
+  <path class="wave" d="M70.0,250.0 L112.0,250.0 L112.0,228.0 L167.0,228.0 L167.0,250.0 L222.0,250.0 L222.0,228.0 L277.0,228.0 L277.0,250.0 L332.0,250.0 L332.0,228.0 L387.0,228.0 L387.0,250.0 L442.0,250.0 L442.0,228.0 L497.0,228.0 L497.0,250.0 L525.0,250.0"/>
+  <text class="lblb" x="58" y="305" text-anchor="end">C</text>
+  <path class="wave" d="M70.0,312.0 L136.0,312.0 L136.0,290.0 L191.0,290.0 L191.0,312.0 L246.0,312.0 L246.0,290.0 L301.0,290.0 L301.0,312.0 L356.0,312.0 L356.0,290.0 L411.0,290.0 L411.0,312.0 L466.0,312.0 L466.0,290.0 L521.0,290.0 L521.0,312.0 L525.0,312.0"/>
+  <line class="dash" x1="88" y1="160" x2="88" y2="360"/>
+  <line class="dash" x1="112" y1="160" x2="112" y2="360"/>
+  <line class="dash" x1="136" y1="160" x2="136" y2="360"/>
+  <text class="dt" style="text-anchor:end" x="82" y="340">&#916;b</text>
+  <line class="dim" x1="88" y1="336" x2="112" y2="336" marker-end="url(#arm)"/>
+  <text class="dt" style="text-anchor:end" x="82" y="358">&#916;c</text>
+  <line class="dim" x1="88" y1="354" x2="136" y2="354" marker-end="url(#arm)"/>
+</svg>

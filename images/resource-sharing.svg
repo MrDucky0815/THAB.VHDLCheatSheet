@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 380" font-family="Segoe UI, Arial, sans-serif">
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#333"/></marker></defs>
+  <style>.wire{stroke:#333;stroke-width:1.7;fill:none}.reg{fill:#fff;stroke:#1f3a5f;stroke-width:1.7}.alu{fill:#ffe14d;stroke:#9a8410;stroke-width:1.6}.mux{fill:#fff;stroke:#222;stroke-width:1.6}.ctl{fill:#eef4fb;stroke:#1f3a5f;stroke-width:1.6}.lbl{font-size:15px;fill:#222}.sl{font-size:14px;fill:#1f3a5f}.sym{font-size:22px;font-weight:bold;fill:#222;text-anchor:middle}.cap{font-size:15px;font-weight:bold;fill:#1f3a5f}</style>
+  <rect class="reg" x="40" y="40" width="190" height="120"/>
+  <rect class="reg" x="90" y="86" width="100" height="32"/>
+  <text class="lbl" x="140" y="108" text-anchor="middle">Zähler 1</text>
+  <rect class="reg" x="40" y="210" width="190" height="120"/>
+  <rect class="reg" x="90" y="256" width="100" height="32"/>
+  <text class="lbl" x="140" y="278" text-anchor="middle">Zähler 2</text>
+  <path class="wire" d="M290,185 L350,185" marker-end="url(#ar)" stroke-width="3"/>
+  <rect class="reg" x="430" y="40" width="190" height="110"/>
+  <rect class="reg" x="430" y="230" width="190" height="110"/>
+  <rect class="reg" x="475" y="170" width="100" height="32"/>
+  <text class="lbl" x="525" y="192" text-anchor="middle">Zähler</text>
+  <line class="wire" x1="525" y1="150" x2="525" y2="170"/>
+  <line class="wire" x1="525" y1="202" x2="525" y2="230"/>
+  <text class="cap" x="40" y="368">ein gemeinsamer Zähler statt zwei (weniger Fläche, dafür Steuerlogik nötig)</text>
+</svg>

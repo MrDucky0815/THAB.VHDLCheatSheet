@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" font-family="Segoe UI, Arial, sans-serif">
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#333"/></marker></defs>
+  <style>.wire{stroke:#333;stroke-width:1.7;fill:none}.reg{fill:#fff;stroke:#1f3a5f;stroke-width:1.7}.alu{fill:#ffe14d;stroke:#9a8410;stroke-width:1.6}.lbl{font-size:15px;fill:#222}.sl{font-size:14px;fill:#1f3a5f}.sym{font-size:22px;font-weight:bold;fill:#222;text-anchor:middle}.fde{font-size:16px;font-weight:bold;fill:#1f3a5f;text-anchor:middle}.cp{font-size:14px;fill:#c0306a}</style>
+  <rect class="reg" x="320" y="60" width="180" height="210"/>
+  <text class="fde" x="410.0" y="48">FDE</text>
+  <text class="lbl" x="334" y="115">D</text>
+  <text class="lbl" x="334" y="170">CE</text>
+  <text class="lbl" x="334" y="230">C</text>
+  <text class="lbl" x="486" y="170" text-anchor="end">Q</text>
+  <path class="wire" d="M320,217 L332,225 L320,233"/>
+  <text class="lbl" x="60" y="115">inp</text>
+  <line class="wire" x1="160" y1="110" x2="320" y2="110" marker-end="url(#ar)"/>
+  <text class="lbl" x="60" y="170">ctrl(3:0)</text>
+  <line class="wire" x1="160" y1="165" x2="320" y2="165" marker-end="url(#ar)"/>
+  <text class="lbl" x="60" y="230">clk</text>
+  <line class="wire" x1="160" y1="225" x2="320" y2="225" marker-end="url(#ar)"/>
+  <line class="wire" x1="500" y1="165" x2="570" y2="165" marker-end="url(#ar)"/>
+  <text class="lbl" x="576" y="170">rout(3:0)</text>
+</svg>

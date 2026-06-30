@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" font-family="Segoe UI, Arial, sans-serif">
+  <defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#333"/></marker><marker id="ah2" markerWidth="9" markerHeight="9" refX="1.5" refY="3" orient="auto"><path d="M8,0 L0,3 L8,6 Z" fill="#333"/></marker></defs>
+  <style>.wave{stroke:#111;stroke-width:2.6;fill:none;stroke-linejoin:round}.dash{stroke:#888;stroke-width:1;stroke-dasharray:4 3}.ax{stroke:#333;stroke-width:1.1}.dim{stroke:#333;stroke-width:1.1}.lbl{font-size:13px;fill:#222}.sig{font-size:14px;font-weight:bold;fill:#1f3a5f}.cap{font-size:12.5px;fill:#222}.capb{font-size:13px;font-weight:bold;fill:#1f3a5f}.box{fill:#f5f8fc;stroke:#1f3a5f;stroke-width:1.2}</style>
+  <line class="dash" x1="210" y1="45" x2="210" y2="300"/>
+  <line class="dash" x1="430" y1="45" x2="430" y2="230"/>
+  <line class="dim" x1="210" y1="60" x2="430" y2="60" marker-start="url(#ah2)" marker-end="url(#ah)"/>
+  <text class="lbl" x="320.0" y="54" text-anchor="middle">T</text>
+  <text class="sig" x="74" y="104" text-anchor="end">clk</text>
+  <path class="wave" d="M90,115 L210,115 L210,80 L300,80 L300,115 L430,115 L430,80 L540,80 L540,115 L580,115"/>
+  <text class="sig" x="74" y="178" text-anchor="end">D</text>
+  <path class="wave" d="M90,160 L366,160 L380,195 L465,195 L479,160 L580,160"/>
+  <path class="wave" d="M90,195 L366,195 L380,160 L465,160 L479,195 L580,195"/>
+  <rect x="385" y="158" width="75" height="39" fill="#e8403a" fill-opacity="0.85"/>
+  <text x="422.5" y="174" text-anchor="middle" font-size="9" fill="#fff">keine</text>
+  <text x="422.5" y="186" text-anchor="middle" font-size="9" fill="#fff">Änderung</text>
+  <line class="dim" x1="385" y1="222" x2="430" y2="222" marker-start="url(#ah2)" marker-end="url(#ah)"/>
+  <text class="lbl" x="407.5" y="216" text-anchor="middle">t<tspan font-size="9" dy="3">su</tspan></text>
+  <line class="dim" x1="430" y1="222" x2="460" y2="222" marker-start="url(#ah2)" marker-end="url(#ah)"/>
+  <text class="lbl" x="445.0" y="216" text-anchor="middle">t<tspan font-size="9" dy="3">h</tspan></text>
+  <text class="sig" x="74" y="259" text-anchor="end">Q</text>
+  <path class="wave" d="M90,270 L265,270 L265,240 L580,240"/>
+  <line class="dash" x1="265" y1="240" x2="265" y2="300"/>
+  <line class="dim" x1="210" y1="296" x2="265" y2="296" marker-start="url(#ah2)" marker-end="url(#ah)"/>
+  <text class="lbl" x="237.5" y="290" text-anchor="middle">t<tspan font-size="9" dy="3">p</tspan></text>
+</svg>

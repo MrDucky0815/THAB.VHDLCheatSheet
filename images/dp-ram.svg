@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 290" font-family="Segoe UI, Arial, sans-serif">
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#333"/></marker></defs>
+  <style>.box{fill:#eef4fb;stroke:#1f4e79;stroke-width:1.8}.sig{stroke:#333;stroke-width:1.6;fill:none}.lbl{font-size:12px;fill:#222}.tin{font-size:13px;font-weight:bold;fill:#1f4e79;text-anchor:middle}.port{font-size:10px;fill:#7a7a7a;text-anchor:middle}</style>
+  <rect class="box" x="165" y="35" width="140" height="215" rx="4"/>
+  <text class="tin" x="235.0" y="137.5">Dual-Port</text>
+  <text class="tin" x="235.0" y="155.5">RAM</text>
+  <text class="port" x="189" y="50">Port A</text>
+  <text class="port" x="281" y="50">Port B</text>
+  <line class="sig" x1="75" y1="53" x2="165" y2="53" marker-end="url(#ar)"/>
+  <text class="lbl" x="69" y="57" text-anchor="end">clka</text>
+  <line class="sig" x1="75" y1="89" x2="165" y2="89" marker-end="url(#ar)"/>
+  <text class="lbl" x="69" y="93" text-anchor="end">ena</text>
+  <line class="sig" x1="75" y1="125" x2="165" y2="125" marker-end="url(#ar)"/>
+  <text class="lbl" x="69" y="129" text-anchor="end">wea</text>
+  <line class="sig" x1="75" y1="161" x2="165" y2="161" marker-end="url(#ar)"/>
+  <text class="lbl" x="69" y="165" text-anchor="end">addra(5:0)</text>
+  <line class="sig" x1="75" y1="197" x2="165" y2="197" marker-end="url(#ar)"/>
+  <text class="lbl" x="69" y="201" text-anchor="end">dia(15:0)</text>
+  <line class="sig" x1="165" y1="232" x2="75" y2="232" marker-end="url(#ar)"/>
+  <text class="lbl" x="69" y="236" text-anchor="end">doa(15:0)</text>
+  <line class="sig" x1="395" y1="53" x2="305" y2="53" marker-end="url(#ar)"/>
+  <text class="lbl" x="401" y="57">clkb</text>
+  <line class="sig" x1="395" y1="89" x2="305" y2="89" marker-end="url(#ar)"/>
+  <text class="lbl" x="401" y="93">enb</text>
+  <line class="sig" x1="395" y1="125" x2="305" y2="125" marker-end="url(#ar)"/>
+  <text class="lbl" x="401" y="129">web</text>
+  <line class="sig" x1="395" y1="161" x2="305" y2="161" marker-end="url(#ar)"/>
+  <text class="lbl" x="401" y="165">addrb(5:0)</text>
+  <line class="sig" x1="395" y1="197" x2="305" y2="197" marker-end="url(#ar)"/>
+  <text class="lbl" x="401" y="201">dib(15:0)</text>
+  <line class="sig" x1="305" y1="232" x2="395" y2="232" marker-end="url(#ar)"/>
+  <text class="lbl" x="401" y="236">dob(15:0)</text>
+</svg>

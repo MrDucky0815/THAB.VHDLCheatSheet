@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" font-family="Segoe UI, Arial, sans-serif">
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#333"/></marker></defs>
+  <style>.wire{stroke:#333;stroke-width:1.8;fill:none}.reg{fill:#fff;stroke:#222;stroke-width:1.7}.alu{fill:#ffe14d;stroke:#9a8410;stroke-width:1.6}.lbl{font-size:15px;fill:#222}.sl{font-size:15px;fill:#222}.sym{font-size:22px;font-weight:bold;fill:#222;text-anchor:middle}.mkb{font-size:17px;font-weight:bold;fill:#1f3a5f}.mk{font-size:17px;fill:#222}</style>
+  <text class="lbl" x="108" y="104.0">inp</text>
+  <path class="wire" d="M128,99.0 L300,99.0" marker-end='url(#ar)'/>
+  <rect class="reg" x="300" y="70" width="44" height="58"/>
+  <path class="wire" d="M300,112 L311,119 L300,126"/>
+  <text class="sl" x="350" y="86">s1</text>
+  <rect class="reg" x="540" y="70" width="44" height="58"/>
+  <path class="wire" d="M540,112 L551,119 L540,126"/>
+  <text class="sl" x="590" y="86">s2</text>
+  <rect class="reg" x="780" y="70" width="44" height="58"/>
+  <path class="wire" d="M780,112 L791,119 L780,126"/>
+  <text class="sl" x="830" y="86">s3</text>
+  <path class="wire" d="M344,99.0 L540,99.0" marker-end='url(#ar)'/>
+  <path class="wire" d="M584,99.0 L780,99.0" marker-end='url(#ar)'/>
+  <path class="wire" d="M824,99.0 L902,99.0"/>
+  <path class="wire" d="M182,99.0 L182,280" marker-end='url(#ar)'/>
+  <circle cx="182" cy="99.0" r="3" fill="#333"/>
+  <path class="alu" d="M160.0,280 L240.0,280 L224.0,362 L176.0,362 Z"/>
+  <text class="sym" x="200" y="330.0" font-size="24">&#10033;</text>
+  <text class="sl" x="218" y="254">a</text>
+  <path class="wire" d="M218,260 L218,280" marker-end='url(#ar)'/>
+  <path class="wire" d="M422,99.0 L422,280" marker-end='url(#ar)'/>
+  <circle cx="422" cy="99.0" r="3" fill="#333"/>
+  <path class="alu" d="M400.0,280 L480.0,280 L464.0,362 L416.0,362 Z"/>
+  <text class="sym" x="440" y="330.0" font-size="24">&#10033;</text>
+  <text class="sl" x="458" y="254">b</text>
+  <path class="wire" d="M458,260 L458,280" marker-end='url(#ar)'/>
+  <path class="wire" d="M662,99.0 L662,280" marker-end='url(#ar)'/>
+  <circle cx="662" cy="99.0" r="3" fill="#333"/>
+  <path class="alu" d="M640.0,280 L720.0,280 L704.0,362 L656.0,362 Z"/>
+  <text class="sym" x="680" y="330.0" font-size="24">&#10033;</text>
+  <text class="sl" x="698" y="254">c</text>
+  <path class="wire" d="M698,260 L698,280" marker-end='url(#ar)'/>
+  <path class="wire" d="M902,99.0 L902,280" marker-end='url(#ar)'/>
+  <circle cx="902" cy="99.0" r="3" fill="#333"/>
+  <path class="alu" d="M880.0,280 L960.0,280 L944.0,362 L896.0,362 Z"/>
+  <text class="sym" x="920" y="330.0" font-size="24">&#10033;</text>
+  <text class="sl" x="938" y="254">d</text>
+  <path class="wire" d="M938,260 L938,280" marker-end='url(#ar)'/>
+  <path class="alu" d="M440,486 L526,510.96 L526,565.04 L440,590 Z"/>
+  <text class="sym" x="474.4" y="546.0" font-size="22">+</text>
+  <path class="alu" d="M680,486 L766,510.96 L766,565.04 L680,590 Z"/>
+  <text class="sym" x="714.4" y="546.0" font-size="22">+</text>
+  <path class="alu" d="M920,486 L1006,510.96 L1006,565.04 L920,590 Z"/>
+  <text class="sym" x="954.4" y="546.0" font-size="22">+</text>
+  <path class="wire" d="M440,362 L440,514" marker-end='url(#ar)'/>
+  <path class="wire" d="M680,362 L680,514" marker-end='url(#ar)'/>
+  <path class="wire" d="M920,362 L920,514" marker-end='url(#ar)'/>
+  <path class="wire" d="M200,362 L200,560 L440,560" marker-end='url(#ar)'/>
+  <path class="wire" d="M526,538.0 L556,538.0 L556,560 L680,560" marker-end='url(#ar)'/>
+  <path class="wire" d="M766,538.0 L796,538.0 L796,560 L920,560" marker-end='url(#ar)'/>
+  <path class="wire" d="M1006,538.0 L1030,538.0" marker-end='url(#ar)'/>
+  <rect class="reg" x="1030" y="513.0" width="44" height="50"/>
+  <path class="wire" d="M1030,547.0 L1041,554.0 L1030,561.0"/>
+  <path class="wire" d="M1074,538.0 L1114,538.0" marker-end='url(#ar)'/>
+  <text class="lbl" x="1120" y="543.0">wavg</text>
+</svg>

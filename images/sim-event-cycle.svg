@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 360" font-family="Segoe UI, Arial, sans-serif">
+  <defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#333"/></marker><marker id="ah2" markerWidth="9" markerHeight="9" refX="1.5" refY="3" orient="auto"><path d="M8,0 L0,3 L8,6 Z" fill="#333"/></marker></defs>
+  <style>.wave{stroke:#111;stroke-width:2.6;fill:none;stroke-linejoin:round}.dash{stroke:#888;stroke-width:1;stroke-dasharray:4 3}.ax{stroke:#333;stroke-width:1.1}.dim{stroke:#333;stroke-width:1.1}.lbl{font-size:13px;fill:#222}.sig{font-size:14px;font-weight:bold;fill:#1f3a5f}.cap{font-size:12.5px;fill:#222}.capb{font-size:13px;font-weight:bold;fill:#1f3a5f}.box{fill:#f5f8fc;stroke:#1f3a5f;stroke-width:1.2}</style>
+  <line class="dash" x1="240" y1="40" x2="240" y2="320"/>
+  <line class="dash" x1="420" y1="40" x2="420" y2="320"/>
+  <text class="sig" x="100" y="74" text-anchor="end">clk</text>
+  <path class="wave" d="M120,90 L240,90 L240,55 L320,55 L320,90 L420,90 L420,55 L500,55 L500,90 L560,90"/>
+  <line class="ax" x1="120" y1="90" x2="590" y2="90" marker-end="url(#ah)"/>
+  <text class="lbl" x="594" y="94">t</text>
+  <text class="sig" x="100" y="184" text-anchor="end">data</text>
+  <path class="wave" d="M120,165 L258,165 L272,195 L338,195 L352,165 L360,165 L374,195 L560,195"/>
+  <path class="wave" d="M120,195 L258,195 L272,165 L338,165 L352,195 L360,195 L374,165 L560,165"/>
+  <line class="ax" x1="120" y1="195" x2="590" y2="195" marker-end="url(#ah)"/>
+  <text class="lbl" x="594" y="199">t</text>
+  <text class="sig" x="100" y="294" text-anchor="end">data</text>
+  <path class="wave" d="M120,275 L233,275 L247,305 L413,305 L427,275 L560,275"/>
+  <path class="wave" d="M120,305 L233,305 L247,275 L413,275 L427,305 L560,305"/>
+  <line class="ax" x1="120" y1="305" x2="590" y2="305" marker-end="url(#ah)"/>
+  <text class="lbl" x="594" y="309">t</text>
+  <rect class="box" x="600" y="150" width="208" height="62" rx="4"/>
+  <text class="capb" x="610" y="172">Ereignisgesteuert</text>
+  <text class="cap" x="610" y="190">Funktionalität, Aktivitäten</text>
+  <text class="cap" x="610" y="206">und Zeitverhalten (Glitches)</text>
+  <rect class="box" x="600" y="260" width="208" height="62" rx="4"/>
+  <text class="capb" x="610" y="282">Zyklenbasiert</text>
+  <text class="cap" x="610" y="300">nur Funktionalität,</text>
+  <text class="cap" x="610" y="316">genau an den Taktflanken</text>
+</svg>

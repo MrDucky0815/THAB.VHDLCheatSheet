@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 230" font-family="Segoe UI, Arial, sans-serif">
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#333"/></marker><marker id="arm" markerWidth="8" markerHeight="8" refX="6.5" refY="2.6" orient="auto"><path d="M0,0 L7,2.6 L0,5.2 Z" fill="#c026d3"/></marker></defs>
+  <style>.fpga{fill:none;stroke:#1f4e79;stroke-width:1.8}.box{fill:#eef4fb;stroke:#1f4e79;stroke-width:1.6}.dev{fill:#fafafa;stroke:#444;stroke-width:1.4}.ff{fill:#f6c27a;stroke:#9a5a12;stroke-width:1.4}.comb{fill:#fff3b0;stroke:#8a7a12;stroke-width:1.4}.dll{fill:#7fce7f;stroke:#2e7d32;stroke-width:1.4}.sync{fill:#dcdcdc;stroke:#555;stroke-width:1.4}.wire{stroke:#333;stroke-width:1.5;fill:none}.wave{stroke:#1f4e79;stroke-width:2;fill:none}.dash{stroke:#c026d3;stroke-width:1.1;stroke-dasharray:4 3;fill:none}.lbl{font-size:12px;fill:#222}.lblb{font-size:12px;font-weight:bold;fill:#222}.cap{font-size:11px;fill:#555;text-anchor:middle}.cir{fill:#fff;stroke:#c0306a;stroke-width:1.6}.cirT{font-size:11px;font-weight:bold;fill:#c0306a;text-anchor:middle;dominant-baseline:middle}.dt{font-size:12px;font-weight:bold;fill:#c026d3;text-anchor:middle}.dim{stroke:#c026d3;stroke-width:1.2;fill:none}.tt{font-size:12px;font-weight:bold;fill:#1f4e79;text-anchor:middle}</style>
+  <rect class="box" x="165" y="30" width="140" height="170" rx="4"/>
+  <text class="tt" x="235.0" y="109.0">Asynchrones</text>
+  <text class="tt" x="235.0" y="128.0">FIFO</text>
+  <line class="wire" x1="70" y1="58" x2="165" y2="58" marker-end="url(#ar)"/>
+  <text class="lbl" x="64" y="62" text-anchor="end">clk1</text>
+  <line class="wire" x1="70" y1="100" x2="165" y2="100" marker-end="url(#ar)"/>
+  <text class="lbl" x="64" y="104" text-anchor="end">dat1</text>
+  <line class="wire" x1="70" y1="142" x2="165" y2="142" marker-end="url(#ar)"/>
+  <text class="lbl" x="64" y="146" text-anchor="end">write</text>
+  <line class="wire" x1="165" y1="180" x2="70" y2="180" marker-end="url(#ar)"/>
+  <text class="lbl" x="64" y="184" text-anchor="end">full</text>
+  <line class="wire" x1="400" y1="58" x2="305" y2="58" marker-end="url(#ar)"/>
+  <text class="lbl" x="406" y="62">clk2</text>
+  <line class="wire" x1="305" y1="100" x2="400" y2="100" marker-end="url(#ar)"/>
+  <text class="lbl" x="406" y="104">dat2</text>
+  <line class="wire" x1="400" y1="142" x2="305" y2="142" marker-end="url(#ar)"/>
+  <text class="lbl" x="406" y="146">read</text>
+  <line class="wire" x1="305" y1="180" x2="400" y2="180" marker-end="url(#ar)"/>
+  <text class="lbl" x="406" y="184">empty</text>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 600" font-family="Segoe UI, Arial, sans-serif">
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#333"/></marker></defs>
+  <style>.wire{stroke:#333;stroke-width:1.7;fill:none}.reg{fill:#fff;stroke:#1f3a5f;stroke-width:1.7}.alu{fill:#ffe14d;stroke:#9a8410;stroke-width:1.6}.lbl{font-size:15px;fill:#222}.sl{font-size:14px;fill:#1f3a5f}.sym{font-size:22px;font-weight:bold;fill:#222;text-anchor:middle}.fde{font-size:16px;font-weight:bold;fill:#1f3a5f;text-anchor:middle}.cp{font-size:14px;fill:#c0306a}</style>
+  <rect class="reg" x="120" y="120" width="46" height="56"/>
+  <path class="wire" d="M120,161 L131,168 L120,175"/>
+  <text class="lbl" x="91" y="140.0" text-anchor="middle">inp1</text>
+  <line class="wire" x1="62" y1="148.0" x2="120" y2="148.0" marker-end="url(#ar)"/>
+  <text class="sl" x="172" y="138">s1</text>
+  <rect class="reg" x="120" y="220" width="46" height="56"/>
+  <path class="wire" d="M120,261 L131,268 L120,275"/>
+  <text class="lbl" x="91" y="240.0" text-anchor="middle">inp2</text>
+  <line class="wire" x1="62" y1="248.0" x2="120" y2="248.0" marker-end="url(#ar)"/>
+  <text class="sl" x="172" y="238">s2</text>
+  <rect class="reg" x="120" y="318" width="46" height="56"/>
+  <path class="wire" d="M120,359 L131,366 L120,373"/>
+  <text class="lbl" x="91" y="338.0" text-anchor="middle">inp3</text>
+  <line class="wire" x1="62" y1="346.0" x2="120" y2="346.0" marker-end="url(#ar)"/>
+  <text class="sl" x="172" y="336">s3</text>
+  <rect class="reg" x="120" y="440" width="46" height="56"/>
+  <path class="wire" d="M120,481 L131,488 L120,495"/>
+  <text class="lbl" x="91" y="460.0" text-anchor="middle">inp4</text>
+  <line class="wire" x1="62" y1="468.0" x2="120" y2="468.0" marker-end="url(#ar)"/>
+  <text class="sl" x="172" y="458">s4</text>
+  <path class="alu" d="M250,135 L342,166.2 L342,233.8 L250,265 Z"/>
+  <text class="sym" x="288.64" y="207.0">+</text>
+  <path class="wire" d="M166,148 L250,148 L250,169" marker-end="url(#ar)"/>
+  <path class="wire" d="M166,248 L250,248 L250,235" marker-end="url(#ar)"/>
+  <path class="alu" d="M420,250 L512,278.8 L512,341.2 L420,370 Z"/>
+  <text class="sym" x="458.64" y="317.0">+</text>
+  <path class="wire" d="M342,200.0 L364,200.0 L364,282 L420,282" marker-end="url(#ar)"/>
+  <path class="wire" d="M166,346 L420,346 L420,342" marker-end="url(#ar)"/>
+  <path class="alu" d="M590,375 L682,403.8 L682,466.2 L590,495 Z"/>
+  <text class="sym" x="628.64" y="442.0">+</text>
+  <path class="wire" d="M512,310.0 L534,310.0 L534,407 L590,407" marker-end="url(#ar)"/>
+  <path class="wire" d="M166,468 L590,468 L590,467" marker-end="url(#ar)"/>
+  <path class="wire" d="M682,435.0 L730,435.0" marker-end="url(#ar)"/>
+  <rect class="reg" x="730" y="407.0" width="46" height="56"/>
+  <path class="wire" d="M730,448.0 L741,455.0 L730,462.0"/>
+  <text class="sl" x="782" y="425.0">sum</text>
+  <path class="wire" d="M776,435.0 L820,435.0" marker-end="url(#ar)"/>
+  <text class="cp" x="120" y="560">kritischer Pfad = 3 Addierer hintereinander (sum = s1 + s2 + s3 + s4)</text>
+</svg>

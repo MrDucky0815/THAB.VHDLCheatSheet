@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 450" font-family="Segoe UI, Arial, sans-serif">
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#222"/></marker></defs>
+  <rect x="315" y="16" width="170" height="46" fill="#ffffff" stroke="#1f3a5f" stroke-width="1.6" rx="3"/>
+  <text x="400.0" y="43.0" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#15314f">Digitales System</text>
+  <rect x="35" y="116" width="270" height="88" fill="#ffffff" stroke="#1f3a5f" stroke-width="1.6" rx="3"/>
+  <text x="170.0" y="146.0" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#15314f">Kombinatorisch</text>
+  <text x="170.0" y="164.0" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#15314f">Ausgang hängt nur</text>
+  <text x="170.0" y="182.0" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#15314f">von den Eingängen ab</text>
+  <rect x="400" y="116" width="330" height="88" fill="#ffffff" stroke="#1f3a5f" stroke-width="1.6" rx="3"/>
+  <text x="565.0" y="146.0" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#15314f">sequenziell</text>
+  <text x="565.0" y="164.0" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#15314f">Ausgang hängt von Eingängen</text>
+  <text x="565.0" y="182.0" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#15314f">und Zuständen ab</text>
+  <rect x="300" y="300" width="275" height="130" fill="#ffffff" stroke="#1f3a5f" stroke-width="1.6" rx="3"/>
+  <text x="437.5" y="342.0" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#15314f">synchron (FSM)</text>
+  <text x="437.5" y="360.0" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#15314f">neuer Zustand wird bei einer</text>
+  <text x="437.5" y="378.0" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#15314f">Taktflanke eingenommen</text>
+  <text x="437.5" y="396.0" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#15314f">→ einfacher zu entwerfen</text>
+  <rect x="605" y="300" width="275" height="130" fill="#ffffff" stroke="#1f3a5f" stroke-width="1.6" rx="3"/>
+  <text x="742.5" y="342.0" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#15314f">asynchron</text>
+  <text x="742.5" y="360.0" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#15314f">neuer Zustand wird</text>
+  <text x="742.5" y="378.0" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#15314f">unmittelbar eingenommen</text>
+  <text x="742.5" y="396.0" text-anchor="middle" font-size="12.5" font-weight="normal" fill="#15314f">→ Gefahr von Hazards</text>
+  <line x1="400" y1="62" x2="175" y2="114" stroke="#222" stroke-width="1.7" marker-end="url(#ar)"/>
+  <line x1="400" y1="62" x2="560" y2="114" stroke="#222" stroke-width="1.7" marker-end="url(#ar)"/>
+  <line x1="565" y1="206" x2="440" y2="298" stroke="#222" stroke-width="1.7" marker-end="url(#ar)"/>
+  <line x1="565" y1="206" x2="740" y2="298" stroke="#222" stroke-width="1.7" marker-end="url(#ar)"/>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1190 600" font-family="Segoe UI, Arial, sans-serif">
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#333"/></marker></defs>
+  <style>.wire{stroke:#333;stroke-width:1.8;fill:none}.reg{fill:#fff;stroke:#222;stroke-width:1.7}.alu{fill:#ffe14d;stroke:#9a8410;stroke-width:1.6}.mux{fill:#fff;stroke:#222;stroke-width:1.7}.lbl{font-size:15px;fill:#222}.sym{font-size:22px;font-weight:bold;fill:#222;text-anchor:middle}.sl{font-size:15px;fill:#222}.mkb{font-size:17px;font-weight:bold;fill:#1f3a5f}.mk{font-size:17px;fill:#222}</style>
+  <text class="lbl" x="22" y="214.0">inp</text>
+  <path class="wire" d="M54,209.0 L150,209.0" marker-end="url(#ar)"/>
+  <circle cx="52" cy="209.0" r="3" fill="#333"/>
+  <path class="wire" d="M52,209.0 L52,456"/>
+  <rect class="reg" x="150" y="172" width="42" height="74"/>
+  <path class="wire" d="M150,230 L161,237 L150,244"/>
+  <text class="sl" x="200" y="190">s1</text>
+  <rect class="reg" x="402" y="256" width="42" height="74"/>
+  <path class="wire" d="M402,314 L413,321 L402,328"/>
+  <text class="sl" x="452" y="274">s2</text>
+  <rect class="reg" x="654" y="340" width="42" height="74"/>
+  <path class="wire" d="M654,398 L665,405 L654,412"/>
+  <text class="sl" x="704" y="358">s3</text>
+  <rect class="reg" x="906" y="424" width="42" height="74"/>
+  <path class="wire" d="M906,482 L917,489 L906,496"/>
+  <text class="sl" x="956" y="442">s4</text>
+  <path class="alu" d="M240,196 L344,225.28 L344,288.72 L240,318 Z"/>
+  <text class="sym" x="281.6" y="265.0" font-size="22">+</text>
+  <path class="wire" d="M192,209.0 L210,209.0 L210,230 L240,230" marker-end="url(#ar)"/>
+  <circle cx="52" cy="288" r="3" fill="#333"/>
+  <path class="wire" d="M52,288 L240,288" marker-end="url(#ar)"/>
+  <path class="wire" d="M344,257.0 L366,257.0 L366,293.0 L402,293.0" marker-end="url(#ar)"/>
+  <path class="alu" d="M492,280 L596,309.28 L596,372.72 L492,402 Z"/>
+  <text class="sym" x="533.6" y="349.0" font-size="22">+</text>
+  <path class="wire" d="M444,293.0 L462,293.0 L462,314 L492,314" marker-end="url(#ar)"/>
+  <circle cx="52" cy="372" r="3" fill="#333"/>
+  <path class="wire" d="M52,372 L492,372" marker-end="url(#ar)"/>
+  <path class="wire" d="M596,341.0 L618,341.0 L618,377.0 L654,377.0" marker-end="url(#ar)"/>
+  <path class="alu" d="M744,364 L848,393.28 L848,456.72 L744,486 Z"/>
+  <text class="sym" x="785.6" y="433.0" font-size="22">+</text>
+  <path class="wire" d="M696,377.0 L714,377.0 L714,398 L744,398" marker-end="url(#ar)"/>
+  <circle cx="52" cy="456" r="3" fill="#333"/>
+  <path class="wire" d="M52,456 L744,456" marker-end="url(#ar)"/>
+  <path class="wire" d="M848,425.0 L870,425.0 L870,461.0 L906,461.0" marker-end="url(#ar)"/>
+  <path class="wire" d="M948,461.0 L1000,461.0" marker-end="url(#ar)"/>
+  <path class="alu" d="M1000,415.0 L1116,437.08 L1116,484.92 L1000,507.0 Z"/>
+  <text class="sym" x="1046.4" y="469.0" font-size="19">/4</text>
+  <path class="wire" d="M1116,461.0 L1156,461.0" marker-end="url(#ar)"/>
+  <text class="mkb" x="24" y="506">Durchsatz</text>
+  <text class="mk" x="300" y="506">8 bit / Taktzyklus</text>
+  <text class="mkb" x="24" y="531">Eingangs-Ausgangsverzögerung</text>
+  <text class="mk" x="300" y="531">4 Taktzyklen</text>
+  <text class="mkb" x="24" y="556">Betriebsfrequenz</text>
+  <text class="mk" x="300" y="556">ein Addierer im kritischen Pfad (vom FF zum FF)</text>
+</svg>

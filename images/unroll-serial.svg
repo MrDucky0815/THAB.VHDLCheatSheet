@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 560" font-family="Segoe UI, Arial, sans-serif">
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7.5" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#333"/></marker></defs>
+  <style>.wire{stroke:#333;stroke-width:1.7;fill:none}.reg{fill:#fff;stroke:#1f3a5f;stroke-width:1.7}.alu{fill:#ffe14d;stroke:#9a8410;stroke-width:1.6}.mux{fill:#fff;stroke:#222;stroke-width:1.6}.ctl{fill:#eef4fb;stroke:#1f3a5f;stroke-width:1.6}.lbl{font-size:15px;fill:#222}.sl{font-size:14px;fill:#1f3a5f}.sym{font-size:22px;font-weight:bold;fill:#222;text-anchor:middle}.cap{font-size:15px;font-weight:bold;fill:#1f3a5f}</style>
+  <text class="lbl" x="40" y="201">Inp1</text>
+  <path class="wire" d="M76,196 L128,196" marker-end="url(#ar)"/>
+  <path class="mux" d="M128,156 L168,180.0 L168,212.0 L128,236 Z"/>
+  <rect class="reg" x="238" y="170" width="52" height="52"/>
+  <path class="wire" d="M238,208 L248,214 L238,220"/>
+  <text class="sl" x="244" y="160">shift1</text>
+  <path class="wire" d="M168,196 L238,196" marker-end="url(#ar)"/>
+  <path class="alu" d="M390,162 L460,178.8 L460,215.2 L390,232 Z"/>
+  <text class="sym" x="419.4" y="204.0">+</text>
+  <path class="wire" d="M290,196 L355,196 L355,210 L390,210" marker-end="url(#ar)"/>
+  <rect class="reg" x="540" y="170" width="52" height="52"/>
+  <path class="wire" d="M540,208 L550,214 L540,220"/>
+  <text class="sl" x="546" y="160">prod</text>
+  <path class="wire" d="M460,197 L540,196" marker-end="url(#ar)"/>
+  <path class="wire" d="M592,196 L690,196" marker-end="url(#ar)"/>
+  <text class="lbl" x="696" y="201">prod</text>
+  <path class="wire" d="M312,196 L312,100 L96,100 L96,176 L128,176" marker-end="url(#ar)"/>
+  <circle cx="312" cy="196" r="3" fill="#333"/>
+  <path class="wire" d="M616,196 L616,86 L390,86 L390,184" marker-end="url(#ar)"/>
+  <circle cx="616" cy="196" r="3" fill="#333"/>
+  <text class="lbl" x="40" y="441">inp2</text>
+  <path class="wire" d="M76,436 L128,436" marker-end="url(#ar)"/>
+  <path class="mux" d="M128,396 L168,420.0 L168,452.0 L128,476 Z"/>
+  <rect class="reg" x="238" y="410" width="52" height="52"/>
+  <path class="wire" d="M238,448 L248,454 L238,460"/>
+  <text class="sl" x="244" y="400">shift2</text>
+  <path class="wire" d="M168,436 L238,436" marker-end="url(#ar)"/>
+  <path class="wire" d="M290,436 L388,436" marker-end="url(#ar)"/>
+  <rect class="ctl" x="388" y="398" width="150" height="78" rx="3"/>
+  <text class="sl" x="463" y="430" text-anchor="middle">Count, done,</text>
+  <text class="sl" x="463" y="452" text-anchor="middle">adden</text>
+  <path class="wire" d="M312,436 L312,340 L96,340 L96,416 L128,416" marker-end="url(#ar)"/>
+  <circle cx="312" cy="436" r="3" fill="#333"/>
+  <path class="wire" d="M420,398 L420,228" marker-end="url(#ar)"/>
+  <text class="sl" x="430" y="330">adden</text>
+</svg>
