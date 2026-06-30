@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 671 310" font-family="Segoe UI, Arial, sans-serif">
+  <defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#333"/></marker></defs>
+  <style>.wave{stroke:#111;stroke-width:2.6;fill:none;stroke-linejoin:miter}.ax{stroke:#333;stroke-width:1.2}.tick{stroke:#333;stroke-width:1}.sig{font-size:14px;font-weight:bold;fill:#222}.lv{font-size:11px;fill:#555}.num{font-size:11px;fill:#444;text-anchor:middle}.tns{font-size:12px;fill:#444}</style>
+  <line class="ax" x1="95" y1="91" x2="95" y2="43" marker-end="url(#ah)"/>
+  <text class="lv" x="83" y="59">1</text>
+  <text class="lv" x="83" y="89">0</text>
+  <text class="sig" x="65" y="75.0" text-anchor="end">d</text>
+  <line class="ax" x1="95" y1="85" x2="623" y2="85" marker-end="url(#ah)"/>
+  <line class="tick" x1="95" y1="85" x2="95" y2="89"/>
+  <line class="tick" x1="118" y1="85" x2="118" y2="89"/>
+  <line class="tick" x1="141" y1="85" x2="141" y2="89"/>
+  <line class="tick" x1="164" y1="85" x2="164" y2="89"/>
+  <line class="tick" x1="187" y1="85" x2="187" y2="89"/>
+  <line class="tick" x1="210" y1="85" x2="210" y2="89"/>
+  <line class="tick" x1="233" y1="85" x2="233" y2="89"/>
+  <line class="tick" x1="256" y1="85" x2="256" y2="89"/>
+  <line class="tick" x1="279" y1="85" x2="279" y2="89"/>
+  <line class="tick" x1="302" y1="85" x2="302" y2="89"/>
+  <line class="tick" x1="325" y1="85" x2="325" y2="89"/>
+  <line class="tick" x1="348" y1="85" x2="348" y2="89"/>
+  <line class="tick" x1="371" y1="85" x2="371" y2="89"/>
+  <line class="tick" x1="394" y1="85" x2="394" y2="89"/>
+  <line class="tick" x1="417" y1="85" x2="417" y2="89"/>
+  <line class="tick" x1="440" y1="85" x2="440" y2="89"/>
+  <line class="tick" x1="463" y1="85" x2="463" y2="89"/>
+  <line class="tick" x1="486" y1="85" x2="486" y2="89"/>
+  <line class="tick" x1="509" y1="85" x2="509" y2="89"/>
+  <line class="tick" x1="532" y1="85" x2="532" y2="89"/>
+  <line class="tick" x1="555" y1="85" x2="555" y2="89"/>
+  <line class="tick" x1="578" y1="85" x2="578" y2="89"/>
+  <line class="tick" x1="601" y1="85" x2="601" y2="89"/>
+  <path class="wave" d="M95,85 L210,85 L210,55 L279,55 L279,85 L348,85 L348,55 L371,55 L371,85 L417,85 L417,55 L532,55 L532,85 L601,85"/>
+  <line class="ax" x1="95" y1="171" x2="95" y2="123" marker-end="url(#ah)"/>
+  <text class="lv" x="83" y="139">1</text>
+  <text class="lv" x="83" y="169">0</text>
+  <text class="sig" x="65" y="155.0" text-anchor="end">e</text>
+  <line class="ax" x1="95" y1="165" x2="623" y2="165" marker-end="url(#ah)"/>
+  <line class="tick" x1="95" y1="165" x2="95" y2="169"/>
+  <line class="tick" x1="118" y1="165" x2="118" y2="169"/>
+  <line class="tick" x1="141" y1="165" x2="141" y2="169"/>
+  <line class="tick" x1="164" y1="165" x2="164" y2="169"/>
+  <line class="tick" x1="187" y1="165" x2="187" y2="169"/>
+  <line class="tick" x1="210" y1="165" x2="210" y2="169"/>
+  <line class="tick" x1="233" y1="165" x2="233" y2="169"/>
+  <line class="tick" x1="256" y1="165" x2="256" y2="169"/>
+  <line class="tick" x1="279" y1="165" x2="279" y2="169"/>
+  <line class="tick" x1="302" y1="165" x2="302" y2="169"/>
+  <line class="tick" x1="325" y1="165" x2="325" y2="169"/>
+  <line class="tick" x1="348" y1="165" x2="348" y2="169"/>
+  <line class="tick" x1="371" y1="165" x2="371" y2="169"/>
+  <line class="tick" x1="394" y1="165" x2="394" y2="169"/>
+  <line class="tick" x1="417" y1="165" x2="417" y2="169"/>
+  <line class="tick" x1="440" y1="165" x2="440" y2="169"/>
+  <line class="tick" x1="463" y1="165" x2="463" y2="169"/>
+  <line class="tick" x1="486" y1="165" x2="486" y2="169"/>
+  <line class="tick" x1="509" y1="165" x2="509" y2="169"/>
+  <line class="tick" x1="532" y1="165" x2="532" y2="169"/>
+  <line class="tick" x1="555" y1="165" x2="555" y2="169"/>
+  <line class="tick" x1="578" y1="165" x2="578" y2="169"/>
+  <line class="tick" x1="601" y1="165" x2="601" y2="169"/>
+  <path class="wave" d="M95,165 L325,165 L325,135 L486,135 L486,165 L601,165"/>
+  <line class="ax" x1="95" y1="251" x2="95" y2="203" marker-end="url(#ah)"/>
+  <text class="lv" x="83" y="219">1</text>
+  <text class="lv" x="83" y="249">0</text>
+  <text class="sig" x="65" y="235.0" text-anchor="end">q</text>
+  <line class="ax" x1="95" y1="245" x2="623" y2="245" marker-end="url(#ah)"/>
+  <line class="tick" x1="95" y1="245" x2="95" y2="249"/>
+  <text class="num" x="95" y="262">0</text>
+  <line class="tick" x1="118" y1="245" x2="118" y2="249"/>
+  <line class="tick" x1="141" y1="245" x2="141" y2="249"/>
+  <line class="tick" x1="164" y1="245" x2="164" y2="249"/>
+  <line class="tick" x1="187" y1="245" x2="187" y2="249"/>
+  <line class="tick" x1="210" y1="245" x2="210" y2="249"/>
+  <text class="num" x="210" y="262">5</text>
+  <line class="tick" x1="233" y1="245" x2="233" y2="249"/>
+  <line class="tick" x1="256" y1="245" x2="256" y2="249"/>
+  <line class="tick" x1="279" y1="245" x2="279" y2="249"/>
+  <line class="tick" x1="302" y1="245" x2="302" y2="249"/>
+  <line class="tick" x1="325" y1="245" x2="325" y2="249"/>
+  <text class="num" x="325" y="262">10</text>
+  <line class="tick" x1="348" y1="245" x2="348" y2="249"/>
+  <line class="tick" x1="371" y1="245" x2="371" y2="249"/>
+  <line class="tick" x1="394" y1="245" x2="394" y2="249"/>
+  <line class="tick" x1="417" y1="245" x2="417" y2="249"/>
+  <line class="tick" x1="440" y1="245" x2="440" y2="249"/>
+  <text class="num" x="440" y="262">15</text>
+  <line class="tick" x1="463" y1="245" x2="463" y2="249"/>
+  <line class="tick" x1="486" y1="245" x2="486" y2="249"/>
+  <line class="tick" x1="509" y1="245" x2="509" y2="249"/>
+  <line class="tick" x1="532" y1="245" x2="532" y2="249"/>
+  <line class="tick" x1="555" y1="245" x2="555" y2="249"/>
+  <text class="num" x="555" y="262">20</text>
+  <line class="tick" x1="578" y1="245" x2="578" y2="249"/>
+  <line class="tick" x1="601" y1="245" x2="601" y2="249"/>
+  <text class="tns" x="627" y="249">t/ns</text>
+  <path class="wave" d="M95,245 L394,245 L394,215 L417,215 L417,245 L463,245 L463,215 L601,215"/>
+</svg>
